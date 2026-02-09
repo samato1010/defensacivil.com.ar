@@ -7,8 +7,8 @@ header('Content-Type: text/html; charset=utf-8');
 
 require_login();
 
-// SOLO ADMIN
-if (($_SESSION['user'] ?? '') !== 'admin') {
+// SOLO ADMIN (usa is_admin() que reconoce tanto username=admin como role=admin)
+if (!is_admin()) {
   header('Location: /admin/index.php');
   exit;
 }
