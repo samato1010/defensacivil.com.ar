@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  
+  <!-- SEO Básico -->
+  <title>Notas y Actualizaciones · Defensa Civil Argentina</title>
+  <meta name="description" content="Notas, eventos y actualizaciones sobre Defensa Civil en Argentina. Capacitaciones, noticias y recursos del sector."/>
+  <meta name="keywords" content="notas defensa civil, noticias protección civil, eventos, capacitaciones, argentina"/>
+  
+  <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://defensacivil.com.ar/notas.html"/>
+  <meta property="og:title" content="Notas · Defensa Civil Argentina"/>
+  <meta property="og:description" content="Notas y actualizaciones sobre Defensa Civil en Argentina."/>
+  <meta property="og:image" content="https://defensacivil.com.ar/assets/images/og-image.jpg"/>
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Notas · Defensa Civil Argentina"/>
+  <meta name="twitter:description" content="Notas y actualizaciones sobre Defensa Civil en Argentina."/>
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://defensacivil.com.ar/notas.html"/>
+  
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="/assets/css/main.css?v=1.0.0"/>
+  <link rel="stylesheet" href="/assets/css/mobile.css?v=1.0.0"/>
+  
+  <style>
+    /* Estilos específicos de notas */
+    .nota-card {
+      background: var(--card);
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: var(--r);
+      box-shadow: 0 6px 14px rgba(0,0,0,.08);
+      padding: 18px;
+      margin: 16px 0;
+      transition: .2s;
+    }
+    
+    .nota-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0,0,0,.14);
+      border-color: rgba(255,102,0,.35);
+    }
+    
+    .nota-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    
+    .nota-meta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: 0.9em;
+      color: var(--mut);
+    }
+    
+    .nota-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .nota-title {
+      margin: 0 0 10px;
+      color: var(--az1);
+      font-size: 1.3em;
+      line-height: 1.3;
+    }
+    
+    .nota-text {
+      margin: 0 0 12px;
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+    
+    .nota-image {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 10px;
+      margin: 14px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,.12);
+    }
+    
+    .nota-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    
+    .nota-link {
+      color: var(--link);
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.95em;
+    }
+    
+    .nota-link:hover {
+      text-decoration: underline;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: var(--mut);
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="head">
+    <div class="brand">
+      <div>
+        <h1>Notas</h1>
+        <div class="sub">Defensa Civil · Actualizaciones y recursos</div>
+      </div>
+    </div>
+    
+    <nav class="toplinks" aria-label="Navegación principal">
+      <a class="pilllink" href="/index.html">🏠 Inicio</a>
+      <a class="pilllink" href="/directorio.html">📒 Directorio</a>
+      <a class="pilllink" href="/historia.html">🕰️ Historia</a>
+      <a class="pilllink" href="/colaboradores.html">🤝 Colaboradores</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  
+  <div class="card">
+    <h3>Notas y Actualizaciones</h3>
+    <p>Espacio para compartir eventos, capacitaciones, noticias y recursos sobre Defensa Civil en Argentina.</p>
+  </div>
+
+  <div id="notasContainer" class="loading">
+    Cargando notas...
+  </div>
+
+</main>
+
+<footer>
+  <div class="fmut">
+    Coordinado por el Lic. Sebastián Amato · Si querés colaborar, escribime a
+    <a href="mailto:samato@hst.com.ar">samato@hst.com.ar</a>
+  </div>
+  <div style="margin-top:14px;opacity:.9;">defensacivil.com.ar © 2026</div>
+</footer>
+
+<script src="/assets/js/mobile-nav.js" defer></script>
+
+<script>
+// Cargar y mostrar notas
+const JSON_URL = '/data/notas.json';
+const UPLOAD_PATH = '/uploads/notas/';
+
+async function loadNotas() {
+  const container = document.getElementById('notasContainer');
+  
+  try {
+    const response = await fetch(JSON_URL);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
+    
+    const data = await response.json();
+    console.log('Datos cargados:', data); // Debug
+    
+    const notes = data.notes || [];
+    
+    if (notes.length === 0) {
+      container.innerHTML = `
+        <div class="card" style="text-align:center;padding:40px;">
+          <h3 style="border:none;">📝 Sin notas por el momento</h3>
+          <p>Próximamente se publicarán actualizaciones.</p>
+        </div>
+      `;
+      return;
+    }
+    
+    container.innerHTML = notes.map(note => {
+      const fecha = note.fecha || '';
+      const provincia = note.provincia || '';
+      const categoria = note.categoria || '';
+      const titulo = note.titulo || 'Sin título';
+      const texto = note.texto || '';
+      const imagen = note.imagen ? `${UPLOAD_PATH}${note.imagen}` : '';
+      const links = note.links || [];
+      
+      return `
+        <div class="nota-card">
+          <div class="nota-header">
+            <div class="nota-meta">
+              ${fecha ? `<span>📅 ${fecha}</span>` : ''}
+              ${provincia ? `<span>📍 ${provincia}</span>` : ''}
+              ${categoria ? `<span class="chip">${categoria}</span>` : ''}
+            </div>
+          </div>
+          
+          <h3 class="nota-title">${titulo}</h3>
+          
+          ${imagen ? `<img src="${imagen}" alt="${titulo}" class="nota-image" loading="lazy" onerror="this.style.display='none'"/>` : ''}
+          
+          <div class="nota-text">${texto}</div>
+          
+          ${links.length > 0 ? `
+            <div class="nota-links">
+              ${links.map(link => `
+                <a href="${link.href}" class="nota-link" target="_blank" rel="noopener">
+                  🔗 ${link.label || 'Ver más'}
+                </a>
+              `).join('')}
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }).join('');
+    
+  } catch (error) {
+    console.error('Error cargando notas:', error);
+    container.innerHTML = `
+      <div class="card error">
+        <strong>Error:</strong> No se pudieron cargar las notas. 
+        <br><small>Detalles técnicos: ${error.message}</small>
+        <br><br>
+        <button class="btn" onclick="location.reload()">🔄 Reintentar</button>
+      </div>
+    `;
+  }
+}
+
+// Cargar al iniciar
+loadNotas();
+</script>
+
+</body>
+</html>

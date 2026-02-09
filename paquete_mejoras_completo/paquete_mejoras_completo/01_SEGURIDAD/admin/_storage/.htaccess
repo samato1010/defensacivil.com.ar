@@ -1,0 +1,10 @@
+# Protección del directorio _storage
+# Este archivo NIEGA acceso web a todos los archivos en esta carpeta
+
+Order deny,allow
+Deny from all
+
+# Opcional: permite acceso solo desde scripts PHP del servidor
+<FilesMatch "\.(php)$">
+    Allow from all
+</FilesMatch>

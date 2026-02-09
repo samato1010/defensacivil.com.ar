@@ -1,0 +1,28 @@
+# Archivos comprimidos / backups
+*.tar.gz
+*.tar
+*.zip
+*.7z
+
+# Archivo NUL (Windows)
+NUL
+
+# SQL dumps
+*.sql
+
+# Archivos sensibles (credenciales/hashes)
+public_html/admin/_storage/users.json
+
+# Archivos de diagnóstico/probe
+public_html/_probe.php
+public_html/admin/_probe_admin.php
+public_html/admin/phpver.php
+public_html/admin/ping.php
+public_html/admin/test_api.php
+
+# Configuración local de Claude/MCP
+.claude/
+.mcp.json
+
+# Deploy plugin (carpeta temporal)
+deploy_plugin/

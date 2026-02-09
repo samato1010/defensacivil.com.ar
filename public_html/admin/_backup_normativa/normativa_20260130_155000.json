@@ -1,0 +1,960 @@
+{
+    "meta": {
+        "version": 1,
+        "updated": "2026-01-30 15:49:38",
+        "source_note": "Precarga inicial. Años desconocidos en 0000 para completar luego."
+    },
+    "items": [
+        {
+            "id": "nac-decreto-ley-4104-1943",
+            "fecha": "",
+            "fecha_label": "",
+            "provincia": "NACIONAL",
+            "tipo": "DECRETO-LEY",
+            "origen": "LT",
+            "titulo": "Defensa Antiaérea Territorial - Ley 12.913.",
+            "descripcion": "",
+            "tags": [
+                "defensa antiaerea",
+                "territorial",
+                "ley 12913"
+            ],
+            "links": []
+        },
+        {
+            "id": "pba-decreto-ley-11001-1963",
+            "fecha": "",
+            "fecha_label": "",
+            "provincia": "BUENOS AIRES",
+            "tipo": "DECRETO-LEY",
+            "origen": "LT",
+            "titulo": "Creación / organización provincial vinculada a Defensa Civil (base).",
+            "descripcion": "",
+            "tags": [
+                "buenos aires",
+                "defensa civil",
+                "junta provincial"
+            ],
+            "links": []
+        },
+        {
+            "id": "pba-decreto-ley-7738-1971",
+            "fecha": "",
+            "fecha_label": "",
+            "provincia": "BUENOS AIRES",
+            "tipo": "DECRETO-LEY",
+            "origen": "LT",
+            "titulo": "Modificación del Decreto-Ley 11.001/63 (Buenos Aires).",
+            "descripcion": "",
+            "tags": [
+                "buenos aires",
+                "modificacion",
+                "11001"
+            ],
+            "links": []
+        },
+        {
+            "id": "pba-decreto-663-1973",
+            "ambito": "PROVINCIAL",
+            "provincia": "BUENOS AIRES",
+            "tipo": "DECRETO",
+            "numero": "663",
+            "anio": 1973,
+            "titulo": "Reglamentación vinculada al marco provincial de Defensa Civil (PBA).",
+            "href": "normativa/decreto-663-1973.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "buenos aires",
+                "reglamentacion"
+            ]
+        },
+        {
+            "id": "pba-ley-9401-1979",
+            "ambito": "PROVINCIAL",
+            "provincia": "BUENOS AIRES",
+            "tipo": "LEY",
+            "numero": "9401",
+            "anio": 1979,
+            "titulo": "Convenio de cooperación Buenos Aires / Córdoba.",
+            "href": "normativa/ley-9401-1979.html",
+            "chips": [
+                "LT",
+                "LP"
+            ],
+            "tags": [
+                "convenio",
+                "cordoba",
+                "buenos aires"
+            ]
+        },
+        {
+            "id": "pba-decreto-3321-1992",
+            "ambito": "PROVINCIAL",
+            "provincia": "BUENOS AIRES",
+            "tipo": "DECRETO",
+            "numero": "3321",
+            "anio": 1992,
+            "titulo": "Modificación de la Junta Provincial de Defensa Civil (PBA).",
+            "href": "normativa/decreto-3321-1992.html",
+            "chips": [
+                "LT",
+                "LP"
+            ],
+            "tags": [
+                "junta provincial",
+                "defensa civil",
+                "buenos aires"
+            ]
+        },
+        {
+            "id": "pba-decreto-207-2007",
+            "ambito": "PROVINCIAL",
+            "provincia": "BUENOS AIRES",
+            "tipo": "DECRETO",
+            "numero": "207",
+            "anio": 2007,
+            "titulo": "Regiones / organización (PBA).",
+            "href": "normativa/decreto-207-2007.html",
+            "chips": [
+                "LT",
+                "LP"
+            ],
+            "tags": [
+                "regiones",
+                "buenos aires"
+            ]
+        },
+        {
+            "id": "nac-ley-27287-2015",
+            "ambito": "NACIONAL",
+            "provincia": "NACIONAL",
+            "tipo": "LEY",
+            "numero": "27287",
+            "anio": 2015,
+            "titulo": "Creación del SINAGIR (Sistema Nacional para la Gestión Integral del Riesgo).",
+            "href": "https://www.boletinoficial.gob.ar/detalleAviso/primera/130728/20150717",
+            "chips": [
+                "LT",
+                "LP"
+            ],
+            "tags": [
+                "sinagir",
+                "gestion del riesgo",
+                "nacional"
+            ]
+        },
+        {
+            "id": "caba-ley-22418-0000",
+            "ambito": "CABA",
+            "provincia": "CABA",
+            "tipo": "LEY",
+            "numero": "22418",
+            "anio": 0,
+            "titulo": "Marco CABA/Capital Federal (completar año y título oficial).",
+            "href": "normativa/ley-22418-0000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "caba",
+                "capital federal"
+            ]
+        },
+        {
+            "id": "caba-decreto-1170-1982",
+            "ambito": "CABA",
+            "provincia": "CABA",
+            "tipo": "DECRETO",
+            "numero": "1170",
+            "anio": 1982,
+            "titulo": "Reglamentación (CABA) (completar).",
+            "href": "normativa/decreto-1170-1982.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "caba",
+                "reglamentacion"
+            ]
+        },
+        {
+            "id": "catamarca-ley-2580-0000",
+            "ambito": "PROVINCIAL",
+            "provincia": "CATAMARCA",
+            "tipo": "LEY",
+            "numero": "2580",
+            "anio": 0,
+            "titulo": "Marco provincial Defensa Civil (Catamarca) (completar).",
+            "href": "normativa/ley-2580-0000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "catamarca"
+            ]
+        },
+        {
+            "id": "catamarca-decreto-546-1973",
+            "ambito": "PROVINCIAL",
+            "provincia": "CATAMARCA",
+            "tipo": "DECRETO",
+            "numero": "546",
+            "anio": 1973,
+            "titulo": "Reglamentación (Catamarca) (completar).",
+            "href": "normativa/decreto-546-1973.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "catamarca",
+                "reglamentacion"
+            ]
+        },
+        {
+            "id": "catamarca-ley-4060-1984",
+            "ambito": "PROVINCIAL",
+            "provincia": "CATAMARCA",
+            "tipo": "LEY",
+            "numero": "4060",
+            "anio": 1984,
+            "titulo": "Norma vinculada (Catamarca) (completar).",
+            "href": "normativa/ley-4060-1984.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "catamarca"
+            ]
+        },
+        {
+            "id": "cordoba-ley-8906-2000",
+            "ambito": "PROVINCIAL",
+            "provincia": "CÓRDOBA",
+            "tipo": "LEY",
+            "numero": "8906",
+            "anio": 2000,
+            "titulo": "Sistema de Defensa Civil (Córdoba).",
+            "href": "normativa/ley-8906-2000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "cordoba",
+                "defensa civil"
+            ]
+        },
+        {
+            "id": "cordoba-decreto-2676-2000",
+            "ambito": "PROVINCIAL",
+            "provincia": "CÓRDOBA",
+            "tipo": "DECRETO",
+            "numero": "2676",
+            "anio": 2000,
+            "titulo": "Decreto de promulgación (Córdoba) (según fuente: 2676/00).",
+            "href": "normativa/decreto-2676-2000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "cordoba",
+                "promulgacion"
+            ]
+        },
+        {
+            "id": "corrientes-ley-3415-0000",
+            "ambito": "PROVINCIAL",
+            "provincia": "CORRIENTES",
+            "tipo": "LEY",
+            "numero": "3415",
+            "anio": 0,
+            "titulo": "Marco provincial (Corrientes) (completar).",
+            "href": "normativa/ley-3415-0000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "corrientes"
+            ]
+        },
+        {
+            "id": "corrientes-decreto-2987-1978",
+            "ambito": "PROVINCIAL",
+            "provincia": "CORRIENTES",
+            "tipo": "DECRETO",
+            "numero": "2987",
+            "anio": 1978,
+            "titulo": "Reglamentación (Corrientes) (completar).",
+            "href": "normativa/decreto-2987-1978.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "corrientes",
+                "reglamentacion"
+            ]
+        },
+        {
+            "id": "chaco-ley-2014-0000",
+            "ambito": "PROVINCIAL",
+            "provincia": "CHACO",
+            "tipo": "LEY",
+            "numero": "2014",
+            "anio": 0,
+            "titulo": "Marco provincial (Chaco) (completar).",
+            "href": "normativa/ley-2014-0000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "chaco"
+            ]
+        },
+        {
+            "id": "chaco-ley-2764-0000",
+            "ambito": "PROVINCIAL",
+            "provincia": "CHACO",
+            "tipo": "LEY",
+            "numero": "2764",
+            "anio": 0,
+            "titulo": "Modificatoria (Chaco) (completar).",
+            "href": "normativa/ley-2764-0000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "chaco",
+                "modificatoria"
+            ]
+        },
+        {
+            "id": "chubut-ley-4135-0000",
+            "ambito": "PROVINCIAL",
+            "provincia": "CHUBUT",
+            "tipo": "LEY",
+            "numero": "4135",
+            "anio": 0,
+            "titulo": "Marco provincial (Chubut) (completar).",
+            "href": "normativa/ley-4135-0000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "chubut"
+            ]
+        },
+        {
+            "id": "entre-rios-decreto-2703-1995",
+            "ambito": "PROVINCIAL",
+            "provincia": "ENTRE RÍOS",
+            "tipo": "DECRETO",
+            "numero": "2703",
+            "anio": 1995,
+            "titulo": "Marco provincial por decreto (Entre Ríos) (completar).",
+            "href": "normativa/decreto-2703-1995.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "entre rios"
+            ]
+        },
+        {
+            "id": "formosa-decreto-ley-79-1975",
+            "ambito": "PROVINCIAL",
+            "provincia": "FORMOSA",
+            "tipo": "DECRETO-LEY",
+            "numero": "79",
+            "anio": 1975,
+            "titulo": "Marco provincial (Formosa) (completar).",
+            "href": "normativa/decreto-ley-79-1975.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "formosa"
+            ]
+        },
+        {
+            "id": "formosa-decreto-178-1976",
+            "ambito": "PROVINCIAL",
+            "provincia": "FORMOSA",
+            "tipo": "DECRETO",
+            "numero": "178",
+            "anio": 1976,
+            "titulo": "Reglamentación (Formosa) (completar).",
+            "href": "normativa/decreto-178-1976.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "formosa",
+                "reglamentacion"
+            ]
+        },
+        {
+            "id": "jujuy-ley-3519-0000",
+            "ambito": "PROVINCIAL",
+            "provincia": "JUJUY",
+            "tipo": "LEY",
+            "numero": "3519",
+            "anio": 0,
+            "titulo": "Marco provincial (Jujuy) (completar).",
+            "href": "normativa/ley-3519-0000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "jujuy"
+            ]
+        },
+        {
+            "id": "jujuy-decreto-3630-1978",
+            "ambito": "PROVINCIAL",
+            "provincia": "JUJUY",
+            "tipo": "DECRETO",
+            "numero": "3630",
+            "anio": 1978,
+            "titulo": "Reglamentación (Jujuy) (completar).",
+            "href": "normativa/decreto-3630-1978.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "jujuy",
+                "reglamentacion"
+            ]
+        },
+        {
+            "id": "la-pampa-ley-506-0000",
+            "ambito": "PROVINCIAL",
+            "provincia": "LA PAMPA",
+            "tipo": "LEY",
+            "numero": "506",
+            "anio": 0,
+            "titulo": "Marco provincial (La Pampa) (completar).",
+            "href": "normativa/ley-506-0000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "la pampa"
+            ]
+        },
+        {
+            "id": "la-pampa-decreto-114-1976",
+            "ambito": "PROVINCIAL",
+            "provincia": "LA PAMPA",
+            "tipo": "DECRETO",
+            "numero": "114",
+            "anio": 1976,
+            "titulo": "Reglamentación (La Pampa) (completar).",
+            "href": "normativa/decreto-114-1976.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "la pampa",
+                "reglamentacion"
+            ]
+        },
+        {
+            "id": "la-rioja-ley-7273-0000",
+            "ambito": "PROVINCIAL",
+            "provincia": "LA RIOJA",
+            "tipo": "LEY",
+            "numero": "7273",
+            "anio": 0,
+            "titulo": "Marco provincial (La Rioja) (completar).",
+            "href": "normativa/ley-7273-0000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "la rioja"
+            ]
+        },
+        {
+            "id": "la-rioja-ley-3459-0000",
+            "ambito": "PROVINCIAL",
+            "provincia": "LA RIOJA",
+            "tipo": "LEY",
+            "numero": "3459",
+            "anio": 0,
+            "titulo": "Norma relacionada (La Rioja) (completar).",
+            "href": "normativa/ley-3459-0000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "la rioja"
+            ]
+        },
+        {
+            "id": "la-rioja-decreto-3013-0000",
+            "ambito": "PROVINCIAL",
+            "provincia": "LA RIOJA",
+            "tipo": "DECRETO",
+            "numero": "3013",
+            "anio": 0,
+            "titulo": "Norma relacionada (La Rioja) (completar).",
+            "href": "normativa/decreto-3013-0000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "la rioja"
+            ]
+        },
+        {
+            "id": "mendoza-ley-3796-0000",
+            "ambito": "PROVINCIAL",
+            "provincia": "MENDOZA",
+            "tipo": "LEY",
+            "numero": "3796",
+            "anio": 0,
+            "titulo": "Marco provincial (Mendoza) (completar).",
+            "href": "normativa/ley-3796-0000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "mendoza"
+            ]
+        },
+        {
+            "id": "mendoza-decreto-1416-1976",
+            "ambito": "PROVINCIAL",
+            "provincia": "MENDOZA",
+            "tipo": "DECRETO",
+            "numero": "1416",
+            "anio": 1976,
+            "titulo": "Reglamentación (Mendoza) (completar).",
+            "href": "normativa/decreto-1416-1976.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "mendoza",
+                "reglamentacion"
+            ]
+        },
+        {
+            "id": "misiones-ley-417-0000",
+            "ambito": "PROVINCIAL",
+            "provincia": "MISIONES",
+            "tipo": "LEY",
+            "numero": "417",
+            "anio": 0,
+            "titulo": "Marco provincial (Misiones) (completar).",
+            "href": "normativa/ley-417-0000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "misiones"
+            ]
+        },
+        {
+            "id": "misiones-decreto-1233-1974",
+            "ambito": "PROVINCIAL",
+            "provincia": "MISIONES",
+            "tipo": "DECRETO",
+            "numero": "1233",
+            "anio": 1974,
+            "titulo": "Reglamentación (Misiones) (completar).",
+            "href": "normativa/decreto-1233-1974.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "misiones",
+                "reglamentacion"
+            ]
+        },
+        {
+            "id": "misiones-decreto-2036-1974",
+            "ambito": "PROVINCIAL",
+            "provincia": "MISIONES",
+            "tipo": "DECRETO",
+            "numero": "2036",
+            "anio": 1974,
+            "titulo": "Reglamentación (Misiones) (completar).",
+            "href": "normativa/decreto-2036-1974.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "misiones",
+                "reglamentacion"
+            ]
+        },
+        {
+            "id": "neuquen-ley-841-0000",
+            "ambito": "PROVINCIAL",
+            "provincia": "NEUQUÉN",
+            "tipo": "LEY",
+            "numero": "841",
+            "anio": 0,
+            "titulo": "Marco provincial (Neuquén) (completar).",
+            "href": "normativa/ley-841-0000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "neuquen"
+            ]
+        },
+        {
+            "id": "neuquen-decreto-1071-1976",
+            "ambito": "PROVINCIAL",
+            "provincia": "NEUQUÉN",
+            "tipo": "DECRETO",
+            "numero": "1071",
+            "anio": 1976,
+            "titulo": "Reglamentación (Neuquén) (completar).",
+            "href": "normativa/decreto-1071-1976.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "neuquen",
+                "reglamentacion"
+            ]
+        },
+        {
+            "id": "rio-negro-ley-1311-0000",
+            "ambito": "PROVINCIAL",
+            "provincia": "RÍO NEGRO",
+            "tipo": "LEY",
+            "numero": "1311",
+            "anio": 0,
+            "titulo": "Marco provincial (Río Negro) (completar).",
+            "href": "normativa/ley-1311-0000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "rio negro"
+            ]
+        },
+        {
+            "id": "rio-negro-decreto-907-1978",
+            "ambito": "PROVINCIAL",
+            "provincia": "RÍO NEGRO",
+            "tipo": "DECRETO",
+            "numero": "907",
+            "anio": 1978,
+            "titulo": "Reglamentación (Río Negro) (completar).",
+            "href": "normativa/decreto-907-1978.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "rio negro",
+                "reglamentacion"
+            ]
+        },
+        {
+            "id": "salta-ley-5057-0000",
+            "ambito": "PROVINCIAL",
+            "provincia": "SALTA",
+            "tipo": "LEY",
+            "numero": "5057",
+            "anio": 0,
+            "titulo": "Marco provincial (Salta) (completar).",
+            "href": "normativa/ley-5057-0000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "salta"
+            ]
+        },
+        {
+            "id": "salta-decreto-3796-1976",
+            "ambito": "PROVINCIAL",
+            "provincia": "SALTA",
+            "tipo": "DECRETO",
+            "numero": "3796",
+            "anio": 1976,
+            "titulo": "Reglamentación (Salta) (completar).",
+            "href": "normativa/decreto-3796-1976.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "salta",
+                "reglamentacion"
+            ]
+        },
+        {
+            "id": "san-juan-ley-6837-0000",
+            "ambito": "PROVINCIAL",
+            "provincia": "SAN JUAN",
+            "tipo": "LEY",
+            "numero": "6837",
+            "anio": 0,
+            "titulo": "Marco provincial (San Juan) (completar).",
+            "href": "normativa/ley-6837-0000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "san juan"
+            ]
+        },
+        {
+            "id": "san-juan-decreto-1476-2000",
+            "ambito": "PROVINCIAL",
+            "provincia": "SAN JUAN",
+            "tipo": "DECRETO",
+            "numero": "1476",
+            "anio": 2000,
+            "titulo": "Reglamentación (San Juan) (completar).",
+            "href": "normativa/decreto-1476-2000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "san juan",
+                "reglamentacion"
+            ]
+        },
+        {
+            "id": "san-luis-ley-3512-0000",
+            "ambito": "PROVINCIAL",
+            "provincia": "SAN LUIS",
+            "tipo": "LEY",
+            "numero": "3512",
+            "anio": 0,
+            "titulo": "Marco provincial (San Luis) (completar).",
+            "href": "normativa/ley-3512-0000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "san luis"
+            ]
+        },
+        {
+            "id": "san-luis-decreto-2419-1976",
+            "ambito": "PROVINCIAL",
+            "provincia": "SAN LUIS",
+            "tipo": "DECRETO",
+            "numero": "2419",
+            "anio": 1976,
+            "titulo": "Reglamentación (San Luis) (completar).",
+            "href": "normativa/decreto-2419-1976.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "san luis",
+                "reglamentacion"
+            ]
+        },
+        {
+            "id": "santa-cruz-ley-1184-0000",
+            "ambito": "PROVINCIAL",
+            "provincia": "SANTA CRUZ",
+            "tipo": "LEY",
+            "numero": "1184",
+            "anio": 0,
+            "titulo": "Marco provincial (Santa Cruz) (completar).",
+            "href": "normativa/ley-1184-0000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "santa cruz"
+            ]
+        },
+        {
+            "id": "santa-cruz-decreto-431-1978",
+            "ambito": "PROVINCIAL",
+            "provincia": "SANTA CRUZ",
+            "tipo": "DECRETO",
+            "numero": "431",
+            "anio": 1978,
+            "titulo": "Reglamentación (Santa Cruz) (completar).",
+            "href": "normativa/decreto-431-1978.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "santa cruz",
+                "reglamentacion"
+            ]
+        },
+        {
+            "id": "santa-fe-ley-8094-0000",
+            "ambito": "PROVINCIAL",
+            "provincia": "SANTA FE",
+            "tipo": "LEY",
+            "numero": "8094",
+            "anio": 0,
+            "titulo": "Marco provincial (Santa Fe) (completar).",
+            "href": "normativa/ley-8094-0000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "santa fe"
+            ]
+        },
+        {
+            "id": "santa-fe-decreto-4401-1978",
+            "ambito": "PROVINCIAL",
+            "provincia": "SANTA FE",
+            "tipo": "DECRETO",
+            "numero": "4401",
+            "anio": 1978,
+            "titulo": "Reglamentación (Santa Fe) (completar).",
+            "href": "normativa/decreto-4401-1978.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "santa fe",
+                "reglamentacion"
+            ]
+        },
+        {
+            "id": "santiago-ley-3973-0000",
+            "ambito": "PROVINCIAL",
+            "provincia": "SANTIAGO DEL ESTERO",
+            "tipo": "LEY",
+            "numero": "3973",
+            "anio": 0,
+            "titulo": "Marco provincial (Santiago del Estero) (completar).",
+            "href": "normativa/ley-3973-0000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "santiago del estero"
+            ]
+        },
+        {
+            "id": "santiago-decreto-546-1973",
+            "ambito": "PROVINCIAL",
+            "provincia": "SANTIAGO DEL ESTERO",
+            "tipo": "DECRETO",
+            "numero": "546",
+            "anio": 1973,
+            "titulo": "Reglamentación (Santiago del Estero) (completar).",
+            "href": "normativa/decreto-546-1973.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "santiago del estero",
+                "reglamentacion"
+            ]
+        },
+        {
+            "id": "tdf-ley-111-0000",
+            "ambito": "PROVINCIAL",
+            "provincia": "TIERRA DEL FUEGO",
+            "tipo": "LEY",
+            "numero": "111",
+            "anio": 0,
+            "titulo": "Marco provincial (Tierra del Fuego) (completar).",
+            "href": "normativa/ley-111-0000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "tierra del fuego"
+            ]
+        },
+        {
+            "id": "tdf-decreto-1214-1978",
+            "ambito": "PROVINCIAL",
+            "provincia": "TIERRA DEL FUEGO",
+            "tipo": "DECRETO",
+            "numero": "1214",
+            "anio": 1978,
+            "titulo": "Reglamentación (Tierra del Fuego) (completar).",
+            "href": "normativa/decreto-1214-1978.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "tierra del fuego",
+                "reglamentacion"
+            ]
+        },
+        {
+            "id": "tucuman-ley-3921-0000",
+            "ambito": "PROVINCIAL",
+            "provincia": "TUCUMÁN",
+            "tipo": "LEY",
+            "numero": "3921",
+            "anio": 0,
+            "titulo": "Marco provincial (Tucumán) (completar).",
+            "href": "normativa/ley-3921-0000.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "tucuman"
+            ]
+        },
+        {
+            "id": "tucuman-decreto-2036-1973",
+            "ambito": "PROVINCIAL",
+            "provincia": "TUCUMÁN",
+            "tipo": "DECRETO",
+            "numero": "2036",
+            "anio": 1973,
+            "titulo": "Reglamentación (Tucumán) (completar).",
+            "href": "normativa/decreto-2036-1973.html",
+            "chips": [
+                "LP"
+            ],
+            "tags": [
+                "tucuman",
+                "reglamentacion"
+            ]
+        },
+        {
+            "id": "it_20260130154933_20249e",
+            "fecha": "",
+            "fecha_label": "",
+            "provincia": "NACIONAL",
+            "tipo": "efeméride",
+            "origen": "LT",
+            "titulo": "23 de noviembre Día Nacional de la Defensa Civil",
+            "descripcion": "",
+            "tags": [],
+            "links": [
+                {
+                    "href": "https://www.casarosada.gob.ar/informacion/actividad-oficial/9-noticias/50789-dia-nacional-de-la-defensa-civil",
+                    "label": "Ver",
+                    "icon": "📖"
+                }
+            ]
+        },
+        {
+            "id": "it_20260130154938_3fdb93",
+            "fecha": "",
+            "fecha_label": "",
+            "provincia": "NACIONAL",
+            "tipo": "efeméride",
+            "origen": "LT",
+            "titulo": "23 de noviembre Día Nacional de la Defensa Civil",
+            "descripcion": "",
+            "tags": [],
+            "links": [
+                {
+                    "href": "https://www.casarosada.gob.ar/informacion/actividad-oficial/9-noticias/50789-dia-nacional-de-la-defensa-civil",
+                    "label": "Ver",
+                    "icon": "📖"
+                }
+            ]
+        }
+    ]
+}

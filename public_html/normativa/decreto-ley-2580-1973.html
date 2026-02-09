@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Decreto-Ley 2580/1973 - Catamarca (Defensa Civil)</title>
+  <meta name="description" content="Decreto-Ley Nº 2580 (Catamarca) - Ley de Defensa Civil de la Provincia. Texto completo, descarga PDF y enlaces." />
+
+  <style>
+    :root{
+      --azul:#003366;
+      --azul2:#004080;
+      --naranja:#ff6600;
+      --rojo:#c00;
+      --fondo:#f8fcff;
+      --texto:#1a2a44;
+      --card:#fff;
+      --borde:rgba(0,0,0,0.10);
+      --shadow:0 6px 20px rgba(0,0,0,0.10);
+    }
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      margin:0; padding:0;
+      background:var(--fondo);
+      color:var(--texto);
+      line-height:1.75;
+    }
+    header{
+      background: linear-gradient(to bottom, #e6f0ff, #d6e8ff);
+      border-bottom: 4px solid var(--rojo);
+      color: var(--azul);
+      text-align:center;
+      padding: 42px 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .header-content{ max-width:1100px; margin:0 auto; }
+    h1{
+      font-size:2.35em;
+      margin: 10px 0 6px;
+      color: var(--rojo);
+    }
+    .subtitle{
+      font-size:1.25em;
+      margin:6px 0;
+      color: var(--azul2);
+    }
+
+    .main-content{
+      max-width: 980px;
+      margin: 38px auto;
+      padding: 28px;
+      background: var(--card);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+    .doc-title{
+      text-align:center;
+      font-size: 2.0em;
+      color: var(--azul);
+      margin: 6px 0 18px;
+      border-bottom: 2px solid var(--rojo);
+      padding-bottom: 12px;
+    }
+
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+      margin: 8px 0 18px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #eaf1ff;
+      border: 1px solid rgba(0,51,102,0.14);
+      font-weight:bold;
+      color: var(--azul);
+      font-size: 0.95em;
+      white-space:nowrap;
+    }
+    .kicker{
+      text-align:center;
+      color:#555;
+      font-style: italic;
+      margin: 10px 0 22px;
+    }
+
+    .toc{
+      background:#f6f9ff;
+      border:1px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin: 18px 0 26px;
+    }
+    .toc h3{
+      margin:0 0 8px;
+      color: var(--azul);
+    }
+    .toc .grid{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:8px;
+    }
+    .toc a{
+      display:block;
+      text-decoration:none;
+      font-weight:bold;
+      color:#0066cc;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background:#fff;
+      border:1px solid rgba(0,0,0,0.06);
+    }
+    .toc a:hover{
+      text-decoration:underline;
+      border-color: rgba(255,102,0,0.45);
+    }
+
+    .articulo{
+      margin: 22px 0;
+      padding-left: 18px;
+      border-left: 5px solid var(--azul2);
+      font-size: 1.06em;
+    }
+    .art-num{
+      font-weight:bold;
+      color: var(--azul);
+      font-size:1.22em;
+    }
+    .nota{
+      margin-top:10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background:#fff7ed;
+      border:1px solid rgba(255,102,0,0.25);
+      color:#6a3a00;
+      font-size:0.98em;
+    }
+    ul{
+      margin: 10px 0 0 20px;
+    }
+
+    .back-buttons{
+      text-align:center;
+      margin: 46px 0 10px;
+    }
+    .btn{
+      display:inline-block;
+      padding: 12px 22px;
+      margin: 8px;
+      background: var(--azul2);
+      color:#fff;
+      font-size:1.1em;
+      text-decoration:none;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: all .25s;
+      border:0;
+      cursor:pointer;
+    }
+    .btn:hover{
+      background:#0066cc;
+      transform: translateY(-2px);
+    }
+    .btn.red{ background: var(--rojo); }
+    .btn.red:hover{ background:#a00; }
+    .btn.gray{
+      background:#e9eef6;
+      color: var(--azul);
+      box-shadow:none;
+      border: 1px solid rgba(0,0,0,0.10);
+    }
+    .btn.gray:hover{
+      background:#dde7f7;
+      transform: translateY(-2px);
+    }
+
+    footer{
+      background:#e6f0ff;
+      color: var(--azul);
+      text-align:center;
+      padding: 28px 18px;
+      margin-top: 56px;
+      border-top: 3px solid var(--rojo);
+      font-size: 1.02em;
+    }
+
+    @media print{
+      body{ background:#fff; color:#000; }
+      header, footer, .back-buttons, .toc{ display:none; }
+      .main-content{ box-shadow:none; border:1px solid #ddd; }
+    }
+    @media (max-width: 900px){
+      .toc .grid{ grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 680px){
+      h1{ font-size: 2.0em; }
+      .main-content{ padding: 18px; }
+      .toc .grid{ grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-content">
+    <h2 class="subtitle">Defensa Civil Argentina</h2>
+    <h1>Decreto-Ley Nº 2580/1973</h1>
+    <p class="subtitle">Catamarca — Ley de Defensa Civil de la Provincia</p>
+  </div>
+</header>
+
+<div class="main-content">
+
+  <div class="doc-title">DECRETO-LEY Nº 2580</div>
+
+  <div class="meta">
+    <span class="chip">📍 Provincia: Catamarca</span>
+    <span class="chip">✅ Estado: Vigente</span>
+    <span class="chip">🗓️ Sanción: 22/05/1973</span>
+    <span class="chip">📰 Publicación: 30/10/1973</span>
+  </div>
+
+  <p class="kicker">
+    Texto según Digesto Legislativo Provincial (Catamarca).
+  </p>
+
+  <div class="toc">
+    <h3>Índice rápido</h3>
+    <div class="grid">
+      <a href="#a1">Art. 1</a><a href="#a2">Art. 2</a><a href="#a3">Art. 3</a><a href="#a4">Art. 4</a>
+      <a href="#a5">Art. 5</a><a href="#a6">Art. 6</a><a href="#a7">Art. 7</a><a href="#a8">Art. 8</a>
+      <a href="#a9">Art. 9</a><a href="#a10">Art. 10</a><a href="#a11">Art. 11</a><a href="#a12">Art. 12</a>
+      <a href="#a13">Art. 13</a><a href="#a14">Art. 14</a><a href="#a15">Art. 15</a><a href="#a16">Art. 16</a>
+      <a href="#a17">Art. 17</a><a href="#a18">Art. 18</a><a href="#a19">Art. 19</a><a href="#a20">Art. 20</a>
+      <a href="#a21">Art. 21</a><a href="#a22">Art. 22</a><a href="#a23">Art. 23</a><a href="#firmas">Firmantes</a>
+    </div>
+  </div>
+
+  <div class="articulo" id="a1"><span class="art-num">ARTÍCULO 1.-</span>
+    <p>El Gobernador de la Provincia tendrá a su cargo la planificación, organización, promoción, coordinación, control y dirección de la defensa civil y, eventualmente, la conducción de las operaciones de emergencia dentro del ámbito provincial.</p>
+  </div>
+
+  <div class="articulo" id="a2"><span class="art-num">ARTÍCULO 2.-</span>
+    <p>Entiéndese por defensa civil la parte de la defensa nacional que comprende el conjunto de medidas y actividades no agresivas tendientes a evitar, anular o disminuir los efectos que la acción del enemigo o de la naturaleza o cualquier desastre de otro origen, puedan provocar sobre la población y sus bienes y contribuir a restablecer el ritmo normal de vida en la zona afectada.</p>
+  </div>
+
+  <div class="articulo" id="a3"><span class="art-num">ARTÍCULO 3.-</span>
+    <p>La defensa civil desarrollará su acción en todo el territorio de la provincia y, en lo que sea compatible, se regirá por las leyes y demás disposiciones que sobre la materia dicte la Nación.</p>
+  </div>
+
+  <div class="articulo" id="a4"><span class="art-num">ARTÍCULO 4.-</span>
+    <p>Los Ministros del Poder Ejecutivo Provincial y los titulares de entes autárquicos o descentralizados, son los responsables del cumplimiento de las previsiones y medidas de defensa civil en los organismos de su dependencia.</p>
+  </div>
+
+  <div class="articulo" id="a5"><span class="art-num">ARTÍCULO 5.-</span>
+    <p>Los intendentes municipales, dentro de su jurisdicción territorial, tendrán la misma responsabilidad que la establecida en el Art. 1 de la presente Ley para el Gobernador de la Provincia, debiendo cumplir las directivas e instrucciones que éste imparta.</p>
+    <p>Los restantes jefes de las subdivisiones políticas de la Provincia tendrán igual responsabilidad que los funcionarios mencionados en el Art. 4 de la presente Ley.</p>
+  </div>
+
+  <div class="articulo" id="a6"><span class="art-num">ARTÍCULO 6.-</span>
+    <p>Las asociaciones y entidades de asistencia social, educativas, culturales, deportivas, gremiales, mutualistas y cooperativas; sociedades comerciales e industriales; instituciones religiosas y las entidades privadas en general, deberán colaborar en la forma y medida que les sean requeridas por las autoridades de defensa civil de su jurisdicción. Serán responsables de las disposiciones que se dicten en tal sentido los que ejerzan autoridad en las entidades a que se refiere el presente Artículo.</p>
+  </div>
+
+  <div class="articulo" id="a7"><span class="art-num">ARTÍCULO 7.-</span>
+    <p>Todos los habitantes de la Provincia excepto los que cumplen el servicio militar (Art. 46 de la Ley 16.970), compartirán en mayor o menor grado y solidariamente la responsabilidad en la preparación y ejecución de la defensa civil; estas actividades serán consideradas carga pública (Art. 47, Inc. a) y Art. 48 de la Ley 16.970.</p>
+  </div>
+
+  <div class="articulo" id="a8"><span class="art-num">ARTÍCULO 8.-</span>
+    <p>Los infractores a la obligación establecida en el artículo anterior serán reprimidos con multa de diez (10) a cinco mil (5.000) pesos o prisión de uno a tres meses (Art. 18 de la Ley 17.192).</p>
+  </div>
+
+  <div class="articulo" id="a9"><span class="art-num">ARTÍCULO 9.-</span>
+    <p>A los fines de la defensa civil el Poder Ejecutivo es responsable de:</p>
+    <ul>
+      <li>a) Determinar las políticas particulares de defensa civil en el ámbito provincial, de acuerdo con las políticas que en materia de esta naturaleza establezca el Poder Ejecutivo Nacional;</li>
+      <li>b) Establecer planes y programas de defensa civil en coordinación con los planes y programas nacionales y de las provincias limítrofes;</li>
+      <li>c) Disponer la integración de los sistemas de alarma y de telecomunicaciones, en coordinación con los sistemas nacionales;</li>
+      <li>d) Organizar los servicios de protección civil provinciales y establecer el régimen de reclutamiento del personal voluntario que requieran;</li>
+      <li>e) Disponer la ejecución de medidas de apoyo a otras provincias y comunas de la provincia, cuando los recursos de éstas sean insuficientes para superar una emergencia;</li>
+      <li>f) Efectuar las previsiones para la evacuación de la población en el evento bélico y en caso de desastre;</li>
+      <li>g) Promover la creación y el desarrollo de asociaciones y entidades cuyos objetivos sean afines total o parcialmente con la defensa civil, tales como bomberos voluntarios, Cruz Roja Argentina, radioaficionados y otras consideradas auxiliares de la defensa civil;</li>
+      <li>h) Fijar los objetivos y orientación de la capacitación y adiestramiento de la población, educación pública y difusión, en materia de defensa civil;</li>
+      <li>i) Promover la adopción de previsiones relativas a la habilitación de refugios y la aplicación de toda otra medida para reducir la vulnerabilidad ante ataque enemigo, y la inclusión de estas previsiones en los códigos de edificación y legislación pertinente;</li>
+      <li>j) Disponer la realización de estudios e investigaciones relativos a las zonas susceptibles de ser afectadas por desastres naturales;</li>
+      <li>k) Promover la realización de acuerdos de ayuda mutua entre las subdivisiones políticas de la provincia;</li>
+      <li>l) Adoptar toda otra medida necesaria para limitar los daños a la vida y la propiedad que puedan producirse por efectos de la guerra o desastres de cualquier origen.</li>
+    </ul>
+  </div>
+
+  <div class="articulo" id="a10"><span class="art-num">ARTÍCULO 10.-</span>
+    <p>Para hacer efectivas las prescripciones de la presente ley, el Poder Ejecutivo está facultado para:</p>
+    <ul>
+      <li>a) Crear los órganos de asesoramiento, ejecución y control de la defensa civil en el nivel provincial y autorizar su creación en el nivel municipal;</li>
+      <li>b) Subdividir la provincia en zonas de defensa civil para la mejor coordinación y control de las tareas en el escalón local;</li>
+      <li>c) Delegar la conducción de las operaciones de emergencia en el Director de Defensa Civil, Jefe de Zona, o en un Intendente Municipal;</li>
+      <li>d) Establecer acuerdos de ayuda mutua con otras provincias;</li>
+      <li>e) Declarar en “estado de emergencia” a parte o a la totalidad del territorio de la provincia y disponer su cesación;</li>
+      <li>f) Efectuar requerimientos a las fuerzas armadas y a los organismos nacionales con asiento en la provincia, coordinando su acción con los medios provinciales y locales;</li>
+      <li>g) Aceptar donaciones, legados, préstamos, servicios, comodatos y toda otra contribución a título gratuito, con destino a la defensa civil;</li>
+      <li>h) Centralizar y dirigir en caso de emergencia las tareas de distribución de los medios de ayuda a los damnificados, con el fin de evitar la superposición y dispersión de esfuerzos;</li>
+      <li>i) Administrar y disponer de los recursos pecuniarios destinados a los fines de la presente ley;</li>
+      <li>j) Disponer acerca de la posesión, tenencia, mantenimiento y disposición de los efectos e instalaciones de la defensa civil de dominio provincial.</li>
+    </ul>
+  </div>
+
+  <div class="articulo" id="a11"><span class="art-num">ARTÍCULO 11.-</span>
+    <p>El funcionario que sustituya al Gobernador en caso de ausencia temporal o definitiva, tendrá a su cargo todos los deberes y facultades que a éste le confiere la presente ley.</p>
+  </div>
+
+  <div class="articulo" id="a12"><span class="art-num">ARTÍCULO 12.-</span>
+    <p>Para el cumplimiento de las responsabilidades establecidas en el Art. 1 de la presente Ley, créanse bajo la dependencia directa del Gobernador, la Junta Provincial de Defensa Civil como organismo de asesoramiento y la Dirección de Defensa Civil como organismo ejecutivo.</p>
+  </div>
+
+  <div class="articulo" id="a13"><span class="art-num">ARTÍCULO 13.-</span>
+    <p>La Junta Provincial de Defensa Civil será presidida por el Gobernador o el Ministro de Gobierno, debiéndose desempeñar como secretario el Director de Defensa Civil.</p>
+    <p>La reglamentación de esta Ley establecerá las funciones de la Junta y su integración.</p>
+  </div>
+
+  <div class="articulo" id="a14"><span class="art-num">ARTÍCULO 14.-</span>
+    <p>Apruébase la misión, funciones y estructura Orgánica actual de la Dirección de Defensa Civil. El Director de Defensa Civil será un Oficial Superior de la Fuerzas Armadas o de Seguridad, en situación de retiro o jubilado y/o la persona idónea que a criterio del Poder Ejecutivo pueda desempeñarse en dicho cargo o funciones.</p>
+    <div class="nota">Nota: Artículo modificado por Art. 1º Ley Nº 4060 (BO. 04/01/1984).</div>
+  </div>
+
+  <div class="articulo" id="a15"><span class="art-num">ARTÍCULO 15.-</span>
+    <p>Para el cumplimiento de la responsabilidad establecida en el Art. 5 de la presente Ley, el Intendente Municipal será asistido por la Junta Municipal de Defensa Civil.</p>
+    <p>Esta Junta será presidida por el Intendente e integrada por funcionarios municipales, representantes de organismos oficiales y dirigentes de entidades privadas cuyas actividades tengan vinculación con la defensa civil.</p>
+  </div>
+
+  <div class="articulo" id="a16"><span class="art-num">ARTÍCULO 16.-</span>
+    <p>Podrán constituirse comisiones locales de defensa civil, dependientes de un intendente municipal o de un delegado del Poder Ejecutivo, en aquellas localidades que el Gobernador estime necesario.</p>
+  </div>
+
+  <div class="articulo" id="a17"><span class="art-num">ARTÍCULO 17.-</span>
+    <p>Las ordenanzas y otras disposiciones sobre defensa civil que se dicten en los municipios deberán establecer las responsabilidades y facultades de las autoridades comunales, organización y presupuesto de funcionamiento, de acuerdo a lo prescrito en la presente Ley y su Reglamentación.</p>
+  </div>
+
+  <div class="articulo" id="a18"><span class="art-num">ARTÍCULO 18.-</span>
+    <p>Las erogaciones que demanden la preparación y ejecución de la defensa civil, serán atendidas, conforme a esta ley y su reglamentación, con los siguientes recursos:</p>
+    <ul>
+      <li>a) Los que anualmente se destinan en la Ley de Presupuesto de la Provincia, o por leyes especiales;</li>
+      <li>b) Los que en caso de emergencia fueran requeridos por el Poder Ejecutivo, observándose el siguiente procedimiento:
+        <ul>
+          <li>1 - El requerimiento de fondos que efectúe el Poder Ejecutivo lo hará a la Legislatura o al Poder Ejecutivo Nacional;</li>
+          <li>2 - La imputación se efectuará de conformidad a lo que establezca la Ley de Contabilidad de la Provincia u otras disposiciones en vigencia.</li>
+        </ul>
+      </li>
+      <li>c) Los que a tal efecto asigne el Poder Ejecutivo Nacional; y</li>
+      <li>d) Donaciones y legados.</li>
+    </ul>
+  </div>
+
+  <div class="articulo" id="a19"><span class="art-num">ARTÍCULO 19.-</span>
+    <p>Los municipios solventarán sus gastos en sus respectivos ámbitos sin perjuicio que el Poder Ejecutivo Provincial incremente los fondos en la forma, oportunidad y cantidad que las necesidades aconsejen.</p>
+  </div>
+
+  <div class="articulo" id="a20"><span class="art-num">ARTÍCULO 20.-</span>
+    <p>Queda prohibida en todo el territorio de la Provincia, la creación de organismos o entidades que se arroguen las funciones y tareas que establece la presente Ley, así como las que tengan por finalidad desarrollar finalidades que impliquen una suplantación o superposición de la misión que compete a las autoridades de defensa civil.</p>
+  </div>
+
+  <div class="articulo" id="a21"><span class="art-num">ARTÍCULO 21.-</span>
+    <p>Se prohibe en todo el territorio de la Provincia el empleo de denominaciones, siglas, distintivos y credenciales de uso oficial en la defensa civil, con fines ajenos a la misma o que den lugar a confusión sobre su verdadero significado.</p>
+  </div>
+
+  <div class="articulo" id="a22"><span class="art-num">ARTÍCULO 22.-</span>
+    <p>El Poder Ejecutivo reglamentará la presente Ley dentro de los 60 días de su promulgación.</p>
+  </div>
+
+  <div class="articulo" id="a23"><span class="art-num">ARTÍCULO 23.-</span>
+    <p>Comuníquese, publíquese, dése al Registro Oficial y archívese.</p>
+  </div>
+
+  <div class="articulo" id="firmas">
+    <span class="art-num">FIRMANTES / DATOS</span>
+    <p><strong>Firmantes:</strong> PERNASETTI — Dalla Lasta.</p>
+    <p><strong>Boletín Oficial:</strong> 87/1973 (según Digesto).</p>
+    <p><strong>Fuente:</strong> Digesto Legislativo Provincial de Catamarca.</p>
+  </div>
+
+  <div class="back-buttons">
+    <a href="index.html" class="btn">Volver al Inicio</a>
+    <a href="directorio.html" class="btn">Directorio Nacional</a>
+    <a href="historia.html" class="btn">Volver a Historia</a>
+
+    <a href="https://digesto.catamarca.gob.ar/ley/ley_detail/520" class="btn gray">Fuente oficial</a>
+    <a href="https://digesto.catamarca.gob.ar/digesto/crearpdf/ley/520" class="btn gray">Descargar PDF</a>
+
+    <button class="btn red" onclick="window.print()">Imprimir / Guardar PDF</button>
+  </div>
+
+</div>
+
+<footer>
+  <p>Esta web es propiedad del Lic. Sebastián Amato y es un aporte a esta gran institución</p>
+  <p style="margin-top:10px;">defensacivil.com.ar © 2026</p>
+</footer>
+
+</body>
+</html>

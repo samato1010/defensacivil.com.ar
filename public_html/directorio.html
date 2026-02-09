@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Directorio · Defensa Civil</title>
+<style>
+:root{
+  --az1:#003366; --az2:#004080; --n:#ff6600;
+  --bg:#f8f9fa; --card:#fff; --tx:#222; --mut:#555;
+  --b:rgba(0,0,0,.10); --r:14px; --link:#0066cc;
+  --ok:#0a6b2b; --bad:#b00000;
+}
+*{box-sizing:border-box}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  margin:0;
+  background:var(--bg);
+  color:var(--tx);
+  line-height:1.6;
+}
+
+/* HEADER (misma estética que index) */
+header{
+  background:linear-gradient(to bottom,var(--az1),var(--az2));
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+header::before{
+  content:"";
+  position:absolute; inset:-120px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,102,0,.25), transparent 45%),
+    radial-gradient(circle at 80% 30%, rgba(255,255,255,.10), transparent 45%),
+    radial-gradient(circle at 40% 90%, rgba(255,255,255,.08), transparent 55%);
+  pointer-events:none;
+}
+header::after{
+  content:"";
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 42px 42px;
+  opacity:.22;
+  pointer-events:none;
+}
+.head{
+  position:relative;
+  max-width:1200px;
+  margin:0 auto;
+  padding:22px 16px;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.brand h1{margin:0;font-size:1.55em;color:#fff;letter-spacing:.2px;}
+.sub{opacity:.92;margin:6px 0 0;font-size:1.02em;}
+.toplinks{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.pilllink{
+  text-decoration:none;
+  color:#fff;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.20);
+  padding:10px 12px;
+  border-radius:999px;
+  font-weight:900;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition:.15s;
+}
+.pilllink:hover{background:rgba(255,255,255,.20);transform:translateY(-1px);}
+
+/* Layout */
+.wrap{max-width:1200px;margin:18px auto;padding:0 16px 60px;}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:12px 0;}
+
+.tool{
+  background:#fff;
+  border:1px solid var(--b);
+  border-radius:999px;
+  padding:10px 12px;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  box-shadow:0 2px 10px rgba(0,0,0,.04);
+}
+.tool label{font-weight:900;color:var(--az1);white-space:nowrap;font-size:.95em;}
+.tool input,.tool select{border:0;outline:0;background:transparent;font-size:1em;min-width:220px;}
+.tool select{min-width:200px;cursor:pointer}
+
+.btn{
+  border:0;
+  border-radius:14px;
+  padding:10px 14px;
+  cursor:pointer;
+  font-weight:900;
+  background:linear-gradient(to bottom, #004080, #0066cc);
+  color:#fff;
+  box-shadow:0 10px 22px rgba(0,0,0,.18);
+  transition:.15s;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.btn:hover{background:linear-gradient(to bottom, #0055aa, #0077ee);transform:translateY(-1px);box-shadow:0 14px 28px rgba(0,0,0,.22);}
+.btn.alt{
+  background:#e9eef6;
+  color:var(--az1);
+  box-shadow:none;
+  border:1px solid rgba(0,0,0,.08);
+}
+.btn.alt:hover{background:#dde7f7;}
+.btn.small{padding:8px 10px;font-size:.92em;border-radius:12px;}
+
+.segment{
+  display:inline-flex;
+  background:#fff;
+  border:1px solid rgba(0,0,0,.10);
+  border-radius:999px;
+  overflow:hidden;
+  box-shadow:0 2px 10px rgba(0,0,0,.04);
+}
+.segment button{
+  border:0;
+  background:transparent;
+  padding:10px 12px;
+  font-weight:900;
+  color:var(--az1);
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.segment button.active{background:#eaf1ff;}
+.segment button:hover{background:#f2f6ff;}
+
+.card{
+  background:var(--card);
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:var(--r);
+  box-shadow:0 8px 18px rgba(0,0,0,.08);
+  padding:14px;
+  margin:12px 0;
+}
+.title{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  font-weight:900;
+  color:var(--az1);
+  background:#eaf1ff;
+  border:1px solid rgba(0,51,102,.12);
+  padding:4px 10px;
+  border-radius:999px;
+  white-space:nowrap;
+}
+.small{color:var(--mut);font-size:.92em;}
+.kv{display:grid;grid-template-columns:160px 1fr;gap:8px;margin-top:10px;}
+.k{color:var(--mut);font-weight:900;}
+a{color:var(--link);font-weight:900;text-decoration:none;}
+a:hover{text-decoration:underline;color:var(--az2);}
+hr{border:0;border-top:1px solid rgba(0,0,0,.08);margin:10px 0}
+.msg{background:#fff;border:1px solid rgba(0,0,0,.12);border-radius:12px;padding:12px;}
+.msg.err{background:#fff3f3;border-color:rgba(180,0,0,.2);color:#7a0000;}
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:18px;
+  transform:translateX(-50%);
+  background:#111;
+  color:#fff;
+  padding:10px 14px;
+  border-radius:999px;
+  opacity:0;
+  pointer-events:none;
+  transition:.18s;
+  z-index:9999;
+  font-weight:900;
+}
+.toast.show{opacity:.92;}
+
+/* Tabla (vista por filas) */
+.table-wrap{
+  overflow:auto;
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:12px;
+  box-shadow:0 8px 18px rgba(0,0,0,.08);
+  margin-top:12px;
+}
+table{width:100%;border-collapse:collapse;min-width:1050px;}
+thead th{
+  position:sticky;
+  top:0;
+  z-index:2;
+  background:linear-gradient(to bottom,#eaf1ff,#dbe8ff);
+  color:var(--az1);
+  text-align:left;
+  padding:12px;
+  border-bottom:2px solid rgba(0,0,0,.08);
+  font-size:.95em;
+}
+tbody td{padding:12px;border-bottom:1px solid rgba(0,0,0,.06);vertical-align:top;font-size:.98em;}
+tbody tr:hover{background:#f6f9ff;}
+.mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;font-size:.93em;}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-weight:900;
+  color:var(--az1);
+  background:#eaf1ff;
+  border:1px solid rgba(0,51,102,.12);
+  padding:4px 10px;
+  border-radius:999px;
+  white-space:nowrap;
+}
+
+/* Responsive */
+@media (max-width:980px){
+  .tool input{min-width:160px;}
+  .tool select{min-width:160px;}
+  .kv{grid-template-columns:120px 1fr;}
+}
+@media (max-width:560px){
+  .pilllink{width:100%;justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="head">
+    <div class="brand">
+      <div>
+        <h1>Directorio</h1>
+        <div class="sub" id="sub">Defensa Civil / Protección Civil</div>
+      </div>
+    </div>
+
+    <div class="toplinks">
+      <a class="pilllink" href="/index.html">🏠 Inicio</a>
+      <a class="pilllink" href="/historia.html">🕰️ Historia</a>
+      <a class="pilllink" href="/colaboradores.html">🤝 Colaboradores</a>
+      <a class="pilllink" href="/notas.html">📝 Notas</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="row">
+    <div class="tool"><label>🔎 Buscar</label><input id="q" placeholder="provincia, localidad, mail..."></div>
+    <div class="tool"><label>🗺️ Provincia</label><select id="prov"><option value="">Todas</option></select></div>
+    <div class="tool"><label>🏛️ Municipio</label><select id="mun"><option value="">Todos</option></select></div>
+    <div class="tool"><label>🏘️ Localidad</label><select id="loc"><option value="">Todas</option></select></div>
+    <div class="tool"><label>🏷️ Denominación</label><select id="den"><option value="">Todas</option></select></div>
+
+    <div class="segment" title="Cambiar vista">
+      <button id="viewCards" class="active" type="button">🧩 Pastillas</button>
+      <button id="viewRows" type="button">📑 Filas</button>
+    </div>
+
+    <button id="clear" class="btn alt" type="button">🧹 Limpiar</button>
+  </div>
+
+  <div id="info" class="small"></div>
+
+  <!-- Vista Pastillas -->
+  <div id="listCards"></div>
+
+  <!-- Vista Filas -->
+  <div id="listRows" style="display:none;">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:170px;">Ubicación</th>
+            <th style="width:170px;">Denominación</th>
+            <th style="width:260px;">Domicilio</th>
+            <th style="width:140px;">Teléfono</th>
+            <th style="width:200px;">Email</th>
+            <th style="width:260px;">Links</th>
+            <th style="width:140px;">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tbodyRows"></tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div id="toast" class="toast">Copiado</div>
+
+<script>
+const JSON_URL = '/data/directorio.json';
+let data = { meta:{}, entries:[] };
+
+function escapeHtml(s){
+  return (s ?? '').toString().replace(/[&<>"']/g, m => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
+  }[m]));
+}
+
+function normalize(e){
+  return {
+    id: (e.id || '').toString().trim(),
+    provincia: (e.provincia || '').trim(),
+    municipio: (e.municipio || '').trim(),
+    localidad: (e.localidad || '').trim(),
+    denominacion: (e.denominacion || '').trim(),
+    domicilio: (e.domicilio || '').trim(),
+    telefono: (e.telefono || '').trim(),
+    email: (e.email || '').trim(),
+    website: (e.website || '').trim(),
+    instagram: (e.instagram || '').trim(),
+    facebook: (e.facebook || '').trim(),
+    comentario: (e.comentario || '').trim(),
+  };
+}
+
+function uniqSorted(arr){
+  return Array.from(new Set(arr.filter(Boolean))).sort((a,b)=>a.localeCompare(b));
+}
+
+function matchQ(e, q){
+  if (!q) return true;
+  const hay = [
+    e.provincia, e.municipio, e.localidad, e.denominacion,
+    e.domicilio, e.telefono, e.email, e.website, e.instagram, e.facebook, e.comentario
+  ].join(' ').toLowerCase();
+  return hay.includes(q.toLowerCase());
+}
+
+function fillSelect(id, items, allLabel){
+  const sel = document.getElementById(id);
+  const current = sel.value || '';
+  sel.innerHTML = `<option value="">${allLabel}</option>` + items.map(v =>
+    `<option value="${escapeHtml(v)}">${escapeHtml(v)}</option>`
+  ).join('');
+  sel.value = current;
+}
+
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg || 'OK';
+  t.classList.add('show');
+  clearTimeout(toast._t);
+  toast._t = setTimeout(()=>t.classList.remove('show'), 1400);
+}
+
+async function copyText(s){
+  try {
+    await navigator.clipboard.writeText(s);
+    toast('Copiado');
+  } catch {
+    const ta = document.createElement('textarea');
+    ta.value = s;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    ta.remove();
+    toast('Copiado');
+  }
+}
+
+function link(u, label){
+  if (!u) return '';
+  const href = escapeHtml(u);
+  const text = escapeHtml(label || 'Abrir');
+  return `<a href="${href}" target="_blank" rel="noopener">${text}</a>`;
+}
+
+function locationStr(e){
+  return [e.provincia, e.municipio, e.localidad].filter(Boolean).join(' · ') || '—';
+}
+
+function buildLinksInline(e){
+  const parts = [];
+  if (e.website)  parts.push(link(e.website, 'Website'));
+  if (e.instagram) parts.push(link(e.instagram, 'Instagram'));
+  if (e.facebook)  parts.push(link(e.facebook, 'Facebook'));
+  if (!parts.length) return '—';
+  return parts.join(' · ');
+}
+
+/* Persistir vista */
+function getView(){
+  return localStorage.getItem('dc_dir_view') || 'cards';
+}
+function setView(v){
+  localStorage.setItem('dc_dir_view', v);
+  applyView();
+}
+function applyView(){
+  const v = getView();
+  const cards = document.getElementById('listCards');
+  const rows  = document.getElementById('listRows');
+
+  document.getElementById('viewCards').classList.toggle('active', v === 'cards');
+  document.getElementById('viewRows').classList.toggle('active', v === 'rows');
+
+  cards.style.display = (v === 'cards') ? 'block' : 'none';
+  rows.style.display  = (v === 'rows') ? 'block' : 'none';
+}
+
+function getFilteredEntries(){
+  const q = document.getElementById('q').value.trim();
+  const prov = document.getElementById('prov').value;
+  const mun  = document.getElementById('mun').value;
+  const loc  = document.getElementById('loc').value;
+  const den  = document.getElementById('den').value;
+
+  let entries = (data.entries || []).map(normalize);
+
+  if (prov) entries = entries.filter(e => e.provincia === prov);
+  if (mun)  entries = entries.filter(e => e.municipio === mun);
+  if (loc)  entries = entries.filter(e => e.localidad === loc);
+  if (den)  entries = entries.filter(e => e.denominacion === den);
+  if (q)    entries = entries.filter(e => matchQ(e, q));
+
+  entries.sort((a,b)=>{
+    const p = a.provincia.localeCompare(b.provincia);
+    const m = a.municipio.localeCompare(b.municipio);
+    const l = a.localidad.localeCompare(b.localidad);
+    const d = a.denominacion.localeCompare(b.denominacion);
+    return p || m || l || d;
+  });
+
+  return entries;
+}
+
+function render(){
+  const entries = getFilteredEntries();
+
+  document.getElementById('info').textContent =
+    `${entries.length} resultados · actualizado: ${data.meta?.updated || '—'}`;
+
+  const listCards = document.getElementById('listCards');
+  listCards.innerHTML = '';
+
+  const tbody = document.getElementById('tbodyRows');
+  tbody.innerHTML = '';
+
+  if (!entries.length){
+    listCards.innerHTML = `<div class="msg">No hay resultados con esos filtros.</div>`;
+    tbody.innerHTML = `<tr><td colspan="7" class="mono">No hay resultados.</td></tr>`;
+    return;
+  }
+
+  entries.forEach(e => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="title">
+        <div class="badge">${escapeHtml(e.denominacion || '—')}</div>
+        <div class="small">${escapeHtml(locationStr(e))}</div>
+      </div>
+
+      <div class="kv">
+        <div class="k">Domicilio</div><div>${escapeHtml(e.domicilio || '—')}</div>
+        <div class="k">Teléfono</div><div>${escapeHtml(e.telefono || '—')}</div>
+        <div class="k">E-mail</div><div>${e.email ? `<a href="mailto:${escapeHtml(e.email)}">${escapeHtml(e.email)}</a>` : '—'}</div>
+        <div class="k">Links</div><div>${buildLinksInline(e)}</div>
+      </div>
+
+      <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap;">
+        <button class="btn alt small" type="button" data-copy="contact"
+          data-text="${escapeHtml([e.denominacion, locationStr(e), e.domicilio, e.telefono, e.email].filter(Boolean).join(' | '))}">
+          📋 Copiar contacto
+        </button>
+        ${e.telefono ? `<button class="btn alt small" type="button" data-copy="tel" data-text="${escapeHtml(e.telefono)}">📞 Copiar teléfono</button>` : ''}
+        ${e.email ? `<button class="btn alt small" type="button" data-copy="mail" data-text="${escapeHtml(e.email)}">✉️ Copiar email</button>` : ''}
+      </div>
+
+      ${e.comentario ? `<hr><div class="small"><strong>Comentario:</strong> ${escapeHtml(e.comentario)}</div>` : ''}
+    `;
+    listCards.appendChild(card);
+
+    const tr = document.createElement('tr');
+    const emailCell = e.email ? `<a href="mailto:${escapeHtml(e.email)}">${escapeHtml(e.email)}</a>` : '—';
+    tr.innerHTML = `
+      <td><div class="mono">${escapeHtml(locationStr(e))}</div></td>
+      <td><span class="pill">${escapeHtml(e.denominacion || '—')}</span></td>
+      <td>${escapeHtml(e.domicilio || '—')}</td>
+      <td class="mono">${escapeHtml(e.telefono || '—')}</td>
+      <td>${emailCell}</td>
+      <td>${buildLinksInline(e)}</td>
+      <td>
+        <button class="btn alt small" type="button" data-copy="row"
+          data-text="${escapeHtml([e.denominacion, locationStr(e), e.domicilio, e.telefono, e.email].filter(Boolean).join(' | '))}">
+          📋 Copiar
+        </button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+async function load(){
+  const res = await fetch(JSON_URL, { cache:'no-store' });
+  const txt = await res.text();
+
+  let j;
+  try { j = JSON.parse(txt); }
+  catch(e){
+    document.getElementById('listCards').innerHTML =
+      `<div class="msg err">No se pudo leer el JSON (respuesta no válida).</div>`;
+    return;
+  }
+
+  data.meta = j.meta || {};
+  data.entries = j.entries || [];
+
+  document.getElementById('sub').textContent =
+    data.meta?.subtitulo || 'Defensa Civil / Protección Civil';
+
+  const norm = data.entries.map(normalize);
+
+  fillSelect('prov', uniqSorted(norm.map(x=>x.provincia)), 'Todas');
+  fillSelect('mun',  uniqSorted(norm.map(x=>x.municipio)), 'Todos');
+  fillSelect('loc',  uniqSorted(norm.map(x=>x.localidad)), 'Todas');
+  fillSelect('den',  uniqSorted(norm.map(x=>x.denominacion)), 'Todas');
+
+  applyView();
+  render();
+}
+
+function debounce(fn, ms=250){
+  let t;
+  return () => { clearTimeout(t); t = setTimeout(fn, ms); };
+}
+
+/* Events */
+document.getElementById('q').addEventListener('input', debounce(render, 250));
+document.getElementById('prov').addEventListener('change', render);
+document.getElementById('mun').addEventListener('change', render);
+document.getElementById('loc').addEventListener('change', render);
+document.getElementById('den').addEventListener('change', render);
+
+document.getElementById('viewCards').addEventListener('click', ()=>setView('cards'));
+document.getElementById('viewRows').addEventListener('click', ()=>setView('rows'));
+
+document.getElementById('clear').addEventListener('click', ()=>{
+  document.getElementById('q').value = '';
+  document.getElementById('prov').value = '';
+  document.getElementById('mun').value  = '';
+  document.getElementById('loc').value  = '';
+  document.getElementById('den').value  = '';
+  render();
+});
+
+/* Delegación: copiar */
+document.addEventListener('click', async (e)=>{
+  const btn = e.target.closest('button[data-copy]');
+  if (!btn) return;
+  const text = (btn.dataset.text || '').toString();
+  if (text) await copyText(text);
+});
+
+load();
+</script>
+
+</body>
+</html>

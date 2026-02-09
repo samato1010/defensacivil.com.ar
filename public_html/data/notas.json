@@ -1,0 +1,31 @@
+{
+    "meta": {
+        "updated": "2026-01-30"
+    },
+    "notes": [
+        {
+            "id": "n-2018-02-15-001",
+            "fecha": "2018-02-15",
+            "provincia": "Ciudad de Buenos Aires",
+            "categoria": "Actividades",
+            "titulo": "Ley 5920 - Sistema de Autoprotección",
+            "texto": "El Gobierno de la Ciudad designa como autoridad de aplicación de la Ley 5.920 sobre sistemas de Autoprotección a la Dirección General de Defensa Civil. Esta que regula una medida de prevención como ser el plan de evacuación y la realización de simulacros entre en vigencia.",
+            "links": [
+                {
+                    "href": "https:\/\/buenosaires.gob.ar\/seguridad\/emergencias\/defensa-civil\/sistema-de-autoproteccion-ley-ndeg-5920-y-modificaciones",
+                    "label": "nota oficial del GCBA"
+                }
+            ]
+        },
+        {
+            "id": "n-1986-07-30-001",
+            "fecha": "1986-07-30",
+            "provincia": "BUENOS AIRES",
+            "categoria": "PUBLICACIONES",
+            "titulo": "GUIA DE DEFENSA CIVIL DE LA PROVINCIA DE BUENOS AIRES",
+            "texto": "2da Edición (la primera fue en mayo de 1986)\r\nLibro de texto pensado para distribuir a los establecimientos educativos",
+            "imagen": "",
+            "links": []
+        }
+    ]
+}

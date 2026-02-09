@@ -1,0 +1,11 @@
+Options -Indexes
+AddType application/json .json
+
+<Files "normativa.json">
+  <IfModule mod_authz_core.c>
+    Require all granted
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Allow from all
+  </IfModule>
+</Files>

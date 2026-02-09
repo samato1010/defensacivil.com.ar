@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Directorio · Defensa Civil</title>
+
+<!-- Meta tags SEO -->
+<meta name="description" content="Directorio completo de contactos de Defensa Civil y Protección Civil en Argentina. Búsqueda por provincia, municipio y localidad."/>
+<meta name="keywords" content="directorio defensa civil, contactos protección civil, argentina, emergencias"/>
+
+<!-- CSS principal -->
+<link rel="stylesheet" href="/assets/css/main.css?v=1.0.0"/>
+
+<style>
+/* Estilos específicos del directorio (además del main.css) */
+.stats {
+  background: linear-gradient(135deg, rgba(0,51,102,0.05), rgba(255,102,0,0.05));
+  border-radius: var(--r);
+  padding: 16px;
+  margin: 14px 0;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.stat-item {
+  font-size: 0.95em;
+}
+
+.stat-item strong {
+  font-size: 1.4em;
+  color: var(--az1);
+  display: block;
+}
+
+.highlight-match {
+  background: rgba(255,102,0,0.25);
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-weight: 700;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="head">
+    <div class="brand">
+      <div>
+        <h1>Directorio</h1>
+        <div class="sub">Defensa Civil / Protección Civil · Argentina</div>
+      </div>
+    </div>
+    <div class="toplinks">
+      <a class="pilllink" href="/index.html">🏠 Inicio</a>
+      <a class="pilllink" href="/historia.html">🕰️ Historia</a>
+      <a class="pilllink" href="/notas.html">📝 Notas</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  
+  <!-- Búsqueda -->
+  <div class="search-box">
+    <input 
+      type="text" 
+      id="searchInput" 
+      class="search-input" 
+      placeholder="🔍 Buscar por provincia, municipio, localidad o denominación..."
+      autocomplete="off"
+    />
+    
+    <div class="search-filters">
+      <select id="provinciaFilter" class="filter-select">
+        <option value="">Todas las provincias</option>
+      </select>
+      
+      <button id="clearBtn" class="btn btn-pill alt" style="white-space: nowrap;">
+        🗑️ Limpiar filtros
+      </button>
+    </div>
+    
+    <div class="search-results" id="searchResults">
+      Cargando directorio...
+    </div>
+  </div>
+
+  <!-- Estadísticas -->
+  <div class="stats" id="stats">
+    <div class="stat-item">
+      <strong id="totalCount">0</strong>
+      <span>contactos totales</span>
+    </div>
+    <div class="stat-item">
+      <strong id="visibleCount">0</strong>
+      <span>visibles</span>
+    </div>
+    <div class="stat-item">
+      <strong id="provinciaCount">0</strong>
+      <span>provincias</span>
+    </div>
+  </div>
+
+  <!-- Contenedor de resultados -->
+  <div id="directoryContainer">
+    <!-- Se llena dinámicamente con JavaScript -->
+  </div>
+
+</main>
+
+<footer>
+  <div class="fmut">
+    Coordinado por el Lic. Sebastián Amato · Si querés colaborar, escribime a
+    <a href="mailto:samato@hst.com.ar">samato@hst.com.ar</a>
+  </div>
+  <div style="margin-top:14px;opacity:.9;">defensacivil.com.ar © 2026</div>
+</footer>
+
+<script>
+// ==========================================
+// DIRECTORIO CON BÚSQUEDA - DefensaCivil.com.ar
+// ==========================================
+
+const JSON_URL = '/data/directorio.json';
+
+let allEntries = [];
+let filteredEntries = [];
+
+// Elementos del DOM
+const searchInput = document.getElementById('searchInput');
+const provinciaFilter = document.getElementById('provinciaFilter');
+const clearBtn = document.getElementById('clearBtn');
+const searchResults = document.getElementById('searchResults');
+const directoryContainer = document.getElementById('directoryContainer');
+const totalCount = document.getElementById('totalCount');
+const visibleCount = document.getElementById('visibleCount');
+const provinciaCount = document.getElementById('provinciaCount');
+
+// Cargar datos
+async function loadData() {
+  try {
+    const response = await fetch(JSON_URL);
+    if (!response.ok) throw new Error('No se pudo cargar el directorio');
+    
+    const data = await response.json();
+    allEntries = data.entries || [];
+    
+    populateFilters();
+    filterAndRender();
+    
+  } catch (error) {
+    console.error('Error:', error);
+    searchResults.textContent = '❌ Error al cargar el directorio. Intentá recargar la página.';
+  }
+}
+
+// Poblar filtros de provincia
+function populateFilters() {
+  const provincias = [...new Set(allEntries.map(e => e.provincia))].sort();
+  
+  provincias.forEach(prov => {
+    const option = document.createElement('option');
+    option.value = prov;
+    option.textContent = prov;
+    provinciaFilter.appendChild(option);
+  });
+}
+
+// Filtrar y renderizar
+function filterAndRender() {
+  const searchTerm = searchInput.value.toLowerCase().trim();
+  const provinciaSelected = provinciaFilter.value;
+  
+  filteredEntries = allEntries.filter(entry => {
+    // Filtro por provincia
+    if (provinciaSelected && entry.provincia !== provinciaSelected) {
+      return false;
+    }
+    
+    // Filtro por búsqueda de texto
+    if (searchTerm) {
+      const searchableText = [
+        entry.provincia,
+        entry.municipio,
+        entry.localidad,
+        entry.denominacion,
+        entry.domicilio
+      ].join(' ').toLowerCase();
+      
+      return searchableText.includes(searchTerm);
+    }
+    
+    return true;
+  });
+  
+  renderResults();
+  updateStats();
+}
+
+// Renderizar resultados
+function renderResults() {
+  if (filteredEntries.length === 0) {
+    directoryContainer.innerHTML = `
+      <div class="card" style="text-align: center; padding: 40px;">
+        <h3 style="border: none;">🔍 No se encontraron resultados</h3>
+        <p>Probá con otros términos de búsqueda o limpiá los filtros.</p>
+      </div>
+    `;
+    return;
+  }
+  
+  const searchTerm = searchInput.value.toLowerCase().trim();
+  
+  directoryContainer.innerHTML = filteredEntries.map(entry => {
+    const denominacion = highlightMatch(entry.denominacion || 'Sin denominación', searchTerm);
+    const provincia = highlightMatch(entry.provincia || '', searchTerm);
+    const municipio = highlightMatch(entry.municipio || '', searchTerm);
+    const localidad = highlightMatch(entry.localidad || '', searchTerm);
+    
+    return `
+      <div class="directory-item">
+        <h4>${denominacion}</h4>
+        
+        <div class="meta">
+          <span><strong>Provincia:</strong> ${provincia}</span>
+          ${municipio ? `<span><strong>Municipio:</strong> ${municipio}</span>` : ''}
+          ${localidad ? `<span><strong>Localidad:</strong> ${localidad}</span>` : ''}
+        </div>
+        
+        ${entry.domicilio ? `<div class="meta"><span><strong>📍</strong> ${entry.domicilio}</span></div>` : ''}
+        
+        ${entry.telefono || entry.email ? `
+          <div class="meta">
+            ${entry.telefono ? `<span><strong>📞</strong> ${entry.telefono}</span>` : ''}
+            ${entry.email ? `<span><strong>✉️</strong> <a href="mailto:${entry.email}">${entry.email}</a></span>` : ''}
+          </div>
+        ` : ''}
+        
+        ${entry.website || entry.instagram || entry.facebook ? `
+          <div class="links">
+            ${entry.website ? `<a href="${entry.website}" target="_blank" rel="noopener">🌐 Sitio web</a>` : ''}
+            ${entry.instagram ? `<a href="${entry.instagram}" target="_blank" rel="noopener">📸 Instagram</a>` : ''}
+            ${entry.facebook ? `<a href="${entry.facebook}" target="_blank" rel="noopener">👥 Facebook</a>` : ''}
+          </div>
+        ` : ''}
+        
+        ${entry.comentario ? `<div class="meta" style="margin-top: 8px;"><span style="font-style: italic;">${entry.comentario}</span></div>` : ''}
+      </div>
+    `;
+  }).join('');
+}
+
+// Resaltar coincidencias
+function highlightMatch(text, searchTerm) {
+  if (!searchTerm || !text) return text;
+  
+  const regex = new RegExp(`(${searchTerm})`, 'gi');
+  return text.replace(regex, '<span class="highlight-match">$1</span>');
+}
+
+// Actualizar estadísticas
+function updateStats() {
+  totalCount.textContent = allEntries.length;
+  visibleCount.textContent = filteredEntries.length;
+  
+  const provinciasUnicas = new Set(filteredEntries.map(e => e.provincia));
+  provinciaCount.textContent = provinciasUnicas.size;
+  
+  // Actualizar mensaje de resultados
+  if (searchInput.value.trim() || provinciaFilter.value) {
+    searchResults.textContent = `Mostrando ${filteredEntries.length} de ${allEntries.length} contactos`;
+  } else {
+    searchResults.textContent = `${allEntries.length} contactos en el directorio`;
+  }
+}
+
+// Event listeners
+searchInput.addEventListener('input', debounce(filterAndRender, 300));
+provinciaFilter.addEventListener('change', filterAndRender);
+
+clearBtn.addEventListener('click', () => {
+  searchInput.value = '';
+  provinciaFilter.value = '';
+  filterAndRender();
+});
+
+// Debounce para optimizar búsqueda
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+// Iniciar
+loadData();
+</script>
+
+</body>
+</html>

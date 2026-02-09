@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  
+  <!-- SEO Básico -->
+  <title>Historia · Defensa Civil Argentina</title>
+  <meta name="description" content="Historia de la Defensa Civil en Argentina desde sus orígenes hasta la actualidad. Línea de tiempo, legislación y evolución del sistema."/>
+  <meta name="keywords" content="historia defensa civil, evolución protección civil, legislación, argentina, timeline, cronología"/>
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://defensacivil.com.ar/historia.html"/>
+  <meta property="og:title" content="Historia · Defensa Civil Argentina"/>
+  <meta property="og:description" content="Historia completa de la Defensa Civil en Argentina desde sus orígenes."/>
+  <meta property="og:image" content="https://defensacivil.com.ar/assets/images/og-image.jpg"/>
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://defensacivil.com.ar/historia.html"/>
+  
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="/assets/css/main.css?v=1.0.0"/>
+  <link rel="stylesheet" href="/assets/css/mobile.css?v=1.0.0"/>
+  
+  <style>
+    /* Estilos específicos de Historia (timeline) */
+    .timeline {
+      position: relative;
+      padding: 20px 0;
+      margin-top: 20px;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 20px;
+      width: 4px;
+      background: linear-gradient(to bottom, var(--az1), var(--n));
+      border-radius: 4px;
+    }
+    
+    .event {
+      position: relative;
+      padding-left: 60px;
+      margin: 24px 0;
+    }
+    
+    .dot {
+      position: absolute;
+      left: 8px;
+      top: 12px;
+      width: 28px;
+      height: 28px;
+      background: var(--n);
+      border: 4px solid var(--az1);
+      border-radius: 50%;
+      z-index: 2;
+    }
+    
+    .event-card {
+      background: var(--card);
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: var(--r);
+      box-shadow: 0 4px 12px rgba(0,0,0,.08);
+      padding: 18px;
+      transition: .2s;
+    }
+    
+    .event-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(0,0,0,.14);
+      border-color: rgba(255,102,0,.45);
+    }
+    
+    .event-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    
+    .event-date {
+      font-size: 1.15em;
+      font-weight: 900;
+      color: var(--n);
+    }
+    
+    .event-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    
+    .event-badge {
+      font-size: 0.85em;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #eaf1ff;
+      color: var(--az1);
+      border: 1px solid rgba(0,51,102,0.15);
+    }
+    
+    .event-title {
+      margin: 0 0 10px;
+      color: var(--az1);
+      font-size: 1.2em;
+      line-height: 1.3;
+    }
+    
+    .event-description {
+      margin: 0 0 12px;
+      line-height: 1.7;
+    }
+    
+    .event-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    
+    .event-link {
+      color: var(--link);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .event-link:hover {
+      text-decoration: underline;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--mut);
+      font-size: 1.1em;
+    }
+    
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 10px;
+      }
+      
+      .event {
+        padding-left: 50px;
+      }
+      
+      .dot {
+        left: 0;
+        width: 24px;
+        height: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="head">
+    <div class="brand">
+      <div>
+        <h1>Historia</h1>
+        <div class="sub">Defensa Civil Argentina · Evolución histórica</div>
+      </div>
+    </div>
+    
+    <nav class="toplinks" aria-label="Navegación principal">
+      <a class="pilllink" href="/index.html">🏠 Inicio</a>
+      <a class="pilllink" href="/directorio.html">📒 Directorio</a>
+      <a class="pilllink" href="/colaboradores.html">🤝 Colaboradores</a>
+      <a class="pilllink" href="/notas.html">📝 Notas</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  
+  <div class="card">
+    <h3>Historia de la Defensa Civil en Argentina</h3>
+    <p>
+      Recorrido histórico del sistema de Defensa Civil y Protección Civil en Argentina, 
+      desde sus orígenes hasta la actualidad. Incluye legislación, eventos clave y evolución organizativa.
+    </p>
+  </div>
+
+  <div id="historiaContainer" class="loading">
+    Cargando línea de tiempo...
+  </div>
+
+</main>
+
+<footer>
+  <div class="fmut">
+    Coordinado por el Lic. Sebastián Amato · Si querés colaborar, escribime a
+    <a href="mailto:samato@hst.com.ar">samato@hst.com.ar</a>
+  </div>
+  <div style="margin-top:14px;opacity:.9;">defensacivil.com.ar © 2026</div>
+</footer>
+
+<script src="/assets/js/mobile-nav.js" defer></script>
+
+<script>
+// Cargar eventos históricos
+// NOTA: Esta es una versión simplificada. Si tenés un JSON con los eventos,
+// ajustá la URL y estructura según tu archivo real.
+
+const HISTORIA_DATA = [
+  {
+    fecha: "1943",
+    titulo: "Decreto-Ley 4104/43",
+    descripcion: "Primer marco normativo de Defensa Civil en Argentina durante el gobierno de facto.",
+    provincia: "Nacional",
+    tipo: "Legislación",
+    links: [
+      { href: "/normativa/decreto-ley-4104-1943.html", label: "Ver documento" }
+    ]
+  },
+  {
+    fecha: "1973",
+    titulo: "Decreto-Ley 2580/73",
+    descripcion: "Actualización del marco normativo de Defensa Civil.",
+    provincia: "Nacional",
+    tipo: "Legislación",
+    links: [
+      { href: "/normativa/decreto-ley-2580-1973.html", label: "Ver documento" }
+    ]
+  },
+  {
+    fecha: "1992",
+    titulo: "Decreto 3321/92",
+    descripcion: "Modernización del sistema nacional de Defensa Civil.",
+    provincia: "Nacional",
+    tipo: "Legislación",
+    links: [
+      { href: "/normativa/DECRETO-3321-1992.html", label: "Ver documento" }
+    ]
+  },
+  {
+    fecha: "2007",
+    titulo: "Decreto 207/07",
+    descripcion: "Actualización del marco regulatorio del sistema de Defensa Civil.",
+    provincia: "Nacional",
+    tipo: "Legislación",
+    links: [
+      { href: "/normativa/Decreto-207-2007.html", label: "Ver documento" }
+    ]
+  },
+  // Agregar más eventos según tu contenido real
+];
+
+function renderHistoria() {
+  const container = document.getElementById('historiaContainer');
+  
+  if (HISTORIA_DATA.length === 0) {
+    container.innerHTML = `
+      <div class="card" style="text-align:center;padding:40px;">
+        <h3 style="border:none;">📜 Contenido en desarrollo</h3>
+        <p>La línea de tiempo completa se está preparando. Próximamente se publicará el contenido histórico detallado.</p>
+      </div>
+    `;
+    return;
+  }
+  
+  const timelineHTML = `
+    <div class="timeline">
+      ${HISTORIA_DATA.map(event => `
+        <div class="event">
+          <div class="dot"></div>
+          <div class="event-card">
+            <div class="event-header">
+              <div class="event-date">${event.fecha}</div>
+              <div class="event-badges">
+                ${event.provincia ? `<span class="event-badge">📍 ${event.provincia}</span>` : ''}
+                ${event.tipo ? `<span class="event-badge">🏷️ ${event.tipo}</span>` : ''}
+              </div>
+            </div>
+            
+            <h4 class="event-title">${event.titulo}</h4>
+            
+            ${event.descripcion ? `<div class="event-description">${event.descripcion}</div>` : ''}
+            
+            ${event.links && event.links.length > 0 ? `
+              <div class="event-links">
+                ${event.links.map(link => `
+                  <a href="${link.href}" class="event-link">
+                    🔗 ${link.label}
+                  </a>
+                `).join('')}
+              </div>
+            ` : ''}
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+  
+  container.innerHTML = timelineHTML;
+}
+
+// Si tenés un archivo JSON real de historia, usá esto:
+/*
+async function loadHistoriaFromJSON() {
+  const container = document.getElementById('historiaContainer');
+  
+  try {
+    const response = await fetch('/data/historia.json'); // Ajustar URL
+    if (!response.ok) throw new Error('No se pudo cargar');
+    
+    const data = await response.json();
+    HISTORIA_DATA = data.events || data.items || [];
+    renderHistoria();
+    
+  } catch (error) {
+    console.error('Error:', error);
+    container.innerHTML = `
+      <div class="card error">
+        <strong>Error:</strong> No se pudo cargar la historia. Intentá recargar la página.
+      </div>
+    `;
+  }
+}
+
+// Cargar desde JSON
+loadHistoriaFromJSON();
+*/
+
+// Por ahora renderizar datos estáticos
+renderHistoria();
+</script>
+
+</body>
+</html>

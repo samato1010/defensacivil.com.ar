@@ -1,0 +1,7 @@
+Options -Indexes
+
+# Bloquear acceso directo a la carpeta de backups desde la web
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^_backup_normativa/ - [F,L]
+</IfModule>

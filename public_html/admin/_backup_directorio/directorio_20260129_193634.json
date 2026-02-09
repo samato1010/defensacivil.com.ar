@@ -1,0 +1,40 @@
+{
+    "meta": {
+        "version": 1,
+        "updated": "2026-01-29 19:31:31",
+        "titulo": "Directorio",
+        "subtitulo": "Defensa Civil / Protección Civil",
+        "source_note": "Estructura base"
+    },
+    "entries": [
+        {
+            "id": "dc_20260129_001",
+            "nivel": "MUNICIPAL",
+            "provincia": "BUENOS AIRES",
+            "municipio": "SAN ISIDRO",
+            "organismo": "Defensa Civil",
+            "area": "",
+            "direccion": "Av. Sta Fe 208",
+            "localidad": "",
+            "cp": "B1642BYP",
+            "telefono": "+54 11 1234-5678",
+            "email": "contacto@ejemplo.gob.ar",
+            "web": "",
+            "horario": "",
+            "notas": "",
+            "tags": [],
+            "links": []
+        },
+        {
+            "id": "pc_20260129_002",
+            "denominacion": "Protección Civil",
+            "domicilio": "",
+            "telefono": "",
+            "email": "",
+            "website": "",
+            "instagram": "",
+            "facebook": "",
+            "comentario": ""
+        }
+    ]
+}

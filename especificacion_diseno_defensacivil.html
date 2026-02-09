@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Especificación de Diseño - DefensaCivil.com.ar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #003366;
+      --primary-light: #004080;
+      --accent: #ff6600;
+      --bg: #f5f7fa;
+      --card: #ffffff;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --border: rgba(0,0,0,0.08);
+      --success: #00c853;
+      --warning: #ff9800;
+      --danger: #e53935;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: white;
+      padding: 4rem 2rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 20%, rgba(255,102,0,0.15), transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1), transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      opacity: 0.9;
+      max-width: 700px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    /* Nav */
+    .nav-tabs {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+      overflow-x: auto;
+      padding-bottom: 0;
+    }
+
+    .nav-tab {
+      background: none;
+      border: none;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-tab:hover {
+      color: var(--primary);
+      background: rgba(0,51,102,0.05);
+    }
+
+    .nav-tab.active {
+      color: var(--primary);
+      border-bottom-color: var(--accent);
+    }
+
+    /* Cards */
+    .section {
+      display: none;
+      animation: fadeIn 0.3s;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border: 1px solid var(--border);
+    }
+
+    .card h2 {
+      color: var(--primary);
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+    }
+
+    .card h3 {
+      color: var(--primary);
+      font-size: 1.25rem;
+      margin: 2rem 0 1rem;
+    }
+
+    .priority-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .priority-card {
+      background: white;
+      border-left: 4px solid;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .priority-card.critical {
+      border-left-color: var(--danger);
+      background: linear-gradient(to right, rgba(229,57,53,0.05), white);
+    }
+
+    .priority-card.high {
+      border-left-color: var(--warning);
+      background: linear-gradient(to right, rgba(255,152,0,0.05), white);
+    }
+
+    .priority-card.medium {
+      border-left-color: var(--success);
+      background: linear-gradient(to right, rgba(0,200,83,0.05), white);
+    }
+
+    .priority-card h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge.critical {
+      background: var(--danger);
+      color: white;
+    }
+
+    .badge.high {
+      background: var(--warning);
+      color: white;
+    }
+
+    .badge.medium {
+      background: var(--success);
+      color: white;
+    }
+
+    /* Checklist */
+    .checklist {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .checklist li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .checklist li:last-child {
+      border-bottom: none;
+    }
+
+    .checkbox {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--primary);
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+      margin: 2rem 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--primary), var(--accent));
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+      padding-left: 1.5rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.5rem;
+      top: 0.5rem;
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+
+    .timeline-item h4 {
+      color: var(--primary);
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Code blocks */
+    .code-block {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 1.5rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 1rem 0;
+      font-family: 'Space Mono', 'Courier New', monospace;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .code-block .comment {
+      color: #6a9955;
+    }
+
+    .code-block .keyword {
+      color: #569cd6;
+    }
+
+    .code-block .string {
+      color: #ce9178;
+    }
+
+    /* Design tokens */
+    .token-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .token-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .color-swatch {
+      width: 100%;
+      height: 80px;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .token-card h5 {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .token-card code {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--primary);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 2rem 1rem;
+      }
+
+      .container {
+        padding: 2rem 1rem;
+      }
+
+      .priority-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-tabs {
+        overflow-x: scroll;
+      }
+    }
+
+    /* Utilities */
+    .mt-2 { margin-top: 2rem; }
+    .mb-2 { margin-bottom: 2rem; }
+    .text-muted { color: var(--text-muted); }
+    .text-small { font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="hero-content">
+      <h1>🚀 Especificación de Diseño</h1>
+      <p>Plan completo de mejoras para el lanzamiento oficial de DefensaCivil.com.ar</p>
+      <div class="hero-meta">
+        <span>📅 Febrero 2026</span>
+        <span>🎯 Lanzamiento Oficial</span>
+        <span>⚡ 15 Mejoras Priorizadas</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="nav-tabs">
+      <button class="nav-tab active" data-tab="resumen">📊 Resumen</button>
+      <button class="nav-tab" data-tab="criticas">🔴 Críticas</button>
+      <button class="nav-tab" data-tab="contenido">📝 Contenido</button>
+      <button class="nav-tab" data-tab="diseno">🎨 Diseño</button>
+      <button class="nav-tab" data-tab="tecnico">⚙️ Técnico</button>
+      <button class="nav-tab" data-tab="cronograma">📆 Cronograma</button>
+    </div>
+
+    <!-- Resumen -->
+    <div class="section active" id="resumen">
+      <div class="card">
+        <h2>🎯 Visión General</h2>
+        <p>DefensaCivil.com.ar es un recurso público que reúne contactos institucionales, historia y normativa del sistema de Defensa Civil en Argentina. Para el lanzamiento oficial necesitamos:</p>
+        
+        <ul class="checklist mt-2">
+          <li>
+            <div class="checkbox"></div>
+            <div>
+              <strong>Seguridad primero:</strong> Separar datos públicos de credenciales privadas
+            </div>
+          </li>
+          <li>
+            <div class="checkbox"></div>
+            <div>
+              <strong>Contenido completo:</strong> Ampliar directorio, agregar más normativa, publicar historia
+            </div>
+          </li>
+          <li>
+            <div class="checkbox"></div>
+            <div>
+              <strong>UX pulida:</strong> Navegación clara, búsqueda funcional, responsive impecable
+            </div>
+          </li>
+          <li>
+            <div class="checkbox"></div>
+            <div>
+              <strong>SEO y accesibilidad:</strong> Meta tags, alt text, estructura semántica
+            </div>
+          </li>
+          <li>
+            <div class="checkbox"></div>
+            <div>
+              <strong>Performance:</strong> Optimización de imágenes, carga rápida, caché apropiado
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>📈 Estado Actual</h2>
+        <div class="priority-grid">
+          <div class="priority-card medium">
+            <h4>✅ Funcional</h4>
+            <p class="text-small text-muted">El sitio está operativo con directorio, notas, historia y panel admin básico</p>
+          </div>
+          <div class="priority-card high">
+            <h4>⚠️ Seguridad</h4>
+            <p class="text-small text-muted">Credenciales expuestas en JSON público - requiere separación urgente</p>
+          </div>
+          <div class="priority-card medium">
+            <h4>📊 Contenido</h4>
+            <p class="text-small text-muted">Base sólida pero incompleta - faltan entradas en varias provincias</p>
+          </div>
+          <div class="priority-card medium">
+            <h4>🎨 Diseño</h4>
+            <p class="text-small text-muted">Estética definida y coherente - necesita consistencia en todas las páginas</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mejoras Críticas -->
+    <div class="section" id="criticas">
+      <div class="card">
+        <h2>🔴 Mejoras Críticas (Pre-lanzamiento)</h2>
+        <p class="text-muted mb-2">Estas mejoras deben implementarse ANTES del lanzamiento oficial por razones de seguridad y funcionalidad básica.</p>
+
+        <div class="priority-card critical mt-2">
+          <h4>
+            <span class="badge critical">Crítico</span>
+            1. Separar Credenciales del JSON Público
+          </h4>
+          <p class="text-muted text-small mb-2">Actualmente <code>/data/colaboradores.json</code> contiene hashes de contraseñas, IPs y user-agents accesibles públicamente.</p>
+          
+          <h5 style="margin-top: 1rem; margin-bottom: 0.5rem;">Solución:</h5>
+          <ul style="margin-left: 1.5rem; color: var(--text-muted); font-size: 0.9rem;">
+            <li>Crear <code>/data/colaboradores_public.json</code> solo con <code>meta</code> + <code>collaborators[]</code></li>
+            <li>Mover <code>items[]</code> (credenciales) a <code>/admin/_storage/colaboradores_items.json</code></li>
+            <li>Proteger <code>/admin/_storage/</code> con <code>.htaccess</code> (Deny from all)</li>
+            <li>Actualizar scripts PHP para leer del storage privado</li>
+          </ul>
+
+          <div class="code-block mt-2">
+<span class="comment"># /admin/_storage/.htaccess</span>
+<span class="keyword">Order</span> <span class="string">deny,allow</span>
+<span class="keyword">Deny</span> from <span class="string">all</span>
+          </div>
+        </div>
+
+        <div class="priority-card critical mt-2">
+          <h4>
+            <span class="badge critical">Crítico</span>
+            2. Agregar Páginas de Error Personalizadas
+          </h4>
+          <p class="text-muted text-small">Actualmente errores 404/500 muestran páginas default del servidor.</p>
+          
+          <ul style="margin-left: 1.5rem; color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">
+            <li>Crear <code>/404.html</code> y <code>/500.html</code> con diseño consistente</li>
+            <li>Agregar directivas en <code>/.htaccess</code></li>
+            <li>Incluir navegación de regreso al inicio</li>
+          </ul>
+        </div>
+
+        <div class="priority-card critical mt-2">
+          <h4>
+            <span class="badge critical">Crítico</span>
+            3. Implementar CSRF Protection en Admin
+          </h4>
+          <p class="text-muted text-small">Formularios admin sin protección CSRF - vulnerable a ataques.</p>
+          
+          <ul style="margin-left: 1.5rem; color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">
+            <li>Generar tokens CSRF en sesión PHP</li>
+            <li>Validar en cada POST/PUT/DELETE</li>
+            <li>Agregar campo oculto en todos los formularios admin</li>
+          </ul>
+        </div>
+
+        <div class="priority-card high mt-2">
+          <h4>
+            <span class="badge high">Alta</span>
+            4. Mejorar Validación de Inputs
+          </h4>
+          <p class="text-muted text-small">Sanitización básica pero inconsistente en endpoints PHP.</p>
+          
+          <ul style="margin-left: 1.5rem; color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">
+            <li>Validar tipos de datos (email, URL, teléfono)</li>
+            <li>Limitar longitud de campos</li>
+            <li>Escapar outputs en HTML</li>
+            <li>Usar prepared statements donde corresponda</li>
+          </ul>
+        </div>
+
+        <div class="priority-card high mt-2">
+          <h4>
+            <span class="badge high">Alta</span>
+            5. Rate Limiting en Alta de Colaboradores
+          </h4>
+          <p class="text-muted text-small">Sin límite de solicitudes - vulnerable a spam/abuso.</p>
+          
+          <ul style="margin-left: 1.5rem; color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">
+            <li>Máximo 3 solicitudes por IP por hora</li>
+            <li>Almacenar timestamps en archivo/sesión</li>
+            <li>Mensaje amigable cuando se excede el límite</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contenido -->
+    <div class="section" id="contenido">
+      <div class="card">
+        <h2>📝 Mejoras de Contenido</h2>
+
+        <div class="priority-card high mt-2">
+          <h4>
+            <span class="badge high">Alta</span>
+            6. Completar Directorio Nacional
+          </h4>
+          <p class="text-muted text-small">Faltan entradas de múltiples provincias. Meta: al menos una entrada por provincia.</p>
+          
+          <ul style="margin-left: 1.5rem; color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">
+            <li><strong>Prioridad 1:</strong> Buscar contactos en sitios .gob.ar oficiales</li>
+            <li><strong>Prioridad 2:</strong> Contactar municipios/provincias directamente</li>
+            <li><strong>Prioridad 3:</strong> Verificar datos existentes (teléfonos, emails)</li>
+            <li>Agregar campo "última verificación" en cada entrada</li>
+          </ul>
+        </div>
+
+        <div class="priority-card medium mt-2">
+          <h4>
+            <span class="badge medium">Media</span>
+            7. Expandir Sección de Normativa
+          </h4>
+          <p class="text-muted text-small">9 documentos actuales - agregar normativa provincial y decretos relevantes.</p>
+          
+          <ul style="margin-left: 1.5rem; color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">
+            <li>Buscar normativa provincial en BoRAs oficiales</li>
+            <li>Agregar resúmenes ejecutivos (2-3 párrafos)</li>
+            <li>Tags mejorados para búsqueda/filtrado</li>
+            <li>Links a PDFs oficiales cuando disponible</li>
+          </ul>
+        </div>
+
+        <div class="priority-card medium mt-2">
+          <h4>
+            <span class="badge medium">Media</span>
+            8. Enriquecer Página Historia
+          </h4>
+          <p class="text-muted text-small">Contenido base sólido - agregar línea de tiempo visual e imágenes históricas.</p>
+          
+          <ul style="margin-left: 1.5rem; color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">
+            <li>Crear timeline interactivo con hitos clave</li>
+            <li>Agregar imágenes históricas (optimizadas)</li>
+            <li>Referencias bibliográficas al pie</li>
+            <li>Botón "compartir en redes" para difusión</li>
+          </ul>
+        </div>
+
+        <div class="priority-card medium mt-2">
+          <h4>
+            <span class="badge medium">Media</span>
+            9. Agregar Sección "Recursos"
+          </h4>
+          <p class="text-muted text-small">Nueva página con materiales útiles para organismos de DC.</p>
+          
+          <ul style="margin-left: 1.5rem; color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">
+            <li>Guías y protocolos descargables</li>
+            <li>Templates de documentos</li>
+            <li>Links a cursos/capacitaciones</li>
+            <li>Material de difusión (infografías, posters)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Diseño -->
+    <div class="section" id="diseno">
+      <div class="card">
+        <h2>🎨 Mejoras de Diseño y UX</h2>
+
+        <h3>Design Tokens Actuales</h3>
+        <div class="token-grid">
+          <div class="token-card">
+            <div class="color-swatch" style="background: #003366;"></div>
+            <h5>Azul Primario</h5>
+            <code>#003366</code>
+          </div>
+          <div class="token-card">
+            <div class="color-swatch" style="background: #004080;"></div>
+            <h5>Azul Secundario</h5>
+            <code>#004080</code>
+          </div>
+          <div class="token-card">
+            <div class="color-swatch" style="background: #ff6600;"></div>
+            <h5>Naranja Acento</h5>
+            <code>#ff6600</code>
+          </div>
+          <div class="token-card">
+            <div class="color-swatch" style="background: #f8f9fa;"></div>
+            <h5>Fondo</h5>
+            <code>#f8f9fa</code>
+          </div>
+        </div>
+
+        <div class="priority-card high mt-2">
+          <h4>
+            <span class="badge high">Alta</span>
+            10. Unificar CSS en Archivo Externo
+          </h4>
+          <p class="text-muted text-small">Actualmente cada HTML tiene CSS inline - dificulta mantenimiento.</p>
+          
+          <ul style="margin-left: 1.5rem; color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">
+            <li>Crear <code>/assets/css/main.css</code> con todos los estilos</li>
+            <li>Mantener design tokens en :root</li>
+            <li>Incluir vía <code>&lt;link&gt;</code> en todas las páginas</li>
+            <li>Versionar para cache-busting: <code>?v=1.0.0</code></li>
+          </ul>
+        </div>
+
+        <div class="priority-card high mt-2">
+          <h4>
+            <span class="badge high">Alta</span>
+            11. Implementar Búsqueda Funcional
+          </h4>
+          <p class="text-muted text-small">Directorio.html necesita búsqueda/filtrado por provincia, municipio, nombre.</p>
+          
+          <ul style="margin-left: 1.5rem; color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">
+            <li>Barra de búsqueda sticky en top</li>
+            <li>Filtros por provincia (dropdown)</li>
+            <li>Búsqueda en tiempo real (JavaScript)</li>
+            <li>Resaltar términos encontrados</li>
+            <li>Contador de resultados</li>
+          </ul>
+        </div>
+
+        <div class="priority-card medium mt-2">
+          <h4>
+            <span class="badge medium">Media</span>
+            12. Mejorar Responsive en Móviles
+          </h4>
+          <p class="text-muted text-small">Algunas secciones no se adaptan bien en pantallas pequeñas.</p>
+          
+          <ul style="margin-left: 1.5rem; color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">
+            <li>Header: hamburger menu para navegación</li>
+            <li>Tablas: scroll horizontal con indicador visual</li>
+            <li>Cards: stack vertical en móvil</li>
+            <li>Touch targets mínimo 44x44px</li>
+            <li>Probar en iPhone SE, Galaxy, iPad</li>
+          </ul>
+        </div>
+
+        <div class="priority-card medium mt-2">
+          <h4>
+            <span class="badge medium">Media</span>
+            13. Agregar Modo Oscuro (Opcional)
+          </h4>
+          <p class="text-muted text-small">Feature opcional pero apreciada - especialmente para consultas nocturnas.</p>
+          
+          <ul style="margin-left: 1.5rem; color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">
+            <li>Toggle en header (guardar preferencia en localStorage)</li>
+            <li>CSS variables para colores dark</li>
+            <li>Respetar prefers-color-scheme del sistema</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Técnico -->
+    <div class="section" id="tecnico">
+      <div class="card">
+        <h2>⚙️ Mejoras Técnicas</h2>
+
+        <div class="priority-card high mt-2">
+          <h4>
+            <span class="badge high">Alta</span>
+            14. SEO y Meta Tags
+          </h4>
+          <p class="text-muted text-small">Mejorar indexación y presentación en buscadores/redes sociales.</p>
+          
+          <h5 style="margin-top: 1rem; margin-bottom: 0.5rem;">En cada página:</h5>
+          <div class="code-block">
+<span class="comment">&lt;!-- Meta tags básicos --&gt;</span>
+<span class="keyword">&lt;meta</span> name=<span class="string">"description"</span> content=<span class="string">"..."</span><span class="keyword">&gt;</span>
+<span class="keyword">&lt;meta</span> name=<span class="string">"keywords"</span> content=<span class="string">"defensa civil, protección civil, argentina"</span><span class="keyword">&gt;</span>
+
+<span class="comment">&lt;!-- Open Graph (Facebook) --&gt;</span>
+<span class="keyword">&lt;meta</span> property=<span class="string">"og:title"</span> content=<span class="string">"..."</span><span class="keyword">&gt;</span>
+<span class="keyword">&lt;meta</span> property=<span class="string">"og:description"</span> content=<span class="string">"..."</span><span class="keyword">&gt;</span>
+<span class="keyword">&lt;meta</span> property=<span class="string">"og:image"</span> content=<span class="string">"..."</span><span class="keyword">&gt;</span>
+
+<span class="comment">&lt;!-- Twitter Card --&gt;</span>
+<span class="keyword">&lt;meta</span> name=<span class="string">"twitter:card"</span> content=<span class="string">"summary_large_image"</span><span class="keyword">&gt;</span>
+          </div>
+
+          <h5 style="margin-top: 1rem; margin-bottom: 0.5rem;">Adicionales:</h5>
+          <ul style="margin-left: 1.5rem; color: var(--text-muted); font-size: 0.9rem;">
+            <li>Crear <code>/sitemap.xml</code> y <code>/robots.txt</code></li>
+            <li>Agregar JSON-LD para structured data</li>
+            <li>Canonical URLs en cada página</li>
+          </ul>
+        </div>
+
+        <div class="priority-card medium mt-2">
+          <h4>
+            <span class="badge medium">Media</span>
+            15. Performance y Optimización
+          </h4>
+          <p class="text-muted text-small">Mejorar tiempos de carga y experiencia del usuario.</p>
+          
+          <ul style="margin-left: 1.5rem; color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">
+            <li><strong>Imágenes:</strong> WebP con fallback, lazy loading, dimensiones definidas</li>
+            <li><strong>CSS:</strong> Minificar, eliminar unused, critical CSS inline</li>
+            <li><strong>JavaScript:</strong> Defer/async, minificar</li>
+            <li><strong>Caché:</strong> Headers apropiados en .htaccess</li>
+            <li><strong>Gzip:</strong> Comprimir HTML/CSS/JS</li>
+          </ul>
+
+          <div class="code-block mt-2">
+<span class="comment"># .htaccess - Compresión y Caché</span>
+<span class="keyword">&lt;IfModule</span> mod_deflate.c<span class="keyword">&gt;</span>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript
+<span class="keyword">&lt;/IfModule&gt;</span>
+
+<span class="keyword">&lt;IfModule</span> mod_expires.c<span class="keyword">&gt;</span>
+  ExpiresActive On
+  ExpiresByType text/css <span class="string">"access plus 1 month"</span>
+  ExpiresByType image/jpeg <span class="string">"access plus 1 year"</span>
+<span class="keyword">&lt;/IfModule&gt;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cronograma -->
+    <div class="section" id="cronograma">
+      <div class="card">
+        <h2>📆 Cronograma de Implementación</h2>
+        <p class="text-muted mb-2">Plan sugerido para lanzamiento en 4 semanas (ajustar según disponibilidad).</p>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <h4>Semana 1: Seguridad (Crítico)</h4>
+            <p class="text-muted text-small">
+              • Separar credenciales de JSON público<br>
+              • Implementar CSRF protection<br>
+              • Mejorar validación de inputs<br>
+              • Rate limiting en formularios<br>
+              • Páginas de error personalizadas
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <h4>Semana 2: Contenido y SEO</h4>
+            <p class="text-muted text-small">
+              • Completar directorio (investigación)<br>
+              • Agregar normativa faltante<br>
+              • Implementar meta tags y SEO<br>
+              • Crear sitemap.xml<br>
+              • Verificar enlaces rotos
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <h4>Semana 3: Diseño y UX</h4>
+            <p class="text-muted text-small">
+              • Unificar CSS en archivo externo<br>
+              • Implementar búsqueda funcional<br>
+              • Mejorar responsive mobile<br>
+              • Timeline visual en Historia<br>
+              • Testing cross-browser
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <h4>Semana 4: Performance y Lanzamiento</h4>
+            <p class="text-muted text-small">
+              • Optimizar imágenes (WebP)<br>
+              • Configurar caché y compresión<br>
+              • Testing final (performance, seguridad, funcional)<br>
+              • Deploy a producción<br>
+              • Anuncio en redes/comunicado
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>✅ Checklist Pre-Lanzamiento</h2>
+        <ul class="checklist">
+          <li>
+            <div class="checkbox"></div>
+            <div>Credenciales separadas y seguras</div>
+          </li>
+          <li>
+            <div class="checkbox"></div>
+            <div>CSRF protection implementado</div>
+          </li>
+          <li>
+            <div class="checkbox"></div>
+            <div>Rate limiting activo</div>
+          </li>
+          <li>
+            <div class="checkbox"></div>
+            <div>Páginas 404/500 personalizadas</div>
+          </li>
+          <li>
+            <div class="checkbox"></div>
+            <div>Directorio con mínimo 1 entrada por provincia</div>
+          </li>
+          <li>
+            <div class="checkbox"></div>
+            <div>Meta tags en todas las páginas</div>
+          </li>
+          <li>
+            <div class="checkbox"></div>
+            <div>Sitemap.xml y robots.txt creados</div>
+          </li>
+          <li>
+            <div class="checkbox"></div>
+            <div>Búsqueda funcional en directorio</div>
+          </li>
+          <li>
+            <div class="checkbox"></div>
+            <div>Responsive testeado en móviles</div>
+          </li>
+          <li>
+            <div class="checkbox"></div>
+            <div>Performance > 85 en Lighthouse</div>
+          </li>
+          <li>
+            <div class="checkbox"></div>
+            <div>SSL/HTTPS activo</div>
+          </li>
+          <li>
+            <div class="checkbox"></div>
+            <div>Backups automáticos configurados</div>
+          </li>
+          <li>
+            <div class="checkbox"></div>
+            <div>Testing funcional completo</div>
+          </li>
+          <li>
+            <div class="checkbox"></div>
+            <div>Comunicado de lanzamiento preparado</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Tab navigation
+    const tabs = document.querySelectorAll('.nav-tab');
+    const sections = document.querySelectorAll('.section');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const targetId = tab.dataset.tab;
+        
+        tabs.forEach(t => t.classList.remove('active'));
+        sections.forEach(s => s.classList.remove('active'));
+        
+        tab.classList.add('active');
+        document.getElementById(targetId).classList.add('active');
+
+        // Smooth scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // Interactive checkboxes
+    const checkboxes = document.querySelectorAll('.checkbox');
+    checkboxes.forEach(box => {
+      box.addEventListener('click', () => {
+        box.style.background = box.style.background === 'var(--success)' ? '' : 'var(--success)';
+        box.style.borderColor = box.style.borderColor === 'var(--success)' ? 'var(--primary)' : 'var(--success)';
+        if (box.style.background === 'var(--success)') {
+          box.innerHTML = '✓';
+          box.style.color = 'white';
+          box.style.display = 'flex';
+          box.style.alignItems = 'center';
+          box.style.justifyContent = 'center';
+          box.style.fontWeight = 'bold';
+        } else {
+          box.innerHTML = '';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

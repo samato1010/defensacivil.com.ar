@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  
+  <!-- SEO Básico -->
+  <title>Colaboradores · Defensa Civil Argentina</title>
+  <meta name="description" content="Red de colaboradores de DefensaCivil.com.ar. Sumate para contribuir con información de tu provincia o municipio."/>
+  <meta name="keywords" content="colaboradores defensa civil, voluntarios, red colaborativa, contribuir, argentina"/>
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://defensacivil.com.ar/colaboradores.html"/>
+  <meta property="og:title" content="Colaboradores · Defensa Civil Argentina"/>
+  <meta property="og:description" content="Sumate a la red de colaboradores de Defensa Civil Argentina."/>
+  <meta property="og:image" content="https://defensacivil.com.ar/assets/images/og-image.jpg"/>
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://defensacivil.com.ar/colaboradores.html"/>
+  
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="/assets/css/main.css?v=1.0.0"/>
+  <link rel="stylesheet" href="/assets/css/mobile.css?v=1.0.0"/>
+  
+  <style>
+    /* Estilos específicos de colaboradores */
+    .hero-colab {
+      background: linear-gradient(135deg,#ffffff, #eef5ff);
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: var(--r);
+      box-shadow: 0 6px 16px rgba(0,0,0,.06);
+      padding: 24px;
+      margin: 14px 0;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    
+    .hero-colab h2 {
+      margin: 0;
+      color: var(--az1);
+      font-size: 1.5em;
+    }
+    
+    .hero-colab p {
+      margin: 10px 0 0;
+      color: var(--mut);
+      max-width: 600px;
+      line-height: 1.7;
+    }
+    
+    .colab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+    
+    .colab-card {
+      background: var(--card);
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: var(--r);
+      box-shadow: 0 4px 12px rgba(0,0,0,.08);
+      padding: 18px;
+      transition: .2s;
+    }
+    
+    .colab-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0,0,0,.14);
+      border-color: rgba(255,102,0,.35);
+    }
+    
+    .colab-card h4 {
+      margin: 0 0 8px;
+      color: var(--az1);
+      font-size: 1.15em;
+    }
+    
+    .colab-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin: 10px 0;
+      font-size: 0.95em;
+      color: var(--mut);
+    }
+    
+    .colab-meta span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .badge-nivel {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.85em;
+      background: #eaf1ff;
+      color: var(--az1);
+      border: 1px solid rgba(0,51,102,0.15);
+    }
+    
+    .badge-nivel.provincial {
+      background: #fff6ee;
+      border-color: rgba(255,102,0,0.25);
+      color: #7a2d00;
+    }
+    
+    .badge-nivel.nacional {
+      background: #f2fff6;
+      border-color: rgba(0,128,64,0.18);
+      color: #0a5a2b;
+    }
+    
+    @media (max-width: 768px) {
+      .colab-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="head">
+    <div class="brand">
+      <div>
+        <h1>Colaboradores</h1>
+        <div class="sub">Defensa Civil · Red colaborativa</div>
+      </div>
+    </div>
+    
+    <nav class="toplinks" aria-label="Navegación principal">
+      <a class="pilllink" href="/index.html">🏠 Inicio</a>
+      <a class="pilllink" href="/directorio.html">📒 Directorio</a>
+      <a class="pilllink" href="/historia.html">🕰️ Historia</a>
+      <a class="pilllink" href="/notas.html">📝 Notas</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  
+  <div class="hero-colab">
+    <div>
+      <h2>🤝 Red de Colaboradores</h2>
+      <p>
+        Sumate para contribuir con información actualizada de tu provincia o municipio. 
+        Ayudanos a mantener el directorio, la historia y las notas al día.
+      </p>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <a href="/colaboradores/alta.php" class="btn">
+        ✍️ Registrate como colaborador
+      </a>
+      <a href="/admin/login.php" class="btn alt-light">
+        🔐 Login colaboradores
+      </a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>¿Cómo funciona?</h3>
+    <div style="margin-top:14px;">
+      <div class="grid" style="grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));">
+        <div>
+          <div style="font-size:2em;margin-bottom:8px;">1️⃣</div>
+          <strong style="color:var(--az1);">Registrate</strong>
+          <p class="mut" style="margin:6px 0 0;">Completá el formulario con tus datos y nivel de colaboración.</p>
+        </div>
+        <div>
+          <div style="font-size:2em;margin-bottom:8px;">2️⃣</div>
+          <strong style="color:var(--az1);">Aprobación</strong>
+          <p class="mut" style="margin:6px 0 0;">El administrador revisará tu solicitud y te dará permisos.</p>
+        </div>
+        <div>
+          <div style="font-size:2em;margin-bottom:8px;">3️⃣</div>
+          <strong style="color:var(--az1);">Colaborá</strong>
+          <p class="mut" style="margin:6px 0 0;">Accedé al panel y actualizá información de tu zona.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:24px;">
+    <h3>Colaboradores Activos</h3>
+    <p class="mut" style="margin:10px 0 16px;">
+      Personas que contribuyen activamente con información del directorio, historia y notas.
+    </p>
+    
+    <div id="colaboradoresContainer" class="colab-grid">
+      <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--mut);">
+        Cargando colaboradores...
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:24px;background:#f0f7ff;">
+    <h3>💡 Áreas de colaboración</h3>
+    <ul style="margin:14px 0;padding-left:22px;line-height:2;">
+      <li><strong>Directorio:</strong> Actualizar contactos, teléfonos, emails y redes sociales de organismos.</li>
+      <li><strong>Historia:</strong> Aportar documentos, fechas y acontecimientos históricos de tu provincia.</li>
+      <li><strong>Notas:</strong> Compartir eventos, capacitaciones y noticias del sector.</li>
+      <li><strong>Normativa:</strong> Referenciar leyes, decretos y resoluciones locales.</li>
+    </ul>
+  </div>
+
+</main>
+
+<footer>
+  <div class="fmut">
+    Coordinado por el Lic. Sebastián Amato · Si querés colaborar, escribime a
+    <a href="mailto:samato@hst.com.ar">samato@hst.com.ar</a>
+  </div>
+  <div style="margin-top:14px;opacity:.9;">defensacivil.com.ar © 2026</div>
+</footer>
+
+<script src="/assets/js/mobile-nav.js" defer></script>
+
+<script>
+// Cargar colaboradores activos
+// Intentar primero el archivo público, si no existe usar el original
+const JSON_URLS = [
+  '/data/colaboradores_public.json',
+  '/data/colaboradores.json'
+];
+
+async function loadColaboradores() {
+  const container = document.getElementById('colaboradoresContainer');
+  
+  for (const url of JSON_URLS) {
+    try {
+      const response = await fetch(url);
+      
+      if (!response.ok) {
+        console.log(`Intentando siguiente URL (${url} falló)`);
+        continue;
+      }
+      
+      const data = await response.json();
+      console.log('Datos cargados desde:', url, data); // Debug
+      
+      // Intentar sacar colaboradores del campo 'collaborators' o generar desde 'items'
+      let collaborators = data.collaborators || [];
+      
+      // Si no hay collaborators, intentar con items (pero filtrar solo aprobados y sin datos sensibles)
+      if (collaborators.length === 0 && data.items) {
+        collaborators = data.items
+          .filter(item => (item.status || '').toLowerCase() === 'aprobado')
+          .map(item => ({
+            id: item.id,
+            nombre: item.nombre,
+            email: item.email,
+            telefono: item.telefono,
+            provincia: item.provincia,
+            localidad: item.localidad,
+            nivel: item.nivel_sugerido || 'local',
+            rol: item.role === 'admin' ? 'Administrador' : 'Colaborador',
+            estado: 'Activo'
+          }));
+      }
+      
+      if (collaborators.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column:1/-1;text-align:center;padding:40px;">
+            <h3 style="border:none;color:var(--mut);">Próximamente...</h3>
+            <p class="mut">Sumate para ser parte de los primeros colaboradores.</p>
+          </div>
+        `;
+        return;
+      }
+      
+      container.innerHTML = collaborators.map(colab => {
+        const nivel = (colab.nivel || 'local').toLowerCase();
+        const badgeClass = nivel === 'provincial' ? 'provincial' : (nivel === 'nacional' ? 'nacional' : '');
+        
+        return `
+          <div class="colab-card">
+            <h4>${colab.nombre || 'Colaborador'}</h4>
+            <span class="badge-nivel ${badgeClass}">${nivel.toUpperCase()}</span>
+            
+            <div class="colab-meta">
+              ${colab.provincia ? `<span>📍 ${colab.provincia}</span>` : ''}
+              ${colab.localidad ? `<span>🏘️ ${colab.localidad}</span>` : ''}
+              ${colab.email ? `<span>✉️ ${colab.email}</span>` : ''}
+              ${colab.telefono ? `<span>📞 ${colab.telefono}</span>` : ''}
+            </div>
+            
+            ${colab.rol ? `<p class="mut" style="margin-top:10px;font-size:0.9em;">${colab.rol}</p>` : ''}
+          </div>
+        `;
+      }).join('');
+      
+      return; // Éxito, salir
+      
+    } catch (error) {
+      console.error(`Error con ${url}:`, error);
+      continue;
+    }
+  }
+  
+  // Si llegamos aquí, ninguna URL funcionó
+  container.innerHTML = `
+    <div style="grid-column:1/-1;" class="error">
+      <strong>Error:</strong> No se pudieron cargar los colaboradores.
+      <br><small>Verificá que existe /data/colaboradores.json</small>
+      <br><br>
+      <button class="btn" onclick="location.reload()">🔄 Reintentar</button>
+    </div>
+  `;
+}
+
+// Cargar al iniciar
+loadColaboradores();
+</script>
+
+</body>
+</html>

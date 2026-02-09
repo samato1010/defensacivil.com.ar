@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "version": 1,
+    "updated": "2026-01-29 00:00:00",
+    "titulo": "Directorio",
+    "subtitulo": "Defensa Civil / Protección Civil",
+    "source_note": "Estructura base"
+  },
+  "entries": [
+    {
+      "id": "dc_20260129_001",
+      "denominacion": "Defensa Civil",
+      "domicilio": "Calle 123, Localidad, Provincia",
+      "telefono": "+54 11 1234-5678",
+      "email": "contacto@ejemplo.gob.ar",
+      "website": "https://www.ejemplo.gob.ar",
+      "instagram": "https://www.instagram.com/ejemplo",
+      "facebook": "https://www.facebook.com/ejemplo",
+      "comentario": "Guardia 24hs. Mesa de entradas de 8 a 16."
+    },
+    {
+      "id": "pc_20260129_002",
+      "denominacion": "Protección Civil",
+      "domicilio": "",
+      "telefono": "",
+      "email": "",
+      "website": "",
+      "instagram": "",
+      "facebook": "",
+      "comentario": ""
+    }
+  ]
+}

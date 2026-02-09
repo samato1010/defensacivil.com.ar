@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ley 8906/2000 - Provincia de Córdoba (Defensa Civil)</title>
+  <meta name="description" content="Ley Nº 8906 (Córdoba) - Sistema de Defensa Civil. Texto completo, índice y opciones de impresión/PDF." />
+
+  <style>
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      margin:0; padding:0;
+      background-color:#f8fcff;
+      color:#1a2a44;
+      line-height:1.7;
+    }
+    header{
+      background: linear-gradient(to bottom, #e6f0ff, #d6e8ff);
+      border-bottom: 4px solid #c00;
+      color:#003366;
+      text-align:center;
+      padding:40px 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .header-content{ max-width:1100px; margin:0 auto; }
+    h1{
+      font-size:2.4em;
+      margin:10px 0;
+      color:#c00;
+    }
+    .subtitle{
+      font-size:1.35em;
+      margin:8px 0;
+      color:#004080;
+    }
+
+    .main-content{
+      max-width:980px;
+      margin:40px auto;
+      padding:30px;
+      background:#fff;
+      border-radius:12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.10);
+    }
+    .doc-title{
+      text-align:center;
+      font-size:2.1em;
+      color:#003366;
+      margin: 10px 0 18px;
+      border-bottom:2px solid #c00;
+      padding-bottom:12px;
+    }
+    .kicker{
+      text-align:center;
+      color:#555;
+      font-style:italic;
+      margin-bottom:20px;
+    }
+
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+      margin: 8px 0 18px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 12px;
+      border-radius:999px;
+      background:#eaf1ff;
+      border:1px solid rgba(0,51,102,0.14);
+      font-weight:bold;
+      color:#003366;
+      font-size:0.95em;
+      white-space:nowrap;
+    }
+
+    .toc{
+      background:#f6f9ff;
+      border:1px solid rgba(0,0,0,0.08);
+      border-radius:12px;
+      padding:14px 16px;
+      margin:18px 0 26px;
+    }
+    .toc h3{
+      margin:0 0 10px;
+      color:#003366;
+    }
+    .toc .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+    }
+    .toc a{
+      display:block;
+      text-decoration:none;
+      font-weight:bold;
+      color:#0066cc;
+      padding:10px 12px;
+      border-radius:12px;
+      background:#fff;
+      border:1px solid rgba(0,0,0,0.06);
+      transition:.2s;
+    }
+    .toc a:hover{
+      border-color: rgba(255,102,0,0.45);
+      transform: translateY(-1px);
+      text-decoration: underline;
+    }
+
+    .capitulo{
+      margin: 34px 0 14px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: linear-gradient(to bottom, #ffffff, #f6f9ff);
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    .capitulo h2{
+      margin:0;
+      color:#003366;
+      font-size: 1.35em;
+    }
+    .capitulo p{
+      margin:6px 0 0;
+      color:#456;
+      font-style: italic;
+    }
+
+    .articulo{
+      margin:22px 0;
+      padding-left:20px;
+      border-left:5px solid #004080;
+      font-size:1.06em;
+    }
+    .art-num{
+      font-weight:bold;
+      color:#003366;
+      font-size:1.22em;
+    }
+    .sub{
+      margin-top:8px;
+    }
+    .sub ul{ margin:10px 0 0 20px; }
+    .sub li{ margin:6px 0; }
+
+    .nota{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:10px;
+      background:#fff7ed;
+      border:1px solid rgba(255,102,0,0.25);
+      color:#6a3a00;
+      font-size:0.98em;
+    }
+
+    .back-buttons{
+      text-align:center;
+      margin: 46px 0 10px;
+    }
+    .btn{
+      display:inline-block;
+      padding:12px 22px;
+      margin:10px;
+      background:#004080;
+      color:#fff;
+      font-size:1.1em;
+      text-decoration:none;
+      border-radius:8px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.15);
+      transition: all .25s;
+      border:0;
+      cursor:pointer;
+    }
+    .btn:hover{
+      background:#0066cc;
+      transform: translateY(-2px);
+    }
+    .btn.print-btn{ background:#c00; }
+    .btn.print-btn:hover{ background:#a00; }
+    .btn.gray{
+      background:#e9eef6;
+      color:#003366;
+      box-shadow:none;
+      border:1px solid rgba(0,0,0,0.10);
+    }
+    .btn.gray:hover{ background:#dde7f7; }
+
+    .back-to-top{
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      background:#004080;
+      color:#fff;
+      width:46px;
+      height:46px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size: 1.4em;
+      cursor:pointer;
+      box-shadow:0 6px 16px rgba(0,0,0,0.25);
+      z-index: 999;
+      transition: .2s;
+    }
+    .back-to-top:hover{
+      background:#0066cc;
+      transform: scale(1.07);
+    }
+
+    footer{
+      background:#e6f0ff;
+      color:#003366;
+      text-align:center;
+      padding:30px 20px;
+      margin-top:60px;
+      border-top:3px solid #c00;
+      font-size:1.05em;
+    }
+
+    @media print{
+      body{ background:#fff; color:#000; }
+      header, footer, .back-buttons, .toc, .back-to-top{ display:none; }
+      .main-content{ box-shadow:none; border:1px solid #ddd; }
+      .capitulo{ border:0; background:#fff; padding:0; }
+      .articulo{ border-left: 3px solid #333; }
+    }
+    @media (max-width: 900px){
+      .toc .grid{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 680px){
+      h1{ font-size:2.0em; }
+      .main-content{ padding:20px; }
+      .toc .grid{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-content">
+    <h2 class="subtitle">Defensa Civil Argentina</h2>
+    <h1>Ley N° 8906</h1>
+    <p class="subtitle">Provincia de Córdoba — Sistema de Defensa Civil</p>
+  </div>
+</header>
+
+<div class="main-content" id="top">
+
+  <div class="doc-title">LEY Nº 8906</div>
+
+  <div class="meta">
+    <span class="chip">📍 Provincia: Córdoba</span>
+    <span class="chip">🗓️ Sanción: 30/11/2000</span>
+    <span class="chip">📰 B.O.: 26/12/2000</span>
+    <span class="chip">🧾 Promulgación: Decreto 2676/00</span>
+    <span class="chip">📌 Artículos: 28</span>
+  </div>
+
+  <p class="kicker">Texto provisto para publicación en defensacivil.com.ar</p>
+
+  <div class="toc">
+    <h3>Índice rápido</h3>
+    <div class="grid">
+      <a href="#cap1">Cap. I — Sistema</a>
+      <a href="#cap2">Cap. II — Autoridad</a>
+      <a href="#cap3">Cap. III — Dirección</a>
+      <a href="#cap4">Cap. IV — Red</a>
+      <a href="#cap5">Cap. V — Emergencia</a>
+      <a href="#cap6">Cap. VI — Municipal</a>
+      <a href="#cap7">Cap. VII — Entidades</a>
+      <a href="#cap8">Cap. VIII — Recursos</a>
+      <a href="#cap9">Cap. IX — Auxiliares</a>
+      <a href="#cap10">Cap. X — Prohibiciones</a>
+      <a href="#cap11">Cap. XI — Finales</a>
+      <a href="#datos">Datos / Firmas</a>
+    </div>
+  </div>
+
+  <div class="capitulo" id="cap1">
+    <h2>CAPÍTULO I — SISTEMA DE DEFENSA CIVIL</h2>
+  </div>
+
+  <div class="articulo" id="art1">
+    <span class="art-num">Artículo 1º.-</span>
+    <p><strong>DEFENSA CIVIL.</strong> EL Sistema de Defensa Civil comprende el conjunto de previsiones y medidas de carácter general tendientes a prevenir, evitar, reducir y reparar los efectos de los eventos adversos resultantes de la acción de agentes naturales o antrópicos susceptibles de ocasionar un grave daño a la población, o a los bienes públicos, privados y al medio ambiente y, una vez acaecidos, aquéllas que contribuyen a restablecer la normalidad en la zona afectada.</p>
+  </div>
+
+  <div class="capitulo" id="cap2">
+    <h2>CAPÍTULO II — AUTORIDAD DE APLICACIÓN</h2>
+  </div>
+
+  <div class="articulo" id="art2">
+    <span class="art-num">Artículo 2º.-</span>
+    <p><strong>JUNTA PROVINCIAL DE DEFENSA CIVIL.</strong> LA planificación, organización, promoción, coordinación, control y dirección de la Defensa Civil es responsabilidad de la Junta Provincial de Defensa Civil.</p>
+  </div>
+
+  <div class="articulo" id="art3">
+    <span class="art-num">Artículo 3º.-</span>
+    <p><strong>INTEGRACIÓN.</strong> LA Junta Provincial de Defensa Civil es presidida por el Gobernador de la Provincia; en carácter de vocales participan los Ministros de Gobierno, de la Solidaridad, de Salud y el titular de la Agencia Córdoba Ambiente S.E.. El Órgano Coordinador Ejecutivo, es la Dirección de Defensa Civil o el que en el futuro la reemplace según la Ley Orgánica de Ministerios.</p>
+  </div>
+
+  <div class="articulo" id="art4">
+    <span class="art-num">Artículo 4º.-</span>
+    <p><strong>FUNCIONES.</strong> LA Autoridad de Aplicación tiene las siguientes funciones:</p>
+    <div class="sub">
+      <ul>
+        <li>a) Establecer las políticas generales de Defensa Civil en el ámbito de la Provincia;</li>
+        <li>b) Establecer convenios con la Nación y demás Provincias;</li>
+        <li>c) Solicitar al Poder Ejecutivo Provincial la declaración en Estado de Emergencia de una parte o todo el territorio de la Provincia;</li>
+        <li>d) Fijar los objetivos, orientación y amplitud de programas de difusión de Defensa Civil en todas las etapas de la enseñanza pública y privada;</li>
+        <li>e) Fijar Zonas de Riesgo según la naturaleza del peligro potencial y la probable dispersión geográfica del mismo, confeccionando el Mapa de Riesgo;</li>
+        <li>f) Promover en cada Zona de Riesgo, la creación de Servicios de Defensa Civil con capacidad de respuesta ante el peligro potencial previsto, fomentando la organización de Comités Zonales de Defensa Civil;</li>
+        <li>g) Establecer planes de contingencia y programas de Defensa Civil;</li>
+        <li>h) Centralizar y dirigir las tareas de distribución de los medios de ayuda a los damnificados;</li>
+        <li>i) Promover la creación y actividad de asociaciones cuyo objeto social se relacione total o parcialmente con la Defensa Civil;</li>
+        <li>j) Orientar a la ciudadanía en general sobre aspectos de la Defensa Civil, capacitando y difundiendo a través de los medios de comunicación masiva, las medidas necesarias para asegurar la autoprotección y la conciencia de solidaridad en momentos de catástrofes;</li>
+        <li>k) Administrar y disponer de los recursos asignados por la presente Ley;</li>
+        <li>l) Adoptar toda otra medida que resulte necesaria para asegurar la protección de la población y de los bienes públicos y privados.</li>
+      </ul>
+      <p>La enumeración precedente no es taxativa y no implica la negación de otras funciones atinentes a la Defensa Civil y/o que fueran necesarias para el cumplimiento de las previsiones del Artículo 1º.</p>
+    </div>
+  </div>
+
+  <div class="articulo" id="art5">
+    <span class="art-num">Artículo 5º.-</span>
+    <p><strong>FUNCIONAMIENTO.</strong> LA Junta Provincial de Defensa Civil funcionará en forma permanente, durante todo el año y del modo y en los términos que lo establezca la reglamentación.</p>
+    <p>En los aspectos que requiera asesoramiento, podrá invitar a especialistas para que participen en sus reuniones.</p>
+  </div>
+
+  <div class="capitulo" id="cap3">
+    <h2>CAPÍTULO III — DE LA DIRECCIÓN DE DEFENSA CIVIL</h2>
+  </div>
+
+  <div class="articulo" id="art6">
+    <span class="art-num">Artículo 6º.-</span>
+    <p>LA Dirección de Defensa Civil, tiene a su cargo la coordinación de las acciones de prevención, respuesta y recuperación que el Sistema de Defensa Civil requiera y es el Órgano Coordinador Ejecutivo de la Junta Provincial de Defensa Civil.</p>
+  </div>
+
+  <div class="articulo" id="art7">
+    <span class="art-num">Artículo 7º.-</span>
+    <p><strong>JUNTA DE COORDINACIÓN DE LA DEFENSA CIVIL.</strong> LA Dirección de Defensa Civil convocará a los representantes de instituciones públicas y privadas, con capacidad operativa para actuar en el Sistema de Defensa Civil, para que integren la Junta de Coordinación de la Defensa Civil. Sesionará durante todo el año y tendrá por función la puesta en marcha en forma coordinada de las acciones previstas en el Sistema de Defensa Civil.</p>
+  </div>
+
+  <div class="articulo" id="art8">
+    <span class="art-num">Artículo 8º.-</span>
+    <p>TODO lo concerniente a las funciones específicas de la Dirección de Defensa Civil como así también lo relacionado con su organización interna, justificación de cada dependencia, idoneidad o especialización de los funcionarios y personal que integre este organismo, serán establecidos por el Decreto Reglamentario correspondiente.</p>
+  </div>
+
+  <div class="capitulo" id="cap4">
+    <h2>CAPÍTULO IV — RED ÚNICA DE COMUNICACIÓN PARA EMERGENCIAS</h2>
+  </div>
+
+  <div class="articulo" id="art9">
+    <span class="art-num">Artículo 9º.-</span>
+    <p><strong>CREACIÓN.</strong> CRÉASE la RED ÚNICA DE COMUNICACIÓN PARA EMERGENCIAS DE LA PROVINCIA DE CÓRDOBA, que tendrá a su cargo la correcta comunicación y coordinación de los distintos servicios de Defensa Civil.</p>
+  </div>
+
+  <div class="articulo" id="art10">
+    <span class="art-num">Artículo 10.-</span>
+    <p><strong>SISTEMAS.</strong> TODOS los sistemas de comunicación de los organismos públicos y de los privados con competencia en las materias afines a la Defensa Civil, integran la Red de Comunicación de Emergencias de la Provincia y, verificada la situación de emergencia, quedan subordinados a las directivas de la Autoridad de Aplicación.</p>
+  </div>
+
+  <div class="articulo" id="art11">
+    <span class="art-num">Artículo 11.-</span>
+    <p><strong>ORGANIZACIÓN.</strong> LA Autoridad de Aplicación debe organizar la Red Única de Comunicación para Emergencias y fijar cabeceras de comunicaciones en cada Zona de Riesgo en que se subdivide el territorio provincial.</p>
+    <p>La Red instrumentada debe posibilitar la correcta comunicación de los organismos involucrados en los servicios de Defensa Civil, bajo las condiciones extremas que hipotéticamente resulten del acaecimiento de los eventos adversos que caractericen a cada Zona de Riesgo.</p>
+  </div>
+
+  <div class="capitulo" id="cap5">
+    <h2>CAPÍTULO V — DEL ESTADO DE EMERGENCIA Y LAS MEDIDAS DE EXCEPCIÓN</h2>
+  </div>
+
+  <div class="articulo" id="art12">
+    <span class="art-num">Artículo 12.-</span>
+    <p><strong>DECLARACIÓN.</strong> CUANDO la capacidad de respuesta de la autoridad local de Defensa Civil sea superada por las características o magnitud de un evento adverso, el Poder Ejecutivo Provincial declarará el Estado de Emergencia Regional, Zonal o Provincial.</p>
+    <p>En la Declaración de Estado de Emergencia se delimitará la “Zona de Desastre”, se determinará la autoridad que tendrá a su cargo la responsabilidad operativa de los servicios de Defensa Civil y las medidas especiales que se autoricen a adoptar. El cese del Estado de Emergencia será dispuesto del mismo modo y forma.</p>
+  </div>
+
+  <div class="articulo" id="art13">
+    <span class="art-num">Artículo 13.-</span>
+    <p><strong>PELIGRO INMINENTE.</strong> EN caso de peligro inminente de agravarse los efectos de un evento adverso, la Autoridad de Aplicación podrá adoptar las medidas que considere necesarias para los fines de la presente Ley, sin perjuicio de solicitar la Declaración de Estado de Emergencia.</p>
+  </div>
+
+  <div class="articulo" id="art14">
+    <span class="art-num">Artículo 14.-</span>
+    <p><strong>CONVOCATORIA Y REQUISA.</strong> CUANDO el evento adverso sea de gran magnitud y los servicios voluntarios o los medios disponibles no sean suficientes para superarlo, la Junta Provincial de Defensa Civil dispondrá lo necesario para la aplicación de la legislación vigente sobre convocatoria de personal civil y requisa de materiales.</p>
+  </div>
+
+  <div class="capitulo" id="cap6">
+    <h2>CAPÍTULO VI — DE LA DEFENSA CIVIL MUNICIPAL Y COMUNAL</h2>
+  </div>
+
+  <div class="articulo" id="art15">
+    <span class="art-num">Artículo 15.-</span>
+    <p>LOS órganos ejecutivos de las Municipalidades y Comunas deberán, en los ámbitos sometidos a su competencia, implementar las acciones previstas en el Artículo 1º de la presente Ley.</p>
+    <p>Podrán requerir la Declaración de Estado de Emergencia, al Poder Ejecutivo Provincial, debiendo en tal caso coordinar las acciones el Órgano Coordinador Ejecutivo de la Junta Provincial de Defensa Civil.</p>
+  </div>
+
+  <div class="articulo" id="art16">
+    <span class="art-num">Artículo 16.-</span>
+    <p><strong>JUNTAS LOCALES DE DEFENSA CIVIL.</strong> LOS Municipios y Comunas establecen la organización, responsabilidad y facultades de las Juntas de Defensa Civil de cada Localidad.</p>
+  </div>
+
+  <div class="capitulo" id="cap7">
+    <h2>CAPÍTULO VII — DE LAS ENTIDADES PÚBLICAS Y PRIVADAS</h2>
+  </div>
+
+  <div class="articulo" id="art17">
+    <span class="art-num">Artículo 17.-</span>
+    <p><strong>RESPONSABILIDAD FUNCIONAL.</strong> LOS funcionarios o personal jerárquico de las entidades públicas y privadas, serán responsables de la planificación, organización y ejecución de las medidas y actividades de Defensa Civil en el ámbito interno de las mismas.</p>
+  </div>
+
+  <div class="articulo" id="art18">
+    <span class="art-num">Artículo 18.-</span>
+    <p>LOS centros, establecimientos y dependencias de los organismos públicos dispondrán de un sistema de autoprotección, dotado con sus propios recursos y del correspondiente Plan de Emergencia para Acciones de Prevención de Riesgos, Alarma, Evacuación y Socorro.</p>
+  </div>
+
+  <div class="articulo" id="art19">
+    <span class="art-num">Artículo 19.-</span>
+    <p>TODO establecimiento público debe contar en forma obligatoria con un Manual de Autoprotección, que tenga por objeto la organización de los medios humanos y materiales disponibles para la prevención de riesgos de incendio o de cualquier otro equivalente, como así también para garantizar la evacuación y la intervención inmediata. Este manual debe ser confeccionado conforme a las pautas que fije la Dirección de Defensa Civil.</p>
+  </div>
+
+  <div class="capitulo" id="cap8">
+    <h2>CAPÍTULO VIII — DE LOS RECURSOS</h2>
+  </div>
+
+  <div class="articulo" id="art20">
+    <span class="art-num">Artículo 20.-</span>
+    <p>LAS erogaciones que demanden la preparación y ejecución de las medidas de Defensa Civil serán atendidas con los ingresos provenientes de los siguientes recursos:</p>
+    <div class="sub">
+      <ul>
+        <li>a) Los montos que el Presupuesto General de la Provincia le asigne anualmente;</li>
+        <li>b) Los que en caso de emergencia asigne especialmente el Poder Ejecutivo Provincial;</li>
+        <li>c) Los que en caso de emergencia asigne especialmente el Poder Ejecutivo Nacional;</li>
+        <li>d) Los aranceles que se perciban por las tareas de asesoramiento o de ejecución de tareas de prevención que se realicen a solicitud de entes privados con respecto a actividades con fines de lucro;</li>
+        <li>e) Las donaciones y legados;</li>
+        <li>f) Los producidos de las ventas de elementos de Defensa Civil en desuso.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="capitulo" id="cap9">
+    <h2>CAPÍTULO IX — DE LAS ENTIDADES QUE CONTRIBUYAN A LA DEFENSA CIVIL</h2>
+  </div>
+
+  <div class="articulo" id="art21">
+    <span class="art-num">Artículo 21.-</span>
+    <p>LAS entidades civiles establecidas o que se establezcan en el territorio provincial, cuyos fines tengan relación con las actividades de la Defensa Civil, podrán ser declaradas e inscriptas como “Entidad Auxiliar a la Defensa Civil”, para lo cual deberán reunir los siguientes requisitos:</p>
+    <div class="sub">
+      <ul>
+        <li>a) Deberán poseer Personería Jurídica;</li>
+        <li>b) Sus Estatutos deberán ser sometidos a la consideración de la Dirección de Defensa Civil, los que deberán fijar como fin primordial de la entidad el desarrollo de actividades que interesen a la Defensa Civil.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="articulo" id="art22">
+    <span class="art-num">Artículo 22.-</span>
+    <p>LAS entidades que sean declaradas en tal carácter, gozarán de las siguientes ventajas:</p>
+    <div class="sub">
+      <ul>
+        <li>a) Sus actividades serán declaradas “de Servicio Público” o “de Interés Público”, según corresponda.</li>
+        <li>b) Podrán peticionar facilidades para el desarrollo de sus funciones específicas ante la Dirección de Defensa Civil.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="articulo" id="art23">
+    <span class="art-num">Artículo 23.-</span>
+    <p>ES responsabilidad de la Dirección de Defensa Civil el asesorar en esta materia a las entidades que lo soliciten, así como también practicar inspecciones y aconsejar u ordenar medidas de defensa y seguridad.</p>
+  </div>
+
+  <div class="articulo" id="art24">
+    <span class="art-num">Artículo 24.-</span>
+    <p>LA Dirección de Defensa Civil deberá llevar registros de las entidades auxiliares de la Defensa Civil, cuyas características serán determinadas por la reglamentación.</p>
+  </div>
+
+  <div class="capitulo" id="cap10">
+    <h2>CAPÍTULO X — DE LAS PROHIBICIONES</h2>
+  </div>
+
+  <div class="articulo" id="art25">
+    <span class="art-num">Artículo 25.-</span>
+    <p>QUEDA prohibido en todo el ámbito de la Provincia la creación de organismos y entidades que se arroguen las funciones y tareas de la Defensa Civil, o impliquen una suplantación o superposición de la misión que compete a las autoridades de Defensa Civil.</p>
+  </div>
+
+  <div class="articulo" id="art26">
+    <span class="art-num">Artículo 26.-</span>
+    <p>QUEDA prohibido en el territorio de la Provincia el empleo de denominaciones, siglas, distintivos y credenciales de uso oficial en la Defensa Civil con fines ajenos a la misma o que den lugar a confusión sobre su verdadero significado.</p>
+  </div>
+
+  <div class="capitulo" id="cap11">
+    <h2>CAPÍTULO XI — DISPOSICIONES FINALES</h2>
+  </div>
+
+  <div class="articulo" id="art27">
+    <span class="art-num">Artículo 27.-</span>
+    <p>DEROGA Decreto-Ley Nº 1209/71.</p>
+  </div>
+
+  <div class="articulo" id="art28">
+    <span class="art-num">Artículo 28.-</span>
+    <p>COMUNÍQUESE al Poder Ejecutivo.</p>
+  </div>
+
+  <div class="articulo" id="datos">
+    <span class="art-num">DATOS / NOTICIAS ACCESORIAS</span>
+    <p><strong>Firmas:</strong> DOMINA – PRESAS – DEPPELER – VILLA</p>
+    <p><strong>Titular del Poder Ejecutivo:</strong> DE LA SOTA</p>
+    <p><strong>Decreto de promulgación:</strong> 2676/00</p>
+    <p><strong>Fuente de publicación:</strong> B.O.: 26.12.00</p>
+    <p><strong>Fecha de sanción:</strong> 30.11.00</p>
+    <p><strong>Cantidad de artículos:</strong> 28</p>
+
+    <div class="nota">
+      Fuente oficial (link):<br/>
+      <a href="http://web2.cba.gov.ar/web/leyes.nsf/85a69a561f9ea43d03257234006a8594/35d881a4ef59dd110325723400649b7c?OpenDocument" style="color:#0066cc;font-weight:bold;text-decoration:none;">
+        Ver en web2.cba.gov.ar
+      </a>
+    </div>
+  </div>
+
+  <div class="back-buttons">
+    <a href="index.html" class="btn">Volver al Inicio</a>
+    <a href="directorio.html" class="btn">Directorio Nacional</a>
+    <a href="historia.html" class="btn">Volver a Historia</a>
+    <a href="provincia-cordoba.html" class="btn gray">Volver a Córdoba</a>
+    <button class="btn print-btn" onclick="window.print()">Imprimir / Guardar PDF</button>
+  </div>
+
+</div>
+
+<div class="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</div>
+
+<footer>
+  <p>Esta web es propiedad del Lic. Sebastián Amato y es un aporte a esta gran institución</p>
+  <p style="margin-top:10px;">defensacivil.com.ar © 2026</p>
+</footer>
+
+</body>
+</html>

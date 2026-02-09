@@ -1,0 +1,15 @@
+# robots.txt para defensacivil.com.ar
+
+User-agent: *
+Allow: /
+
+# Bloquear admin y archivos privados
+Disallow: /admin/
+Disallow: /admin/_storage/
+Disallow: /admin/_backup/
+
+# Permitir acceso a assets públicos
+Allow: /assets/
+
+# Sitemap
+Sitemap: https://defensacivil.com.ar/sitemap.xml

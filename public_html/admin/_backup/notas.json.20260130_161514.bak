@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "titulo": "Defensa Civil Argentina",
+    "subtitulo": "Notas y actualizaciones",
+    "updated": "2026-01-30"
+  },
+  "notes": [
+    {
+      "id": "n-2026-01-30-001",
+      "fecha": "2026-01-30",
+      "provincia": "Buenos Aires",
+      "categoria": "Directorio",
+      "titulo": "Mejora de filtros y visualización",
+      "texto": "Se incorporó búsqueda y filtros por provincia/municipio/localidad, y se preparó una vista más amigable.",
+      "links": [
+        { "href": "/directorio.html", "label": "Ver Directorio" }
+      ]
+    }
+  
+}

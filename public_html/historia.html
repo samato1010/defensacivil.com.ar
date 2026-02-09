@@ -1,0 +1,1286 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Historia · Defensa Civil</title>
+
+<style>
+:root{
+  --az1:#003366; --az2:#004080; --n:#ff6600;
+  --bg:#f8f9fa; --card:#fff; --tx:#222; --mut:#555;
+  --b:rgba(0,0,0,.10); --r:14px; --link:#0066cc;
+}
+*{box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif;margin:0;background:var(--bg);color:var(--tx);line-height:1.7}
+
+/* Header (mismo estilo que index/directorio) */
+header{
+  background:linear-gradient(to bottom,var(--az1),var(--az2));
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+header::before{
+  content:"";
+  position:absolute; inset:-120px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,102,0,.25), transparent 45%),
+    radial-gradient(circle at 80% 30%, rgba(255,255,255,.10), transparent 45%),
+    radial-gradient(circle at 40% 90%, rgba(255,255,255,.08), transparent 55%);
+  pointer-events:none;
+}
+header::after{
+  content:"";
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 42px 42px;
+  opacity:.22;
+  pointer-events:none;
+}
+.head{
+  position:relative;
+  max-width:1200px;
+  margin:0 auto;
+  padding:22px 16px;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.brand h1{margin:0;font-size:1.55em;color:#fff;letter-spacing:.2px;}
+.sub{opacity:.92;margin:6px 0 0;font-size:1.02em;}
+.toplinks{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.pilllink{
+  text-decoration:none;
+  color:#fff;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.20);
+  padding:10px 12px;
+  border-radius:999px;
+  font-weight:900;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition:.15s;
+}
+.pilllink:hover{background:rgba(255,255,255,.20);transform:translateY(-1px);}
+
+
+.wrap{max-width:1200px;margin:18px auto;padding:0 16px 60px;}
+
+/* Toolbar */
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:12px 0;}
+.tool{background:#fff;border:1px solid var(--b);border-radius:999px;padding:10px 12px;display:flex;gap:10px;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,.04);}
+.tool label{font-weight:bold;color:var(--az1);white-space:nowrap;font-size:.95em;}
+.tool input,.tool select{border:0;outline:0;background:transparent;font-size:1em;min-width:220px;}
+.tool select{min-width:200px;cursor:pointer}
+
+/* Toggle */
+.toggle{
+  background:#fff;border:1px solid var(--b);border-radius:999px;
+  padding:8px 12px;display:flex;gap:10px;align-items:center;
+  box-shadow:0 2px 10px rgba(0,0,0,.04);
+}
+.toggle .tlabel{font-weight:900;color:var(--az1);font-size:.95em;white-space:nowrap;}
+.switch{position:relative;width:46px;height:26px;display:inline-block;}
+.switch input{display:none;}
+.slider{
+  position:absolute;cursor:pointer;inset:0;
+  background:#e5e7eb;border-radius:999px;transition:.18s;
+  border:1px solid rgba(0,0,0,.08);
+}
+.slider:before{
+  content:"";position:absolute;height:22px;width:22px;left:2px;top:2px;
+  background:#fff;border-radius:50%;transition:.18s;
+  box-shadow:0 2px 8px rgba(0,0,0,.18);
+}
+.switch input:checked + .slider{background:#dbe8ff;border-color:rgba(0,51,102,.18);}
+.switch input:checked + .slider:before{transform:translateX(20px);background:#ffffff;}
+.toggle .hint{color:var(--mut);font-size:.9em;}
+
+/* Botones */
+.btn{
+  border:0;
+  border-radius:14px;
+  padding:10px 14px;
+  cursor:pointer;
+  font-weight:900;
+  background:linear-gradient(to bottom, #004080, #0066cc);
+  color:#fff;
+  box-shadow:0 10px 22px rgba(0,0,0,.18);
+  transition:.15s;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.btn:hover{background:linear-gradient(to bottom, #0055aa, #0077ee);transform:translateY(-1px);box-shadow:0 14px 28px rgba(0,0,0,.22);}
+.btn.alt{background:#e9eef6;color:var(--az1);box-shadow:none;border:1px solid rgba(0,0,0,.08);}
+.btn.alt:hover{background:#dde7f7;transform:translateY(-1px);}
+.btn.sm{padding:8px 12px;font-size:.92em;box-shadow:none;border-radius:12px}
+
+
+/* Cards */
+.section-card{
+  background:var(--card);
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:var(--r);
+  box-shadow:0 6px 16px rgba(0,0,0,.06);
+  padding:16px;
+  margin:12px 0;
+}
+.section-title{
+  margin:0 0 12px;
+  color:var(--az1);
+  border-left:4px solid var(--n);
+  padding-left:12px;
+  font-size:1.25em;
+}
+
+/* Tabs (pantallas principales) */
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0;}
+.tab{
+  border:1px solid var(--b);
+  background:#fff;
+  color:var(--az1);
+  font-weight:800;
+  padding:10px 14px;
+  border-radius:999px;
+  cursor:pointer;
+  transition:.15s;
+}
+.tab:hover{background:#f2f6ff;}
+.tab.active{background:var(--az1);color:#fff;border-color:transparent;}
+
+/* Sub-tabs para vista de eventos */
+.viewtabs{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 0;}
+.viewtab{
+  border:1px solid var(--b);
+  background:#fff;
+  color:var(--az1);
+  font-weight:800;
+  padding:10px 14px;
+  border-radius:999px;
+  cursor:pointer;
+  transition:.15s;
+}
+.viewtab:hover{background:#f2f6ff;}
+.viewtab.active{background:var(--az2);color:#fff;border-color:transparent;}
+
+/* KPI chips */
+.kpi{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 10px;}
+.kpi .chip{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 12px;border-radius:999px;font-weight:800;
+  background:#eaf1ff;color:var(--az1);
+  border:1px solid rgba(0,51,102,0.12);
+}
+
+/* Chips filtros */
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 12px;}
+.chipfilter{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 12px;border-radius:999px;font-weight:800;
+  background:#fff;color:var(--az1);
+  border:1px solid rgba(0,0,0,0.10);
+  box-shadow:0 2px 10px rgba(0,0,0,0.04);
+}
+.chipfilter .key{opacity:.8;font-weight:900;letter-spacing:.2px;}
+.chipfilter .x{
+  border:0;cursor:pointer;background:#eaf1ff;color:var(--az1);
+  width:28px;height:28px;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:900;line-height:1;transition:.15s;
+}
+.chipfilter .x:hover{transform:scale(1.05);background:#dbe8ff;}
+
+/* Timeline */
+.timeline{position:relative;padding:14px 0 8px;margin-top:8px;}
+.timeline::before{
+  content:'';position:absolute;top:0;bottom:0;left:18px;width:4px;
+  background:linear-gradient(to bottom,var(--az1),var(--n));
+  border-radius:4px;
+}
+.event{position:relative;padding-left:56px;margin:18px 0;}
+.dot{
+  position:absolute;left:6px;top:10px;width:26px;height:26px;
+  background:var(--n);border:4px solid var(--az1);border-radius:50%;
+}
+.event-card{
+  background:#fff;border:1px solid rgba(0,0,0,.08);
+  border-radius:14px;box-shadow:0 4px 12px rgba(0,0,0,.08);
+  padding:14px 16px;transition:.15s;
+}
+.event-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 22px rgba(0,0,0,.14);
+  border-color:rgba(255,102,0,0.45);
+}
+.event-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;}
+.date{font-size:1.1em;font-weight:900;color:var(--n);}
+.badges{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.badge{
+  font-size:.9em;font-weight:900;color:var(--az1);
+  background:#eaf1ff;border:1px solid rgba(0,51,102,0.15);
+  padding:4px 10px;border-radius:999px;white-space:nowrap;
+}
+.badge.tipo{background:#fff6ee;border-color:rgba(255,102,0,0.25);color:#7a2d00;}
+.badge.origen{background:#f2fff6;border-color:rgba(0,128,64,0.18);color:#0a5a2b;}
+.info{margin:8px 0 10px;font-size:1.03em;}
+.link a{color:var(--link);text-decoration:none;font-weight:900;display:inline-flex;align-items:center;gap:8px;margin-right:10px;}
+.link a:hover{text-decoration:underline;color:var(--az2);}
+
+/* Provincia grid */
+.prov-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:14px;}
+.prov-card{
+  background:#fff;border:1px solid rgba(0,0,0,.08);
+  border-radius:14px;box-shadow:0 4px 12px rgba(0,0,0,.06);padding:14px;
+}
+.prov-card h3{margin:0 0 8px;color:var(--az1);display:flex;justify-content:space-between;align-items:center;gap:10px;}
+.count{
+  font-size:.9em;font-weight:900;color:var(--az1);
+  background:#eaf1ff;border:1px solid rgba(0,51,102,0.12);
+  padding:4px 10px;border-radius:999px;white-space:nowrap;
+}
+.prov-list{margin:0;padding-left:18px;}
+.prov-list li{margin:8px 0;}
+.prov-list a{color:var(--link);font-weight:900;text-decoration:none;}
+.prov-list a:hover{text-decoration:underline;}
+
+/* Tabla (filas) */
+.table-wrap{
+  overflow:auto;border:1px solid rgba(0,0,0,0.08);
+  border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,.06);
+  background:#fff;
+}
+table{width:100%;border-collapse:collapse;min-width:980px;}
+thead th{
+  position:sticky;top:0;z-index:2;
+  background:linear-gradient(to bottom,#eaf1ff,#dbe8ff);
+  color:var(--az1);text-align:left;padding:12px;
+  border-bottom:2px solid rgba(0,0,0,0.08);
+  font-size:.95em;
+}
+tbody td{padding:12px;border-bottom:1px solid rgba(0,0,0,0.06);vertical-align:top;font-size:.98em;}
+tbody tr:hover{background:#f6f9ff;}
+.small{color:var(--mut);font-size:.92em}
+
+/* Pastillas */
+.pills-grid{display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:12px;}
+.pill{
+  background:#fff;border:1px solid rgba(0,0,0,.08);
+  border-radius:14px;box-shadow:0 4px 12px rgba(0,0,0,.08);
+  padding:12px 14px;transition:.15s;
+}
+.pill:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 22px rgba(0,0,0,.14);
+  border-color:rgba(255,102,0,0.45);
+}
+.pill-top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:8px;}
+.pill-date{font-weight:900;color:var(--n);}
+.pill-title{font-weight:900;color:var(--az1);line-height:1.25;margin:0 0 6px;}
+.pill-desc{color:var(--mut);font-size:.95em;line-height:1.35;margin:0 0 8px;}
+.pill-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:8px;}
+
+/* Errores */
+.error{background:#fff3f3;border:1px solid rgba(180,0,0,0.18);color:#7a0000;padding:12px 14px;border-radius:12px;margin:14px 0;}
+
+/* Back to top */
+.back-to-top{
+  position:fixed;bottom:26px;right:26px;background:var(--az2);color:#fff;
+  width:50px;height:50px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.6em;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.30);
+  z-index:999;transition:.2s;
+}
+.back-to-top:hover{background:#0066cc;transform:scale(1.08);}
+
+footer{background:var(--az1);color:#fff;text-align:center;padding:35px 20px;margin-top:60px;font-size:1.05em;}
+
+/* Highlight al abrir link */
+.flash{outline:3px solid rgba(255,102,0,.75);box-shadow:0 12px 26px rgba(255,102,0,.20);border-color:rgba(255,102,0,.55) !important;}
+.flashrow{background:#fff6ee !important;}
+
+/* Toast */
+.toast{
+  position:fixed;left:18px;bottom:18px;background:#0f172a;color:#fff;
+  padding:10px 12px;border-radius:12px;box-shadow:0 10px 26px rgba(0,0,0,.22);
+  font-weight:800;z-index:9999;opacity:0;transform:translateY(10px);transition:.18s;
+}
+.toast.show{opacity:1;transform:translateY(0);}
+
+@media (max-width: 992px){
+  .tool input{min-width:180px;}
+  .tool select{min-width:160px;}
+  .prov-grid{grid-template-columns:1fr;}
+  .pills-grid{grid-template-columns:1fr;}
+  table{min-width:860px;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="head">
+    <div class="brand">
+      <div>
+        <h1 id="hdrTitle">Historia y Evolución</h1>
+        <div class="sub" id="hdrSub">Defensa Civil Argentina</div>
+        <div class="sub" id="hdrUpdated" style="margin-top:2px;font-size:.95em;"></div>
+      </div>
+    </div>
+
+    <div class="toplinks">
+      <a class="pilllink" href="/index.html">🏠 Inicio</a>
+      <a class="pilllink" href="/directorio.html">📒 Directorio</a>
+      <a class="pilllink" href="/colaboradores.html">🤝 Colaboradores</a>
+      <a class="pilllink" href="/notas.html">📝 Notas</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap" id="top">
+
+  <div class="row">
+    <div class="tool">
+      <label>🔎 Buscar</label>
+      <input id="q" type="text" placeholder="Ej: 1979, Córdoba, ley 8906, decreto 1170, colaboradores..." />
+    </div>
+
+    <div class="tool">
+      <label>🗺️ Provincia</label>
+      <select id="prov"></select>
+    </div>
+
+    <div class="tool">
+      <label>🏷️ Tipo</label>
+      <select id="tipo"></select>
+    </div>
+
+    <div class="tool">
+      <label>🧩 Origen</label>
+      <select id="origen"></select>
+    </div>
+
+    <div class="toggle" title="Filtra eventos que tengan al menos un link cargado">
+      <span class="tlabel">🔗 Con link</span>
+      <label class="switch">
+        <input id="hasLink" type="checkbox" />
+        <span class="slider"></span>
+      </label>
+      <span class="hint">solo</span>
+    </div>
+
+    <button class="btn alt" id="clear" type="button">🧹 Limpiar</button>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-view="timelineView" type="button">📌 Eventos</button>
+    <button class="tab" data-view="provView" type="button">🧭 Por provincia</button>
+    <button class="tab" data-view="lawView" id="lawTab" type="button">⚖️ Legislación provincial</button>
+  </div>
+
+  <div id="loadError" class="error" style="display:none;"></div>
+
+  <div class="kpi" id="kpiBar"></div>
+  <div class="chips" id="activeChips"></div>
+
+  <div id="timelineView" class="section-card">
+    <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-start;">
+      <h2 class="section-title" style="margin:0;">Eventos clave</h2>
+
+      <div class="viewtabs" aria-label="Modo de vista">
+        <button class="viewtab active" data-evview="timeline" type="button">📌 Línea de tiempo</button>
+        <button class="viewtab" data-evview="rows" type="button">🧾 Filas</button>
+        <button class="viewtab" data-evview="pills" type="button">🧩 Pastillas</button>
+      </div>
+    </div>
+
+    <div class="small" style="margin:6px 0 0;">
+      Tip: buscá + filtrá + elegí vista (todo queda guardado en la URL). También podés copiar un link directo a un evento.
+    </div>
+
+    <div id="evTimelineWrap">
+      <div class="timeline" id="timeline"></div>
+    </div>
+
+    <div id="evRowsWrap" style="display:none;margin-top:12px;">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Provincia</th>
+              <th>Tipo</th>
+              <th>Origen</th>
+              <th>Título / Descripción</th>
+              <th>Links</th>
+            </tr>
+          </thead>
+          <tbody id="rowsBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="evPillsWrap" style="display:none;margin-top:12px;">
+      <div class="pills-grid" id="pillsGrid"></div>
+    </div>
+  </div>
+
+  <div id="provView" class="section-card" style="display:none;">
+    <h2 class="section-title">Acceso rápido por provincia</h2>
+    <div class="prov-grid" id="provGrid"></div>
+  </div>
+
+  <div id="lawView" class="section-card" style="display:none;">
+    <h2 class="section-title">Legislación en el ámbito provincial</h2>
+    <div class="table-wrap">
+      <table id="lawTable">
+        <thead>
+          <tr>
+            <th>PROVINCIA</th>
+            <th>Decreto / Ley</th>
+            <th>Reglamentado por</th>
+            <th>ORIGEN</th>
+          </tr>
+        </thead>
+        <tbody id="lawBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast">Copiado ✅</div>
+<div class="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="Volver arriba">↑</div>
+
+<footer>
+  <p>Esta web es propiedad del Lic. Sebastián Amato y es un aporte a esta gran institución</p>
+  <p style="margin-top:10px;">defensacivil.com.ar © 2026</p>
+</footer>
+
+<script>
+  function normalize(str){
+    return (str || "")
+      .toString()
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .trim();
+  }
+
+  // Fix mojibake (solo si detecta patrones típicos)
+  function fixMojibake(s){
+    s = (s ?? "").toString();
+    if (!/[ÃÂ]/.test(s)) return s;
+    try { return decodeURIComponent(escape(s)); } catch(e) { return s; }
+  }
+  function cleanStr(s){
+    return fixMojibake((s ?? "").toString()).trim();
+  }
+
+  function prettyProv(p){
+    p = cleanStr(p).toUpperCase();
+    if(p === "NACIONAL") return "Nacional";
+    if(p === "CABA") return "CABA";
+    return (p || "").split(" ").map(w => w.charAt(0) + w.slice(1).toLowerCase()).join(" ");
+  }
+
+  function stripBom(s){
+    if (!s) return s;
+    if (s.charCodeAt(0) === 0xFEFF) return s.slice(1);
+    if (s.startsWith("ï»¿")) return s.slice(3);
+    return s;
+  }
+  function uniqUpper(list){
+    const s = new Set();
+    for (const x of (list || [])){
+      const v = cleanStr(x);
+      if(!v) continue;
+      s.add(v.toUpperCase());
+    }
+    return [...s];
+  }
+  function escapeHtml(s){
+    return String(s || "")
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+  }
+
+  function hash32(str){
+    let h = 2166136261;
+    for (let i=0;i<str.length;i++){
+      h ^= str.charCodeAt(i);
+      h = Math.imul(h, 16777619);
+    }
+    return (h >>> 0).toString(16);
+  }
+  function makeEventEid(ev){
+    const prov = cleanStr(ev.provincia || "NACIONAL").toUpperCase();
+    const f = cleanStr(ev.fecha_label || ev.fecha || "");
+    const t = cleanStr(ev.titulo || "");
+    return encodeURIComponent([prov, f, t].join("|"));
+  }
+  function makeDomId(eid){ return "ev_" + hash32(String(eid)); }
+
+  // Tabs principales
+  const tabs = document.querySelectorAll('.tab');
+  const views = {
+    timelineView: document.getElementById('timelineView'),
+    provView: document.getElementById('provView'),
+    lawView: document.getElementById('lawView')
+  };
+  tabs.forEach(t => {
+    t.addEventListener('click', () => {
+      tabs.forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      Object.values(views).forEach(v => v.style.display = 'none');
+      views[t.dataset.view].style.display = 'block';
+      setUrlParams({ view: t.dataset.view }, true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // Sub-vistas eventos
+  const viewTabs = document.querySelectorAll('.viewtab');
+  const evTimelineWrap = document.getElementById("evTimelineWrap");
+  const evRowsWrap = document.getElementById("evRowsWrap");
+  const evPillsWrap = document.getElementById("evPillsWrap");
+
+  function setEventsView(mode){
+    const m = (mode || "timeline").toLowerCase();
+    viewTabs.forEach(b => b.classList.toggle("active", b.dataset.evview === m));
+
+    evTimelineWrap.style.display = (m === "timeline") ? "" : "none";
+    evRowsWrap.style.display = (m === "rows") ? "" : "none";
+    evPillsWrap.style.display = (m === "pills") ? "" : "none";
+
+    setUrlParams({ evview: m }, true);
+  }
+  viewTabs.forEach(b => b.addEventListener("click", () => {
+    setEventsView(b.dataset.evview);
+    focusFromHash(true);
+  }));
+
+  // Controles
+  const q = document.getElementById('q');
+  const provSelect = document.getElementById('prov');
+  const tipoSelect = document.getElementById('tipo');
+  const origenSelect = document.getElementById('origen');
+  const hasLink = document.getElementById('hasLink');
+  const clearBtn = document.getElementById('clear');
+  const errorBox = document.getElementById('loadError');
+
+  const kpiBar = document.getElementById('kpiBar');
+  const activeChips = document.getElementById('activeChips');
+  const lawTab = document.getElementById('lawTab');
+
+  // Containers
+  const timelineEl = document.getElementById('timeline');
+  const rowsBody = document.getElementById('rowsBody');
+  const pillsGrid = document.getElementById('pillsGrid');
+  const lawBody = document.getElementById('lawBody');
+  const provGrid = document.getElementById('provGrid');
+
+  const toastEl = document.getElementById("toast");
+  function toast(msg){
+    toastEl.textContent = msg || "OK";
+    toastEl.classList.add("show");
+    clearTimeout(toastEl._t);
+    toastEl._t = setTimeout(() => toastEl.classList.remove("show"), 1400);
+  }
+
+  // State
+  let DATA = null;
+  let DATA_SOURCE_URL = "";
+  let eventNodes = []; // {eid, domId, item, timelineEl, rowEl, pillEl, searchText, visible, hasLink}
+
+  // dependientes
+  let lastBaseKey = null; // base = buscar+provincia (+ toggle links)
+  function baseKey(){
+    return normalize(q.value) + "|" + normalize(provSelect.value) + "|" + (hasLink.checked ? "1" : "0");
+  }
+
+  function showError(msg){
+    errorBox.style.display = "block";
+    errorBox.innerHTML = msg;
+  }
+
+  function getUrlParams(){
+    const sp = new URLSearchParams(window.location.search);
+    return {
+      q: sp.get("q") || "",
+      prov: sp.get("prov") || "",
+      tipo: sp.get("tipo") || "",
+      origen: sp.get("origen") || "",
+      view: sp.get("view") || "",
+      evview: sp.get("evview") || "",
+      haslink: sp.get("haslink") || ""
+    };
+  }
+  function setUrlParams(partial, keepExisting){
+    const sp = new URLSearchParams(keepExisting ? window.location.search : "");
+    for (const [k,v] of Object.entries(partial || {})){
+      if (v === null || v === undefined || v === "") sp.delete(k);
+      else sp.set(k, String(v));
+    }
+    const qs = sp.toString();
+    const newUrl = window.location.pathname + (qs ? ("?" + qs) : "") + (window.location.hash || "");
+    history.replaceState(null, "", newUrl);
+  }
+
+  async function fetchJson(){
+    const ts = Date.now();
+    const candidates = [
+      `/data/historia.json?ts=${ts}`,
+      `/data/defensacivil.json?ts=${ts}`,
+      `/normativa/normativa.json?ts=${ts}`
+    ];
+
+    let lastErr = null;
+    for (const url of candidates){
+      try{
+        const res = await fetch(url, { cache: "no-store", redirect: "follow" });
+        const raw = await res.text();
+        const text = stripBom(raw);
+        if(!res.ok) throw new Error("HTTP " + res.status + " al cargar " + url);
+        const json = JSON.parse(text);
+        DATA_SOURCE_URL = url.split("?")[0];
+        return json;
+      }catch(e){
+        lastErr = e;
+      }
+    }
+    throw lastErr || new Error("No se pudo cargar ningún JSON.");
+  }
+
+  function parseDateKey(ev){
+    const s = cleanStr(ev.fecha || "");
+    let y=0,m=0,d=0;
+    const mIso = s.match(/^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?/);
+    if (mIso){
+      y = parseInt(mIso[1] || "0", 10) || 0;
+      m = parseInt(mIso[2] || "0", 10) || 0;
+      d = parseInt(mIso[3] || "0", 10) || 0;
+    }
+    if (!y){
+      const lbl = cleanStr(ev.fecha_label || "");
+      const my = lbl.match(/(\d{4})/);
+      if (my) y = parseInt(my[1],10) || 0;
+    }
+    const unknown = (!y || y === 0 || y === 0000);
+    const Y = unknown ? 999999 : y;
+    return (Y * 10000) + ((m||0) * 100) + (d||0);
+  }
+
+  function pickBestArray(input){
+    // soporta: historia[], eventos[], notes[], items[]
+    if (Array.isArray(input?.historia)) return { arr: input.historia, kind: "historia" };
+    if (Array.isArray(input?.eventos)) return { arr: input.eventos, kind: "eventos" };
+    if (Array.isArray(input?.notes)) return { arr: input.notes, kind: "notes" };
+    if (Array.isArray(input?.items)) return { arr: input.items, kind: "items" };
+    return { arr: [], kind: "none" };
+  }
+
+  function normalizeSchema(input){
+    const meta = (input && typeof input === "object" && input.meta && typeof input.meta === "object") ? input.meta : {};
+    const picked = pickBestArray(input);
+    let items = picked.arr || [];
+    const kind = picked.kind;
+
+    // si viene como items "mixto", intento filtrar solo lo que parezca "historia / notas"
+    if (kind === "items" && items.length){
+      const matches = items.filter(it => {
+        if (!it || typeof it !== "object") return false;
+        const sec = cleanStr(it.seccion || it.section || it.page);
+        const cat = cleanStr(it.categoria || it.tipo || it.clase);
+        const isHist = /historia|nota|actualizacion|update|sitio/i.test(sec) || /historia|nota|actualizacion|sitio/i.test(cat);
+        return isHist;
+      });
+      if (matches.length) items = matches;
+    }
+
+    const eventos = [];
+
+    for (const it of items){
+      if(!it || typeof it !== "object") continue;
+
+      // mapping flexible
+      const prov = cleanStr(it.provincia || it.prov || it.jurisdiccion || it.ambito || "NACIONAL").toUpperCase();
+      const origen = cleanStr(it.origen || it.fuente || it.source || (kind === "notes" ? "SITIO" : "LT")).toUpperCase();
+
+      const anio = cleanStr(it.anio || it.year || "");
+      const fecha = cleanStr(it.fecha || it.fecha_iso || it.date || "") || (anio ? `${anio}-01-01` : "");
+      const fecha_label = cleanStr(it.fecha_label || it.fechaTexto || it.fecha_texto || it.fecha_str || "") || (anio ? anio : "");
+
+      const tipo = cleanStr(it.tipo || it.categoria || it.clase || (kind === "notes" ? "Actualización" : "Otro")) || "Otro";
+      const titulo = cleanStr(it.titulo || it.title || it.nombre || it.label || "Evento");
+      const descripcion = cleanStr(it.descripcion || it.detalle || it.resumen || it.texto || it.text || "");
+
+      let links = [];
+      if (Array.isArray(it.links)) {
+        links = it.links;
+      } else if (it.href || it.url || it.link) {
+        links = [{ href: it.href || it.url || it.link, label: it.link_label || it.label || "Ver", icon: it.icon || "📖" }];
+      }
+
+      // limpieza links
+      links = (links || []).map(l => ({
+        href: cleanStr(l?.href || ""),
+        label: cleanStr(l?.label || "Ver"),
+        icon: cleanStr(l?.icon || "📖") || "📖"
+      })).filter(l => l.href);
+
+      eventos.push({
+        fecha,
+        fecha_label,
+        provincia: prov,
+        tipo,
+        origen,
+        titulo,
+        descripcion,
+        tags: Array.isArray(it.tags) ? it.tags.map(cleanStr).filter(Boolean) : [],
+        links
+      });
+    }
+
+    const provs = uniqUpper(eventos.map(e => e.provincia));
+    const tipos = [...new Set(eventos.map(e => cleanStr(e.tipo)).filter(Boolean))];
+    let origenes = uniqUpper(eventos.map(e => e.origen));
+
+    if (origenes.length <= 1){
+      origenes = ["LT","LP","PP","SITIO"];
+    }
+
+    const legislacion = Array.isArray(input?.legislacion_provincial) ? input.legislacion_provincial : [];
+
+    return {
+      meta,
+      provincias: provs.length ? provs : ["NACIONAL","CABA"],
+      tipos,
+      origenes,
+      eventos,
+      legislacion_provincial: legislacion
+    };
+  }
+
+  function hasAnyLink(ev){
+    const links = ev?.links;
+    if (!Array.isArray(links)) return false;
+    return links.some(l => (l && typeof l === "object" && cleanStr(l.href)));
+  }
+
+  function buildEventLink(eid){
+    const sp = new URLSearchParams(window.location.search);
+    sp.set("view", "timelineView");
+
+    const curEvView =
+      (evPillsWrap.style.display !== "none") ? "pills" :
+      (evRowsWrap.style.display !== "none") ? "rows" : "timeline";
+    sp.set("evview", curEvView);
+
+    if (cleanStr(q.value)) sp.set("q", cleanStr(q.value)); else sp.delete("q");
+    if (cleanStr(provSelect.value)) sp.set("prov", cleanStr(provSelect.value)); else sp.delete("prov");
+    if (cleanStr(tipoSelect.value)) sp.set("tipo", cleanStr(tipoSelect.value)); else sp.delete("tipo");
+    if (cleanStr(origenSelect.value)) sp.set("origen", cleanStr(origenSelect.value)); else sp.delete("origen");
+    if (hasLink.checked) sp.set("haslink", "1"); else sp.delete("haslink");
+
+    const base = window.location.origin + window.location.pathname;
+    const qs = sp.toString();
+    return base + (qs ? ("?" + qs) : "") + "#e=" + String(eid);
+  }
+
+  // Copiar link (delegación global)
+  document.addEventListener("click", async (e) => {
+    const btn = e.target.closest("[data-copy-eid]");
+    if(!btn) return;
+    const eid = btn.getAttribute("data-copy-eid");
+    const url = buildEventLink(eid);
+    try{
+      await navigator.clipboard.writeText(url);
+      toast("Link copiado ✅");
+    }catch(_){
+      prompt("Copiá el link:", url);
+    }
+  });
+
+  function renderAllViews(events){
+    timelineEl.innerHTML = "";
+    rowsBody.innerHTML = "";
+    pillsGrid.innerHTML = "";
+    eventNodes = [];
+
+    const sorted = [...(events || [])].sort((a,b) => {
+      const ka = parseDateKey(a);
+      const kb = parseDateKey(b);
+      if (ka !== kb) return ka - kb;
+      return String(a.titulo||"").localeCompare(String(b.titulo||""), "es", { sensitivity: "base" });
+    });
+
+    for(const ev of sorted){
+      const origen = cleanStr(ev.origen || "LT").toUpperCase();
+      const provincia = cleanStr(ev.provincia || "NACIONAL").toUpperCase();
+      const tipo = cleanStr(ev.tipo || "Otro");
+      const fechaLabel = cleanStr(ev.fecha_label || ev.fecha || "");
+      const eid = makeEventEid(ev);
+      const domId = makeDomId(eid);
+
+      const linksHtml = (ev.links || []).map(l =>
+        `<a href="${escapeHtml(l.href || '#')}" target="_blank" rel="noopener">${escapeHtml(l.icon || "📖")} ${escapeHtml(l.label || "Ver")}</a>`
+      ).join("");
+
+      // TIMELINE
+      const tWrap = document.createElement("div");
+      tWrap.className = "event";
+      tWrap.dataset.origen = origen;
+      tWrap.dataset.provincia = provincia;
+      tWrap.dataset.tipo = tipo;
+      tWrap.dataset.eid = eid;
+      tWrap.id = domId;
+
+      tWrap.innerHTML = `
+        <div class="dot"></div>
+        <div class="event-card">
+          <div class="event-top">
+            <div class="date">${escapeHtml(fechaLabel)}</div>
+            <div class="badges">
+              <div class="badge">${escapeHtml(prettyProv(provincia))}</div>
+              <div class="badge tipo">${escapeHtml(tipo)}</div>
+              <div class="badge origen">${escapeHtml(origen)}</div>
+            </div>
+          </div>
+          <div class="info"><strong>${escapeHtml(cleanStr(ev.titulo || ""))}</strong><br>${escapeHtml(cleanStr(ev.descripcion || ""))}</div>
+          <div class="link">${linksHtml || ""}</div>
+          <div class="pill-actions" style="margin-top:10px;">
+            <button class="btn alt sm" type="button" data-copy-eid="${eid}">🔗 Copiar link</button>
+          </div>
+        </div>
+      `;
+      timelineEl.appendChild(tWrap);
+
+      // ROW
+      const tr = document.createElement("tr");
+      tr.dataset.origen = origen;
+      tr.dataset.provincia = provincia;
+      tr.dataset.tipo = tipo;
+      tr.dataset.eid = eid;
+      tr.id = domId + "_row";
+
+      tr.innerHTML = `
+        <td><strong style="color:var(--n)">${escapeHtml(fechaLabel)}</strong></td>
+        <td><span class="badge">${escapeHtml(prettyProv(provincia))}</span></td>
+        <td><span class="badge tipo">${escapeHtml(tipo)}</span></td>
+        <td><span class="badge origen">${escapeHtml(origen)}</span></td>
+        <td>
+          <div style="font-weight:900;color:var(--az1)">${escapeHtml(cleanStr(ev.titulo || ""))}</div>
+          ${cleanStr(ev.descripcion) ? `<div class="small">${escapeHtml(cleanStr(ev.descripcion))}</div>` : `<div class="small">—</div>`}
+          <div style="margin-top:8px;">
+            <button class="btn alt sm" type="button" data-copy-eid="${eid}">🔗 Copiar link</button>
+          </div>
+        </td>
+        <td>${linksHtml || "—"}</td>
+      `;
+      rowsBody.appendChild(tr);
+
+      // PILL
+      const p = document.createElement("div");
+      p.className = "pill";
+      p.dataset.origen = origen;
+      p.dataset.provincia = provincia;
+      p.dataset.tipo = tipo;
+      p.dataset.eid = eid;
+      p.id = domId + "_pill";
+
+      const desc = cleanStr(ev.descripcion || "");
+      const descShort = desc.length > 160 ? (desc.slice(0, 157) + "…") : desc;
+
+      p.innerHTML = `
+        <div class="pill-top">
+          <div class="pill-date">${escapeHtml(fechaLabel)}</div>
+          <div class="badges">
+            <div class="badge">${escapeHtml(prettyProv(provincia))}</div>
+            <div class="badge tipo">${escapeHtml(tipo)}</div>
+            <div class="badge origen">${escapeHtml(origen)}</div>
+          </div>
+        </div>
+        <div class="pill-title">${escapeHtml(cleanStr(ev.titulo || ""))}</div>
+        <div class="pill-desc">${escapeHtml(descShort || "—")}</div>
+        <div class="link">${linksHtml || ""}</div>
+        <div class="pill-actions">
+          <button class="btn alt sm" type="button" data-copy-eid="${eid}">🔗 Copiar link</button>
+        </div>
+      `;
+      pillsGrid.appendChild(p);
+
+      const searchText = normalize([
+        provincia, tipo, origen,
+        fechaLabel,
+        ev.titulo || "",
+        ev.descripcion || "",
+        (ev.tags || []).join(" "),
+        (ev.links || []).map(x => (x.href||"") + " " + (x.label||"")).join(" "),
+        DATA_SOURCE_URL
+      ].join(" "));
+
+      eventNodes.push({
+        eid, domId,
+        item: ev,
+        timelineEl: tWrap,
+        rowEl: tr,
+        pillEl: p,
+        searchText,
+        visible: true,
+        hasLink: hasAnyLink(ev)
+      });
+    }
+
+    if (!sorted.length){
+      timelineEl.innerHTML = `<div class="error">No se encontraron eventos en el JSON.</div>`;
+      rowsBody.innerHTML = `<tr><td colspan="6" class="error">No se encontraron eventos en el JSON.</td></tr>`;
+      pillsGrid.innerHTML = `<div class="error">No se encontraron eventos en el JSON.</div>`;
+    }
+  }
+
+  function buildProvinceGrid(){
+    const map = new Map();
+    (DATA.provincias || []).forEach(p => map.set(cleanStr(p).toUpperCase(), []));
+
+    for(const n of eventNodes){
+      if(!n.visible) continue;
+      const prov = cleanStr(n.item.provincia || "NACIONAL").toUpperCase();
+      if(!map.has(prov)) map.set(prov, []);
+      map.get(prov).push({
+        label: `${cleanStr(n.item.fecha_label || n.item.fecha || "")} — ${cleanStr(n.item.titulo || "")}`,
+        href: buildEventLink(n.eid) // 👉 deep-link interno
+      });
+    }
+
+    const cards = [];
+    for(const [prov, items] of map.entries()){
+      if(!items.length) continue;
+      const list = items.map(it => `<li><a href="${escapeHtml(it.href)}">${escapeHtml(it.label)}</a></li>`).join("");
+      cards.push(`
+        <div class="prov-card">
+          <h3>${escapeHtml(prettyProv(prov))} <span class="count">${items.length}</span></h3>
+          <ul class="prov-list">${list}</ul>
+        </div>
+      `);
+    }
+
+    provGrid.innerHTML = cards.length
+      ? cards.join("")
+      : `<div class="prov-card"><h3>Sin resultados <span class="count">0</span></h3><p style="margin:6px 0;color:#555;">Probá cambiar el filtro o limpiar.</p></div>`;
+  }
+
+  function renderActiveChips(){
+    const chips = [];
+    const text = cleanStr(q.value);
+    const prov = cleanStr(provSelect.value);
+    const tipo = cleanStr(tipoSelect.value);
+    const origen = cleanStr(origenSelect.value);
+    const onlyLink = hasLink.checked;
+
+    function chipHtml(key, val){
+      return `
+        <span class="chipfilter">
+          <span class="key">${escapeHtml(key)}:</span>
+          <span class="val">${escapeHtml(val)}</span>
+          <button class="x" type="button" aria-label="Quitar filtro">×</button>
+        </span>
+      `;
+    }
+
+    if (text) chips.push({ key:"Buscar", val:text, clear: () => { q.value=""; } });
+    if (prov) chips.push({ key:"Provincia", val: prettyProv(prov), clear: () => { provSelect.value=""; } });
+    if (tipo) chips.push({ key:"Tipo", val: tipo, clear: () => { tipoSelect.value=""; } });
+    if (origen) chips.push({ key:"Origen", val: origen, clear: () => { origenSelect.value=""; } });
+    if (onlyLink) chips.push({ key:"Con link", val:"Sí", clear: () => { hasLink.checked=false; } });
+
+    if (!chips.length){
+      activeChips.innerHTML = "";
+      return;
+    }
+
+    activeChips.innerHTML = chips.map(c => chipHtml(c.key, c.val)).join("");
+
+    const btns = activeChips.querySelectorAll(".chipfilter .x");
+    btns.forEach((b, idx) => {
+      b.addEventListener("click", () => {
+        chips[idx].clear();
+        applyFilters();
+      });
+    });
+  }
+
+  function updateKpi(visibles){
+    const total = (DATA.eventos||[]).length;
+    const linkCount = eventNodes.filter(n => n.hasLink).length;
+    const updated = cleanStr(DATA.meta?.updated || DATA.meta?.fecha || "");
+    kpiBar.innerHTML = `
+      <span class="chip">📦 Eventos: ${total}</span>
+      <span class="chip">👀 Visibles: ${visibles}</span>
+      <span class="chip">🔗 Con link: ${linkCount}</span>
+      <span class="chip">🗺️ Provincias: ${(DATA.provincias||[]).length}</span>
+      <span class="chip">🧾 Fuente: ${escapeHtml(DATA_SOURCE_URL || "—")}</span>
+      ${updated ? `<span class="chip">🕒 Actualizado: ${escapeHtml(updated)}</span>` : ``}
+    `;
+  }
+
+  function repopulateSelect(select, values, emptyLabel){
+    const current = select.value || "";
+    const opts = values.slice().sort((a,b)=>String(a).localeCompare(String(b), "es", {sensitivity:"base"}));
+    select.innerHTML = `<option value="">${emptyLabel}</option>` + opts.map(v => `<option value="${escapeHtml(v)}">${escapeHtml(v)}</option>`).join("");
+    if (opts.includes(current)) select.value = current;
+    else select.value = "";
+  }
+
+  // dependientes: base = buscar + provincia + (solo link)
+  function refreshDependentSelectsIfNeeded(){
+    const key = baseKey();
+    if (key === lastBaseKey) return;
+    lastBaseKey = key;
+
+    const text = normalize(q.value);
+    const prov = normalize(provSelect.value);
+    const onlyLink = hasLink.checked;
+
+    const base = eventNodes.filter(n => {
+      const matchText = !text || n.searchText.includes(text);
+      const matchProv = !prov || normalize(n.item.provincia) === prov;
+      const matchLink = !onlyLink || n.hasLink;
+      return matchText && matchProv && matchLink;
+    });
+
+    if (base.length === 0){
+      repopulateSelect(tipoSelect, (DATA.tipos||[]), "Todos");
+      repopulateSelect(origenSelect, (DATA.origenes||[]).map(x=>String(x).toUpperCase()), "Todos");
+      return;
+    }
+
+    const tipos = new Set();
+    const origenes = new Set();
+    base.forEach(n => {
+      const t = cleanStr(n.item.tipo);
+      const o = cleanStr(n.item.origen).toUpperCase();
+      if (t) tipos.add(t);
+      if (o) origenes.add(o);
+    });
+
+    repopulateSelect(tipoSelect, Array.from(tipos), "Todos");
+    repopulateSelect(origenSelect, Array.from(origenes), "Todos");
+  }
+
+  function applyFilters(){
+    refreshDependentSelectsIfNeeded();
+
+    const text = normalize(q.value);
+    const prov = normalize(provSelect.value);
+    const tipo = normalize(tipoSelect.value);
+    const origen = normalize(origenSelect.value);
+    const onlyLink = hasLink.checked;
+
+    for(const n of eventNodes){
+      const p = normalize(n.item.provincia);
+      const t = normalize(n.item.tipo);
+      const o = normalize(n.item.origen);
+
+      const matchText = !text || n.searchText.includes(text);
+      const matchProv = !prov || p === prov;
+      const matchTipo = !tipo || t === tipo;
+      const matchOrigen = !origen || o === origen;
+      const matchLink = !onlyLink || n.hasLink;
+
+      const ok = (matchText && matchProv && matchTipo && matchOrigen && matchLink);
+      n.visible = ok;
+
+      n.timelineEl.style.display = ok ? "" : "none";
+      n.rowEl.style.display = ok ? "" : "none";
+      n.pillEl.style.display = ok ? "" : "none";
+    }
+
+    const visibles = eventNodes.filter(n => n.visible).length;
+    updateKpi(visibles);
+    renderActiveChips();
+    buildProvinceGrid();
+
+    setUrlParams({
+      q: cleanStr(q.value),
+      prov: cleanStr(provSelect.value),
+      tipo: cleanStr(tipoSelect.value),
+      origen: cleanStr(origenSelect.value),
+      haslink: hasLink.checked ? "1" : ""
+    }, true);
+
+    focusFromHash(false);
+  }
+
+  function debounce(fn, ms){
+    let t = null;
+    return (...args) => {
+      clearTimeout(t);
+      t = setTimeout(() => fn(...args), ms);
+    };
+  }
+
+  function activateView(viewName){
+    const v = cleanStr(viewName);
+    if(!v || !views[v]) return;
+    tabs.forEach(x => x.classList.remove('active'));
+    Object.values(views).forEach(x => x.style.display = 'none');
+    const btn = [...tabs].find(b => b.dataset.view === v);
+    if (btn) btn.classList.add("active");
+    views[v].style.display = "block";
+  }
+
+  function clearFlash(){
+    document.querySelectorAll(".flash").forEach(el => el.classList.remove("flash"));
+    document.querySelectorAll(".flashrow").forEach(el => el.classList.remove("flashrow"));
+  }
+
+  function focusFromHash(forceSwitchView){
+    const h = window.location.hash || "";
+    const m = h.match(/^#e=(.+)$/);
+    if(!m) return;
+
+    const eid = m[1];
+    const node = eventNodes.find(n => n.eid === eid);
+    if(!node) return;
+
+    activateView("timelineView");
+
+    const sp = new URLSearchParams(window.location.search);
+    const evview = (sp.get("evview") || "").toLowerCase();
+    if(forceSwitchView && ["timeline","rows","pills"].includes(evview)){
+      setEventsView(evview);
+    }
+
+    if(!node.visible){
+      q.value = "";
+      provSelect.value = "";
+      tipoSelect.value = "";
+      origenSelect.value = "";
+      hasLink.checked = false;
+      lastBaseKey = null;
+      applyFilters();
+    }
+
+    let target = node.timelineEl;
+    if (evRowsWrap.style.display !== "none") target = node.rowEl;
+    if (evPillsWrap.style.display !== "none") target = node.pillEl;
+
+    clearFlash();
+    const box = target.closest(".event-card") || target;
+    if (target.tagName === "TR"){
+      target.classList.add("flashrow");
+    }else{
+      box.classList.add("flash");
+    }
+    setTimeout(() => {
+      (target.tagName === "TR" ? target : box).scrollIntoView({ behavior:"smooth", block:"center" });
+    }, 50);
+    setTimeout(() => clearFlash(), 2600);
+  }
+
+  async function init(){
+    try{
+      const raw = await fetchJson();
+      DATA = normalizeSchema(raw);
+
+      // Header meta
+      const t = cleanStr(DATA.meta?.titulo || "Defensa Civil Argentina");
+      const st = cleanStr(DATA.meta?.subtitulo || "Historia y Evolución");
+      const upd = cleanStr(DATA.meta?.updated || "");
+      document.getElementById("hdrSub").innerText = t;
+      document.getElementById("hdrTitle").innerText = st;
+      document.getElementById("hdrUpdated").innerText = upd ? ("Última actualización: " + upd) : ("Fuente: " + (DATA_SOURCE_URL || "—"));
+
+      // law tab visible?
+      if (!DATA.legislacion_provincial || DATA.legislacion_provincial.length === 0){
+        lawTab.style.display = "none";
+      }
+
+      // selects full
+      provSelect.innerHTML =
+        `<option value="">Todas</option>` +
+        (DATA.provincias || []).map(p => `<option value="${escapeHtml(cleanStr(p).toUpperCase())}">${escapeHtml(prettyProv(p))}</option>`).join("");
+
+      tipoSelect.innerHTML =
+        `<option value="">Todos</option>` +
+        (DATA.tipos || []).map(t => `<option value="${escapeHtml(cleanStr(t))}">${escapeHtml(cleanStr(t))}</option>`).join("");
+
+      origenSelect.innerHTML =
+        `<option value="">Todos</option>` +
+        (DATA.origenes || []).map(o => `<option value="${escapeHtml(cleanStr(o).toUpperCase())}">${escapeHtml(cleanStr(o).toUpperCase())}</option>`).join("");
+
+      renderAllViews(DATA.eventos || []);
+
+      // deep link (params)
+      const params = getUrlParams();
+      if (params.q) q.value = params.q;
+
+      function setIfOption(select, value){
+        if(!value) return;
+        const val = cleanStr(value);
+        const opts = [...select.options].map(o => o.value);
+        if (opts.includes(val)) select.value = val;
+        else {
+          const up = val.toUpperCase();
+          if (opts.includes(up)) select.value = up;
+        }
+      }
+      setIfOption(provSelect, params.prov);
+      setIfOption(tipoSelect, params.tipo);
+      setIfOption(origenSelect, params.origen);
+
+      // toggle links desde URL
+      if (params.haslink === "1") hasLink.checked = true;
+
+      if (params.view) activateView(params.view);
+
+      const evv = (params.evview || "").toLowerCase();
+      setEventsView(["timeline","rows","pills"].includes(evv) ? evv : "timeline");
+
+      // bind
+      q.addEventListener('input', debounce(applyFilters, 150));
+      provSelect.addEventListener('change', () => { lastBaseKey = null; applyFilters(); });
+      tipoSelect.addEventListener('change', applyFilters);
+      origenSelect.addEventListener('change', applyFilters);
+      hasLink.addEventListener('change', () => { lastBaseKey = null; applyFilters(); });
+
+      clearBtn.addEventListener('click', () => {
+        q.value = '';
+        provSelect.value = '';
+        tipoSelect.value = '';
+        origenSelect.value = '';
+        hasLink.checked = false;
+        lastBaseKey = null;
+        applyFilters();
+
+        const sp = new URLSearchParams(window.location.search);
+        ["q","prov","tipo","origen","haslink"].forEach(k => sp.delete(k));
+        history.replaceState(null, "", window.location.pathname + (sp.toString() ? ("?" + sp.toString()) : "") + (window.location.hash||""));
+      });
+
+      lastBaseKey = null;
+      applyFilters();
+      focusFromHash(true);
+    }catch(err){
+      showError("Error inicializando historia.html.<br><strong>Detalle:</strong> " + (err?.message || err));
+      console.error(err);
+    }
+  }
+
+  init();
+</script>
+
+</body>
+</html>

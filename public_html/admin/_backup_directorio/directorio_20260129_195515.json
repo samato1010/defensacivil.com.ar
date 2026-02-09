@@ -1,0 +1,50 @@
+{
+    "meta": {
+        "version": 1,
+        "updated": "2026-01-29 19:45:37",
+        "titulo": "Directorio",
+        "subtitulo": "Defensa Civil / Protección Civil",
+        "source_note": "Estructura base"
+    },
+    "entries": [
+        {
+            "id": "dc_20260129_001",
+            "provincia": "BUENOS AIRES",
+            "municipio": "SAN ISIDRO",
+            "localidad": "",
+            "denominacion": "Defensa Civil",
+            "domicilio": "",
+            "telefono": "011 4512-3103",
+            "email": "",
+            "website": "",
+            "instagram": "",
+            "facebook": "",
+            "comentario": ""
+        },
+        {
+            "id": "pc_20260129_002",
+            "denominacion": "Protección Civil",
+            "domicilio": "",
+            "telefono": "",
+            "email": "",
+            "website": "",
+            "instagram": "",
+            "facebook": "",
+            "comentario": ""
+        },
+        {
+            "id": "dir_20260129193634_3ad2d9",
+            "provincia": "CIUDAD DE BUENOS AIRES",
+            "municipio": "CIUDAD DE BUENOS AIRES",
+            "localidad": "",
+            "denominacion": "Defensa Civil",
+            "domicilio": "Estados Unidos 3275",
+            "telefono": "011 4956-2110",
+            "email": "",
+            "website": "https://buenosaires.gob.ar/defensa-civil",
+            "instagram": "https://www.instagram.com/defensacivil103/",
+            "facebook": "",
+            "comentario": ""
+        }
+    ]
+}

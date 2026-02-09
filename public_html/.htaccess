@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteRule ^admin\.php$ /admin/index.php [R=302,L,NE]
+RewriteRule ^admin$ /admin/index.php [R=302,L,NE]
+
+# Página 404 personalizada
+ErrorDocument 404 /404.html
