@@ -1,0 +1,64 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hostinger-main
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      SSH_HOST: ${{ secrets.HOSTINGER_SSH_HOST }}
+      SSH_PORT: ${{ secrets.HOSTINGER_SSH_PORT }}
+      SSH_USER: ${{ secrets.HOSTINGER_SSH_USER }}
+      REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate required secrets
+        run: |
+          set -euo pipefail
+          for v in SSH_HOST SSH_PORT SSH_USER REMOTE_PATH; do
+            if [ -z "${!v:-}" ]; then
+              echo "Missing required secret: $v"
+              exit 1
+            fi
+          done
+          if [ -z "${{ secrets.HOSTINGER_SSH_KEY }}" ]; then
+            echo "Missing required secret: HOSTINGER_SSH_KEY"
+            exit 1
+          fi
+
+      - name: Configure SSH
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.ssh
+          echo "${{ secrets.HOSTINGER_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts
+
+      - name: Deploy public_html with rsync
+        run: |
+          set -euo pipefail
+          rsync -az --delete \
+            -e "ssh -p $SSH_PORT" \
+            ./public_html/ "$SSH_USER@$SSH_HOST:$REMOTE_PATH/"
+
+      - name: Verify notas.html is HTTP 200
+        run: |
+          set -euo pipefail
+          STATUS="$(curl -sS -o /dev/null -w '%{http_code}' https://defensacivil.com.ar/notas.html)"
+          echo "HTTP status: $STATUS"
+          if [ "$STATUS" != "200" ]; then
+            echo "notas.html did not return HTTP 200. Dumping remote error_log..."
+            ssh -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" "if [ -f '$REMOTE_PATH/error_log' ]; then tail -n 120 '$REMOTE_PATH/error_log'; else echo 'No error_log found at $REMOTE_PATH/error_log'; fi"
+            exit 1
+          fi
