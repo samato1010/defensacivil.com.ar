@@ -3,7 +3,15 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Historia · Defensa Civil</title>
+<title>Historia · Defensa Civil de la República Argentina</title>
+<meta name="description" content="Historia y evolución de la Defensa Civil en Argentina. Línea de tiempo, eventos clave, legislación provincial y normativa."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://defensacivil.com.ar/historia.html"/>
+<meta property="og:title" content="Historia · Defensa Civil de la República Argentina"/>
+<meta property="og:description" content="Historia y evolución de la Defensa Civil en Argentina. Línea de tiempo y legislación."/>
+<meta property="og:site_name" content="DefensaCivil.com.ar"/>
+<meta name="twitter:card" content="summary"/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
 
 <style>
 :root{
@@ -477,12 +485,12 @@ footer{background:var(--az1);color:#fff;text-align:center;padding:35px 20px;marg
 
   // Fix mojibake (solo si detecta patrones típicos)
   function fixMojibake(s){
-    s = (s ?? "").toString();
+    s = (s == null ? "" : s).toString();
     if (!/[ÃÂ]/.test(s)) return s;
     try { return decodeURIComponent(escape(s)); } catch(e) { return s; }
   }
   function cleanStr(s){
-    return fixMojibake((s ?? "").toString()).trim();
+    return fixMojibake((s == null ? "" : s).toString()).trim();
   }
 
   function prettyProv(p){
@@ -509,11 +517,11 @@ footer{background:var(--az1);color:#fff;text-align:center;padding:35px 20px;marg
   }
   function escapeHtml(s){
     return String(s || "")
-      .replaceAll("&","&amp;")
-      .replaceAll("<","&lt;")
-      .replaceAll(">","&gt;")
-      .replaceAll('"',"&quot;")
-      .replaceAll("'","&#039;");
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
   }
 
   function hash32(str){
@@ -684,10 +692,10 @@ footer{background:var(--az1);color:#fff;text-align:center;padding:35px 20px;marg
 
   function pickBestArray(input){
     // soporta: historia[], eventos[], notes[], items[]
-    if (Array.isArray(input?.historia)) return { arr: input.historia, kind: "historia" };
-    if (Array.isArray(input?.eventos)) return { arr: input.eventos, kind: "eventos" };
-    if (Array.isArray(input?.notes)) return { arr: input.notes, kind: "notes" };
-    if (Array.isArray(input?.items)) return { arr: input.items, kind: "items" };
+    if (input && Array.isArray(input.historia)) return { arr: input.historia, kind: "historia" };
+    if (input && Array.isArray(input.eventos)) return { arr: input.eventos, kind: "eventos" };
+    if (input && Array.isArray(input.notes)) return { arr: input.notes, kind: "notes" };
+    if (input && Array.isArray(input.items)) return { arr: input.items, kind: "items" };
     return { arr: [], kind: "none" };
   }
 
@@ -735,9 +743,9 @@ footer{background:var(--az1);color:#fff;text-align:center;padding:35px 20px;marg
 
       // limpieza links
       links = (links || []).map(l => ({
-        href: cleanStr(l?.href || ""),
-        label: cleanStr(l?.label || "Ver"),
-        icon: cleanStr(l?.icon || "📖") || "📖"
+        href: cleanStr((l && l.href) || ""),
+        label: cleanStr((l && l.label) || "Ver"),
+        icon: cleanStr((l && l.icon) || "📖") || "📖"
       })).filter(l => l.href);
 
       eventos.push({
@@ -761,7 +769,7 @@ footer{background:var(--az1);color:#fff;text-align:center;padding:35px 20px;marg
       origenes = ["LT","LP","PP","SITIO"];
     }
 
-    const legislacion = Array.isArray(input?.legislacion_provincial) ? input.legislacion_provincial : [];
+    const legislacion = (input && Array.isArray(input.legislacion_provincial)) ? input.legislacion_provincial : [];
 
     return {
       meta,
@@ -774,7 +782,7 @@ footer{background:var(--az1);color:#fff;text-align:center;padding:35px 20px;marg
   }
 
   function hasAnyLink(ev){
-    const links = ev?.links;
+    const links = (ev && ev.links) ? ev.links : null;
     if (!Array.isArray(links)) return false;
     return links.some(l => (l && typeof l === "object" && cleanStr(l.href)));
   }
@@ -1024,7 +1032,7 @@ footer{background:var(--az1);color:#fff;text-align:center;padding:35px 20px;marg
   function updateKpi(visibles){
     const total = (DATA.eventos||[]).length;
     const linkCount = eventNodes.filter(n => n.hasLink).length;
-    const updated = cleanStr(DATA.meta?.updated || DATA.meta?.fecha || "");
+    const updated = cleanStr((DATA.meta && DATA.meta.updated) || (DATA.meta && DATA.meta.fecha) || "");
     kpiBar.innerHTML = `
       <span class="chip">📦 Eventos: ${total}</span>
       <span class="chip">👀 Visibles: ${visibles}</span>
@@ -1196,9 +1204,9 @@ footer{background:var(--az1);color:#fff;text-align:center;padding:35px 20px;marg
       DATA = normalizeSchema(raw);
 
       // Header meta
-      const t = cleanStr(DATA.meta?.titulo || "Defensa Civil Argentina");
-      const st = cleanStr(DATA.meta?.subtitulo || "Historia y Evolución");
-      const upd = cleanStr(DATA.meta?.updated || "");
+      const t = cleanStr((DATA.meta && DATA.meta.titulo) || "Defensa Civil Argentina");
+      const st = cleanStr((DATA.meta && DATA.meta.subtitulo) || "Historia y Evolución");
+      const upd = cleanStr((DATA.meta && DATA.meta.updated) || "");
       document.getElementById("hdrSub").innerText = t;
       document.getElementById("hdrTitle").innerText = st;
       document.getElementById("hdrUpdated").innerText = upd ? ("Última actualización: " + upd) : ("Fuente: " + (DATA_SOURCE_URL || "—"));
@@ -1274,7 +1282,7 @@ footer{background:var(--az1);color:#fff;text-align:center;padding:35px 20px;marg
       applyFilters();
       focusFromHash(true);
     }catch(err){
-      showError("Error inicializando historia.html.<br><strong>Detalle:</strong> " + (err?.message || err));
+      showError("Error inicializando historia.html.<br><strong>Detalle:</strong> " + ((err && err.message) || err));
       console.error(err);
     }
   }

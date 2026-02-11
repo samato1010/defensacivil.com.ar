@@ -3,7 +3,15 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Directorio · Defensa Civil</title>
+<title>Directorio · Defensa Civil de la República Argentina</title>
+<meta name="description" content="Directorio Nacional de organismos de Defensa Civil y Protección Civil de Argentina. Contactos, teléfonos, emails por provincia y municipio."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://defensacivil.com.ar/directorio.html"/>
+<meta property="og:title" content="Directorio · Defensa Civil de la República Argentina"/>
+<meta property="og:description" content="Directorio Nacional de organismos de Defensa Civil y Protección Civil de Argentina."/>
+<meta property="og:site_name" content="DefensaCivil.com.ar"/>
+<meta name="twitter:card" content="summary"/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
 <style>
 :root{
   --az1:#003366; --az2:#004080; --n:#ff6600;
@@ -304,7 +312,7 @@ const JSON_URL = '/data/directorio.json';
 let data = { meta:{}, entries:[] };
 
 function escapeHtml(s){
-  return (s ?? '').toString().replace(/[&<>"']/g, m => ({
+  return (s == null ? '' : s).toString().replace(/[&<>"']/g, m => ({
     '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
   }[m]));
 }
@@ -360,7 +368,7 @@ async function copyText(s){
   try {
     await navigator.clipboard.writeText(s);
     toast('Copiado');
-  } catch {
+  } catch(e) {
     const ta = document.createElement('textarea');
     ta.value = s;
     document.body.appendChild(ta);
@@ -441,7 +449,7 @@ function render(){
   const entries = getFilteredEntries();
 
   document.getElementById('info').textContent =
-    `${entries.length} resultados · actualizado: ${data.meta?.updated || '—'}`;
+    entries.length + ' resultados · actualizado: ' + ((data.meta && data.meta.updated) || '—');
 
   const listCards = document.getElementById('listCards');
   listCards.innerHTML = '';
@@ -520,7 +528,7 @@ async function load(){
   data.entries = j.entries || [];
 
   document.getElementById('sub').textContent =
-    data.meta?.subtitulo || 'Defensa Civil / Protección Civil';
+    (data.meta && data.meta.subtitulo) || 'Defensa Civil / Protección Civil';
 
   const norm = data.entries.map(normalize);
 
