@@ -292,7 +292,8 @@
 
       var zoomBtn = "";
       if (n.imagen && typeof n.imagen === "string" && n.imagen.trim() !== "") {
-        var imgSrc = UPLOAD_PATH + escapeHtml(n.imagen);
+        var rawImg = n.imagen.trim();
+        var imgSrc = (rawImg.indexOf("uploads/") === 0 ? "/" : UPLOAD_PATH) + escapeHtml(rawImg);
         zoomBtn = '<button class="zoom-btn" title="Ver imagen ampliada" data-src="' + imgSrc + '" data-alt="' + escapeHtml(n.titulo || 'Imagen de la nota') + '">&#128269;</button>';
       }
 
