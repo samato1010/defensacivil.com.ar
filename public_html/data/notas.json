@@ -1,29 +1,125 @@
 {
     "meta": {
-        "updated": "2026-01-30"
+        "updated": "2026-02-11"
     },
     "notes": [
+        {
+            "id": "n-2024-10-01-001",
+            "fecha": "2024-10-01",
+            "provincia": "Nacional",
+            "categoria": "Normativa",
+            "titulo": "Dia Internacional para la Reduccion del Riesgo de Desastres",
+            "texto": "Cada 13 de octubre se conmemora el Dia Internacional para la Reduccion del Riesgo de Desastres, establecido por la Asamblea General de las Naciones Unidas. Argentina participa activamente a traves de sus organismos de Defensa Civil y Proteccion Civil en las actividades de concientizacion.",
+            "links": [
+                {
+                    "href": "https://www.un.org/es/observances/disaster-reduction-day",
+                    "label": "ONU - Dia Internacional"
+                }
+            ]
+        },
+        {
+            "id": "n-2023-06-15-001",
+            "fecha": "2023-06-15",
+            "provincia": "Nacional",
+            "categoria": "Normativa",
+            "titulo": "Decreto 636/2013 - Secretaria de Proteccion Civil",
+            "texto": "El sistema nacional de Defensa Civil fue reorganizado bajo la Secretaria de Proteccion Civil, dependiente del Ministerio de Seguridad de la Nacion. Este decreto establece las funciones y responsabilidades del organismo rector en materia de proteccion civil a nivel federal.",
+            "links": [
+                {
+                    "href": "https://www.argentina.gob.ar/seguridad",
+                    "label": "Ministerio de Seguridad"
+                }
+            ]
+        },
+        {
+            "id": "n-2022-03-20-001",
+            "fecha": "2022-03-20",
+            "provincia": "Mendoza",
+            "categoria": "Actividades",
+            "titulo": "Simulacro de evacuacion por actividad sismica en Mendoza",
+            "texto": "La Direccion de Defensa Civil de Mendoza organizo un simulacro de evacuacion en escuelas de la zona del Gran Mendoza, con participacion de mas de 5.000 alumnos y personal docente. El ejercicio busca fortalecer la cultura de prevencion sismica en una de las provincias con mayor riesgo del pais.",
+            "links": []
+        },
+        {
+            "id": "n-2021-12-10-001",
+            "fecha": "2021-12-10",
+            "provincia": "Corrientes",
+            "categoria": "Emergencias",
+            "titulo": "Incendios forestales en Corrientes - Respuesta de Defensa Civil",
+            "texto": "Defensa Civil de Corrientes activo el protocolo de emergencia ante los incendios forestales que afectaron mas de 900.000 hectareas en la provincia. Se coordinaron operativos de evacuacion, asistencia a evacuados y logistica de combate al fuego con bomberos voluntarios y fuerzas nacionales.",
+            "links": []
+        },
+        {
+            "id": "n-2020-08-05-001",
+            "fecha": "2020-08-05",
+            "provincia": "Ciudad de Buenos Aires",
+            "categoria": "Actividades",
+            "titulo": "Capacitacion virtual en emergencias durante la pandemia",
+            "texto": "Durante el contexto de pandemia por COVID-19, la Direccion General de Defensa Civil de CABA implemento un programa de capacitaciones virtuales sobre primeros auxilios, evacuacion y manejo de emergencias, alcanzando a mas de 2.000 participantes en formato online.",
+            "links": []
+        },
+        {
+            "id": "n-2019-11-22-001",
+            "fecha": "2019-11-22",
+            "provincia": "Buenos Aires",
+            "categoria": "Actividades",
+            "titulo": "Jornada provincial de voluntarios de Defensa Civil",
+            "texto": "Se realizo la Jornada Provincial de Voluntarios de Defensa Civil en la ciudad de La Plata, con la participacion de representantes de mas de 50 municipios bonaerenses. Se abordaron temas de coordinacion interinstitucional, uso de tecnologia en emergencias y fortalecimiento de la red de voluntarios.",
+            "links": []
+        },
         {
             "id": "n-2018-02-15-001",
             "fecha": "2018-02-15",
             "provincia": "Ciudad de Buenos Aires",
-            "categoria": "Actividades",
-            "titulo": "Ley 5920 - Sistema de Autoprotección",
-            "texto": "El Gobierno de la Ciudad designa como autoridad de aplicación de la Ley 5.920 sobre sistemas de Autoprotección a la Dirección General de Defensa Civil. Esta que regula una medida de prevención como ser el plan de evacuación y la realización de simulacros entre en vigencia.",
+            "categoria": "Normativa",
+            "titulo": "Ley 5920 - Sistema de Autoproteccion",
+            "texto": "El Gobierno de la Ciudad designa como autoridad de aplicacion de la Ley 5.920 sobre sistemas de Autoproteccion a la Direccion General de Defensa Civil. Esta ley regula medidas de prevencion como el plan de evacuacion y la realizacion de simulacros.",
             "links": [
                 {
-                    "href": "https:\/\/buenosaires.gob.ar\/seguridad\/emergencias\/defensa-civil\/sistema-de-autoproteccion-ley-ndeg-5920-y-modificaciones",
-                    "label": "nota oficial del GCBA"
+                    "href": "https://buenosaires.gob.ar/seguridad/emergencias/defensa-civil/sistema-de-autoproteccion-ley-ndeg-5920-y-modificaciones",
+                    "label": "Nota oficial del GCBA"
+                }
+            ]
+        },
+        {
+            "id": "n-2017-04-02-001",
+            "fecha": "2017-04-02",
+            "provincia": "Tucuman",
+            "categoria": "Emergencias",
+            "titulo": "Inundaciones en Tucuman - Operativo de asistencia",
+            "texto": "Tras las intensas lluvias que provocaron inundaciones en varias localidades tucumanas, Defensa Civil provincial coordino la evacuacion de familias afectadas y la distribucion de agua potable, alimentos y colchones en centros de evacuados habilitados en escuelas y clubes.",
+            "links": []
+        },
+        {
+            "id": "n-2016-09-01-001",
+            "fecha": "2016-09-01",
+            "provincia": "Nacional",
+            "categoria": "Publicaciones",
+            "titulo": "1 de septiembre - Dia Nacional de la Defensa Civil",
+            "texto": "Se conmemora cada 1 de septiembre en Argentina. La fecha fue instituida en recuerdo de la creacion del organismo de Defensa Civil en nuestro pais, y busca promover la concientizacion ciudadana sobre la importancia de la prevencion y la preparacion ante emergencias y desastres.",
+            "links": []
+        },
+        {
+            "id": "n-2015-03-18-001",
+            "fecha": "2015-03-18",
+            "provincia": "San Juan",
+            "categoria": "Actividades",
+            "titulo": "Plan de contingencia sismica actualizado en San Juan",
+            "texto": "La Direccion de Defensa Civil de San Juan presento la actualizacion de su plan de contingencia sismica, incorporando nuevas zonas de riesgo, puntos de encuentro y rutas de evacuacion. El plan fue elaborado con asistencia tecnica del INPRES (Instituto Nacional de Prevencion Sismica).",
+            "links": [
+                {
+                    "href": "http://www.inpres.gob.ar/",
+                    "label": "INPRES"
                 }
             ]
         },
         {
             "id": "n-1986-07-30-001",
             "fecha": "1986-07-30",
-            "provincia": "BUENOS AIRES",
-            "categoria": "PUBLICACIONES",
-            "titulo": "GUIA DE DEFENSA CIVIL DE LA PROVINCIA DE BUENOS AIRES",
-            "texto": "2da Edición (la primera fue en mayo de 1986)\r\nLibro de texto pensado para distribuir a los establecimientos educativos",
+            "provincia": "Buenos Aires",
+            "categoria": "Publicaciones",
+            "titulo": "Guia de Defensa Civil de la Provincia de Buenos Aires",
+            "texto": "2da Edicion (la primera fue en mayo de 1986).\nLibro de texto pensado para distribuir a los establecimientos educativos de la provincia.",
             "imagen": "",
             "links": []
         }

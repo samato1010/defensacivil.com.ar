@@ -3,7 +3,22 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Notas · Defensa Civil</title>
+  <title>Notas · Defensa Civil de la República Argentina</title>
+  <meta name="description" content="Notas, artículos y actualizaciones sobre Defensa Civil y Protección Civil en Argentina. Actividades, publicaciones y normativa por provincia."/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://defensacivil.com.ar/notas.html"/>
+  <meta property="og:title" content="Notas · Defensa Civil de la República Argentina"/>
+  <meta property="og:description" content="Notas, artículos y actualizaciones sobre Defensa Civil y Protección Civil en Argentina."/>
+  <meta property="og:site_name" content="DefensaCivil.com.ar"/>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary"/>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+
   <style>
     :root{
       --az1:#003366; --az2:#004080; --n:#ff6600;
@@ -16,10 +31,11 @@
     .head{max-width:1100px;margin:0 auto;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;}
     h1{margin:0;font-size:1.35em}
     .sub{opacity:.92;margin:6px 0 0}
+    .nav{display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
     .nav a{
       text-decoration:none;color:#fff;background:rgba(255,255,255,.12);
       padding:10px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.20);
-      font-weight:900;display:inline-flex;align-items:center;gap:8px;margin-left:8px;transition:.15s;
+      font-weight:900;display:inline-flex;align-items:center;gap:8px;transition:.15s;
     }
     .nav a:hover{background:rgba(255,255,255,.20);transform:translateY(-1px);}
     .wrap{max-width:1100px;margin:18px auto;padding:0 16px 60px;}
@@ -31,7 +47,6 @@
     .tool label{font-weight:900;color:var(--az1);white-space:nowrap;font-size:.95em;}
     .tool input,.tool select{border:0;outline:0;background:transparent;font-size:1em;min-width:240px;}
     .tool select{min-width:200px;cursor:pointer}
-    @media(max-width:560px){.tool input{min-width:200px}}
     .card{
       background:var(--card);
       border:1px solid rgba(0,0,0,.08);
@@ -48,17 +63,17 @@
     }
     .small{color:var(--mut);font-size:.92em;}
     .note-title{margin:10px 0 8px;color:var(--az1);font-size:1.18em;font-weight:900;}
-    .note-body{color:var(--tx);line-height:1.5;margin:0 0 1em;}
+    .note-body{color:var(--tx);line-height:1.5;margin:0 0 1em;white-space:pre-line;}
     a{color:var(--link);font-weight:900;text-decoration:none;}
     a:hover{text-decoration:underline;color:var(--az2);}
     .msg{background:#fff;border:1px solid rgba(0,0,0,.12);border-radius:12px;padding:12px;}
     .msg.err{background:#fff3f3;border-color:rgba(180,0,0,.2);color:#7a0000;}
+    .msg.loading{background:#f0f6ff;border-color:rgba(0,51,102,.15);color:var(--az1);text-align:center;padding:24px;font-size:1.05em;}
     footer{background:var(--az1);color:#fff;text-align:center;padding:30px 20px;margin-top:40px;font-size:1.05em;}
     footer a{color:#fff;font-weight:900;text-decoration:none;}
     footer a:hover{text-decoration:underline;}
     .fmut{opacity:.92}
 
-    /* Estilo para el botón lupa (solo si hay imagen) */
     .zoom-btn {
       position: absolute;
       top: 16px;
@@ -79,7 +94,6 @@
     }
     .zoom-btn:hover { opacity: 1; }
 
-    /* Modal / Popup */
     #imageModal {
       display: none;
       position: fixed;
@@ -115,11 +129,19 @@
       cursor: pointer;
     }
     #closeModal:hover { color: #ff6600; }
+
+    @media(max-width:700px){
+      .tool{border-radius:12px;width:100%;}
+      .tool input,.tool select{min-width:0;flex:1;}
+      .row{flex-direction:column;align-items:stretch;}
+      .nav a{padding:8px 10px;font-size:.92em;}
+      h1{font-size:1.15em;}
+    }
   </style>
 </head>
 <body>
 
-<!-- Modal (se agrega una sola vez) -->
+<!-- Modal -->
 <div id="imageModal">
   <div id="modalContent">
     <span id="closeModal">&times;</span>
@@ -134,41 +156,43 @@
       <div class="sub" id="sub">Actualizaciones, seguimiento y artículos cortos</div>
     </div>
     <div class="nav">
-      <a href="/index.html">🏠 Inicio</a>
-      <a href="/directorio.html">📒 Directorio</a>
-      <a href="/historia.html">🕰️ Historia</a>
-      <a href="/colaboradores.html">🤝 Colaboradores</a>
+      <a href="/index.html">Inicio</a>
+      <a href="/directorio.html">Directorio</a>
+      <a href="/historia.html">Historia</a>
+      <a href="/colaboradores.html">Colaboradores</a>
     </div>
   </div>
 </header>
 
 <div class="wrap">
   <div class="row">
-    <div class="tool"><label>🔎 Buscar</label><input id="q" placeholder="tema, provincia, palabra clave..."></div>
-    <div class="tool"><label>🏷️ Categoría</label><select id="cat"><option value="">Todas</option></select></div>
-    <div class="tool"><label>🗺️ Provincia</label><select id="prov"><option value="">Todas</option></select></div>
+    <div class="tool"><label>Buscar</label><input id="q" placeholder="tema, provincia, palabra clave..."></div>
+    <div class="tool"><label>Categoria</label><select id="cat"><option value="">Todas</option></select></div>
+    <div class="tool"><label>Provincia</label><select id="prov"><option value="">Todas</option></select></div>
   </div>
   <div id="info" class="small"></div>
-  <div id="list"></div>
+  <div id="list"><div class="msg loading">Cargando notas...</div></div>
   <div class="msg" style="margin-top:16px;">
-    ¿Querés aportar una nota o corrección? Escribí a <b><a href="mailto:samato@hst.com.ar">samato@hst.com.ar</a></b>
+    Queres aportar una nota o correccion? Escribi a <b><a href="mailto:samato@hst.com.ar">samato@hst.com.ar</a></b>
   </div>
 </div>
 
 <footer>
-  <div class="fmut">Coordinación: Lic. Sebastián Amato · <a href="mailto:samato@hst.com.ar">samato@hst.com.ar</a></div>
-  <div style="margin-top:12px;opacity:.9;">defensacivil.com.ar © 2026</div>
+  <div class="fmut">Coordinacion: Lic. Sebastian Amato &middot; <a href="mailto:samato@hst.com.ar">samato@hst.com.ar</a></div>
+  <div style="margin-top:12px;opacity:.9;">defensacivil.com.ar &copy; 2026</div>
 </footer>
 
 <script>
-  const JSON_URL = "/data/notas.json";
-  const UPLOAD_PATH = "/uploads/notas/";
-  let DATA = { meta:{}, notes:[] };
+  var JSON_URL = "/data/notas.json";
+  var UPLOAD_PATH = "/uploads/notas/";
+  var DATA = { meta:{}, notes:[] };
 
   function escapeHtml(s){
-    return (s ?? '').toString().replace(/[&<>"']/g, m => ({
-      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
-    }[m]));
+    var str = (s == null ? '' : s).toString();
+    return str.replace(/[&<>"']/g, function(m){
+      var map = {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'};
+      return map[m] || m;
+    });
   }
 
   function normalize(s){
@@ -176,20 +200,32 @@
   }
 
   function uniqSorted(arr){
-    return Array.from(new Set(arr.filter(Boolean))).sort((a,b)=>a.localeCompare(b,"es",{sensitivity:"base"}));
+    var seen = {};
+    var result = [];
+    for(var i=0;i<arr.length;i++){
+      if(arr[i] && !seen[arr[i]]){
+        seen[arr[i]] = true;
+        result.push(arr[i]);
+      }
+    }
+    return result.sort(function(a,b){ return a.localeCompare(b,"es",{sensitivity:"base"}); });
   }
 
   function fillSelect(id, items, allLabel){
-    const sel = document.getElementById(id);
-    const cur = sel.value || "";
-    sel.innerHTML = `<option value="">${allLabel}</option>` + items.map(v=>`<option value="${escapeHtml(v)}">${escapeHtml(v)}</option>`).join("");
+    var sel = document.getElementById(id);
+    var cur = sel.value || "";
+    var html = '<option value="">' + allLabel + '</option>';
+    for(var i=0;i<items.length;i++){
+      html += '<option value="' + escapeHtml(items[i]) + '">' + escapeHtml(items[i]) + '</option>';
+    }
+    sel.innerHTML = html;
     sel.value = cur;
   }
 
   // Modal logic
-  const modal = document.getElementById("imageModal");
-  const modalImg = document.getElementById("modalImage");
-  const closeBtn = document.getElementById("closeModal");
+  var modal = document.getElementById("imageModal");
+  var modalImg = document.getElementById("modalImage");
+  var closeBtn = document.getElementById("closeModal");
 
   function openModal(src, alt) {
     modalImg.src = src;
@@ -205,92 +241,119 @@
   modal.onclick = function(e) {
     if (e.target === modal) closeModal();
   };
-  document.addEventListener('keydown', e => {
+  document.addEventListener('keydown', function(e) {
     if (e.key === "Escape") closeModal();
   });
 
   function render(){
-    const q = document.getElementById("q").value.trim();
-    const cat = document.getElementById("cat").value;
-    const prov = document.getElementById("prov").value;
+    var q = document.getElementById("q").value.trim();
+    var cat = document.getElementById("cat").value;
+    var prov = document.getElementById("prov").value;
 
-    let items = [...(DATA.notes || [])];
+    var items = (DATA.notes || []).slice();
 
-    if (cat) items = items.filter(n => (n.categoria||"") === cat);
-    if (prov) items = items.filter(n => (n.provincia||"") === prov);
+    if (cat) items = items.filter(function(n){ return (n.categoria||"") === cat; });
+    if (prov) items = items.filter(function(n){ return (n.provincia||"") === prov; });
     if (q){
-      const nq = normalize(q);
-      items = items.filter(n => {
-        const hay = normalize([n.titulo,n.texto,n.categoria,n.provincia,n.fecha].join(" "));
-        return hay.includes(nq);
+      var nq = normalize(q);
+      items = items.filter(function(n){
+        var hay = normalize([n.titulo,n.texto,n.categoria,n.provincia,n.fecha].join(" "));
+        return hay.indexOf(nq) !== -1;
       });
     }
 
-    items.sort((a,b)=> (String(b.fecha||"")).localeCompare(String(a.fecha||"")));
+    items.sort(function(a,b){ return (String(b.fecha||"")).localeCompare(String(a.fecha||"")); });
 
-    document.getElementById("info").textContent =
-      `${items.length} notas · actualizado: ${DATA.meta?.updated || "—"}`;
+    var updated = (DATA.meta && DATA.meta.updated) ? DATA.meta.updated : "—";
+    document.getElementById("info").textContent = items.length + " notas · actualizado: " + updated;
 
-    const list = document.getElementById("list");
+    var list = document.getElementById("list");
     list.innerHTML = "";
 
     if (!items.length){
-      list.innerHTML = `<div class="msg">No hay notas con esos filtros.</div>`;
+      list.innerHTML = '<div class="msg">No hay notas con esos filtros.</div>';
       return;
     }
 
-    items.forEach(n => {
-      const card = document.createElement("div");
+    for(var i=0;i<items.length;i++){
+      var n = items[i];
+      var card = document.createElement("div");
       card.className = "card";
 
-      const links = (n.links||[])
-        .filter(x => x && x.href)
-        .map(l => `<a href="${escapeHtml(l.href)}">${escapeHtml(l.label||"Ver")}</a>`)
-        .join(" · ");
+      var linksArr = n.links || [];
+      var linksHtml = [];
+      for(var j=0;j<linksArr.length;j++){
+        var l = linksArr[j];
+        if(l && l.href){
+          linksHtml.push('<a href="' + escapeHtml(l.href) + '" target="_blank" rel="noopener">' + escapeHtml(l.label||"Ver") + '</a>');
+        }
+      }
+      var links = linksHtml.join(" &middot; ");
 
-      let zoomBtn = "";
+      var zoomBtn = "";
       if (n.imagen && typeof n.imagen === "string" && n.imagen.trim() !== "") {
-        const imgSrc = UPLOAD_PATH + escapeHtml(n.imagen);
-        zoomBtn = `<button class="zoom-btn" title="Ver imagen ampliada" onclick="openModal('${imgSrc}', '${escapeHtml(n.titulo || 'Imagen de la nota')}')">🔍</button>`;
+        var imgSrc = UPLOAD_PATH + escapeHtml(n.imagen);
+        zoomBtn = '<button class="zoom-btn" title="Ver imagen ampliada" data-src="' + imgSrc + '" data-alt="' + escapeHtml(n.titulo || 'Imagen de la nota') + '">&#128269;</button>';
       }
 
-      card.innerHTML = `
-        ${zoomBtn}
-        <div class="title">
-          <div class="badge">${escapeHtml(n.categoria || "Nota")}</div>
-          <div class="small">${escapeHtml(n.fecha || "—")} · ${escapeHtml(n.provincia || "—")}</div>
-        </div>
-        <div class="note-title">${escapeHtml(n.titulo || "—")}</div>
-        <p class="note-body">${escapeHtml(n.texto || "")}</p>
-        ${links ? `<div class="small" style="margin-top:10px;">${links}</div>` : ""}
-      `;
+      card.innerHTML =
+        zoomBtn +
+        '<div class="title">' +
+          '<div class="badge">' + escapeHtml(n.categoria || "Nota") + '</div>' +
+          '<div class="small">' + escapeHtml(n.fecha || "—") + ' &middot; ' + escapeHtml(n.provincia || "—") + '</div>' +
+        '</div>' +
+        '<div class="note-title">' + escapeHtml(n.titulo || "—") + '</div>' +
+        '<p class="note-body">' + escapeHtml(n.texto || "") + '</p>' +
+        (links ? '<div class="small" style="margin-top:10px;">' + links + '</div>' : "");
+
+      // Bind zoom button click
+      var btn = card.querySelector(".zoom-btn");
+      if(btn){
+        (function(b){
+          b.addEventListener("click", function(){
+            openModal(b.getAttribute("data-src"), b.getAttribute("data-alt"));
+          });
+        })(btn);
+      }
 
       list.appendChild(card);
-    });
-  }
-
-  async function load(){
-    try{
-      const res = await fetch(JSON_URL + "?ts=" + Date.now(), { cache:"no-store" });
-      const txt = await res.text();
-      if(!res.ok) throw new Error("HTTP " + res.status + " al cargar " + JSON_URL);
-      const j = JSON.parse(txt);
-      DATA.meta = j.meta || {};
-      DATA.notes = Array.isArray(j.notes) ? j.notes : [];
-      document.getElementById("sub").textContent =
-        DATA.meta?.subtitulo || "Actualizaciones, seguimiento y artículos cortos";
-      fillSelect("cat", uniqSorted(DATA.notes.map(n=>n.categoria)), "Todas");
-      fillSelect("prov", uniqSorted(DATA.notes.map(n=>n.provincia)), "Todas");
-      render();
-    }catch(err){
-      document.getElementById("list").innerHTML =
-        `<div class="msg err">No se pudo cargar /data/notas.json.<br>Detalle: ${escapeHtml(err?.message || err)}</div>`;
     }
   }
 
-  function debounce(fn, ms=180){
-    let t=null;
-    return () => { clearTimeout(t); t=setTimeout(fn, ms); };
+  function load(){
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", JSON_URL + "?ts=" + Date.now(), true);
+    xhr.onreadystatechange = function(){
+      if(xhr.readyState !== 4) return;
+      if(xhr.status >= 200 && xhr.status < 300){
+        try{
+          var j = JSON.parse(xhr.responseText);
+          DATA.meta = j.meta || {};
+          DATA.notes = Array.isArray(j.notes) ? j.notes : [];
+          var subtitulo = (DATA.meta && DATA.meta.subtitulo) ? DATA.meta.subtitulo : "Actualizaciones, seguimiento y articulos cortos";
+          document.getElementById("sub").textContent = subtitulo;
+          fillSelect("cat", uniqSorted(DATA.notes.map(function(n){ return n.categoria; })), "Todas");
+          fillSelect("prov", uniqSorted(DATA.notes.map(function(n){ return n.provincia; })), "Todas");
+          render();
+        }catch(err){
+          document.getElementById("list").innerHTML =
+            '<div class="msg err">Error al procesar los datos.<br>Detalle: ' + escapeHtml(err.message || String(err)) + '</div>';
+        }
+      }else{
+        document.getElementById("list").innerHTML =
+          '<div class="msg err">No se pudo cargar /data/notas.json (HTTP ' + xhr.status + ').<br>Intente recargar la pagina.</div>';
+      }
+    };
+    xhr.onerror = function(){
+      document.getElementById("list").innerHTML =
+        '<div class="msg err">Error de red al cargar las notas.<br>Verifique su conexion e intente nuevamente.</div>';
+    };
+    xhr.send();
+  }
+
+  function debounce(fn, ms){
+    var t = null;
+    return function(){ clearTimeout(t); t = setTimeout(fn, ms || 180); };
   }
 
   document.getElementById("q").addEventListener("input", debounce(render, 180));
