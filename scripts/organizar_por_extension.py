@@ -84,12 +84,12 @@ def main():
     total_errores = 0
     carpetas_procesadas = 0
 
-    # Recorrer carpeta raiz y todas las subcarpetas de primer nivel
-    carpetas = [CARPETA_RAIZ]
-    for item in os.listdir(CARPETA_RAIZ):
-        ruta = os.path.join(CARPETA_RAIZ, item)
-        if os.path.isdir(ruta):
-            carpetas.append(ruta)
+    # Recorrer carpeta raiz y TODAS las subcarpetas en todos los niveles
+    # Se recolectan primero para evitar conflictos con carpetas nuevas creadas
+    carpetas = []
+    for raiz, dirs, archivos_en in os.walk(CARPETA_RAIZ):
+        if archivos_en:
+            carpetas.append(raiz)
 
     for carpeta in carpetas:
         archivos = [f for f in os.listdir(carpeta)
@@ -99,14 +99,16 @@ def main():
             continue
 
         carpetas_procesadas += 1
-        nombre_carpeta = os.path.basename(carpeta) or "RAIZ"
-        log.append(f"\n[{nombre_carpeta}] - {len(archivos)} archivos")
+        ruta_relativa = os.path.relpath(carpeta, CARPETA_RAIZ)
+        if ruta_relativa == ".":
+            ruta_relativa = "RAIZ"
+        log.append(f"\n[{ruta_relativa}] - {len(archivos)} archivos")
 
         movidos, errores = organizar_carpeta(carpeta, log)
         total_movidos += movidos
         total_errores += errores
 
-        print(f"  {nombre_carpeta}: {movidos} movidos, {errores} errores")
+        print(f"  {ruta_relativa}: {movidos} movidos, {errores} errores")
 
     # Resumen
     print()
