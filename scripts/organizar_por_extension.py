@@ -1,12 +1,12 @@
 # Agente organizador de archivos por extension.
 #
-# Recorre todas las carpetas dentro de DIRVE GUARDA TEMPORAL
-# y organiza los archivos en subcarpetas con el nombre de su extension.
+# Recorre TODAS las carpetas y subcarpetas dentro de DIRVE GUARDA TEMPORAL
+# y mueve todos los archivos a UNA SOLA carpeta por extension en la raiz.
 #
-# Ejemplo:
-#   archivo.pdf  -> PDF/archivo.pdf
-#   foto.jpg     -> JPG/foto.jpg
-#   datos.xlsx   -> XLSX/datos.xlsx
+# Ejemplo (resultado final en la raiz):
+#   DIRVE GUARDA TEMPORAL/PDF/archivo.pdf
+#   DIRVE GUARDA TEMPORAL/JPG/foto.jpg
+#   DIRVE GUARDA TEMPORAL/XLSX/datos.xlsx
 #
 # Instrucciones:
 #   1. Instalar Python 3 si no lo tenes
@@ -22,50 +22,10 @@ CARPETA_RAIZ = r"C:\Users\Sebastian\Downloads\DIRVE GUARDA TEMPORAL"
 
 
 def obtener_extension(nombre_archivo):
-    """Devuelve la extension en mayusculas sin el punto, o 'SIN_EXTENSION'."""
     _, ext = os.path.splitext(nombre_archivo)
     if ext:
         return ext[1:].upper()
     return "SIN_EXTENSION"
-
-
-def organizar_carpeta(carpeta, log):
-    """Organiza los archivos de una carpeta en subcarpetas por extension."""
-    movidos = 0
-    errores = 0
-
-    archivos = [f for f in os.listdir(carpeta)
-                if os.path.isfile(os.path.join(carpeta, f))]
-
-    for nombre in archivos:
-        origen = os.path.join(carpeta, nombre)
-        extension = obtener_extension(nombre)
-        carpeta_destino = os.path.join(carpeta, extension)
-
-        try:
-            if not os.path.exists(carpeta_destino):
-                os.makedirs(carpeta_destino)
-
-            destino = os.path.join(carpeta_destino, nombre)
-
-            # Si ya existe un archivo con el mismo nombre, renombrar
-            if os.path.exists(destino):
-                base, ext = os.path.splitext(nombre)
-                contador = 1
-                while os.path.exists(destino):
-                    nuevo_nombre = f"{base} ({contador}){ext}"
-                    destino = os.path.join(carpeta_destino, nuevo_nombre)
-                    contador += 1
-
-            shutil.move(origen, destino)
-            movidos += 1
-            log.append(f"  OK: {nombre} -> {extension}/")
-
-        except Exception as e:
-            errores += 1
-            log.append(f"  ERROR: {nombre} - {str(e)}")
-
-    return movidos, errores
 
 
 def main():
@@ -82,40 +42,72 @@ def main():
     log = []
     total_movidos = 0
     total_errores = 0
-    carpetas_procesadas = 0
 
-    # Recorrer carpeta raiz y TODAS las subcarpetas en todos los niveles
-    # Se recolectan primero para evitar conflictos con carpetas nuevas creadas
-    carpetas = []
-    for raiz, dirs, archivos_en in os.walk(CARPETA_RAIZ):
-        if archivos_en:
-            carpetas.append(raiz)
+    # Recolectar todos los archivos de todas las subcarpetas
+    archivos_encontrados = []
+    for raiz, dirs, archivos in os.walk(CARPETA_RAIZ):
+        for nombre in archivos:
+            ruta_completa = os.path.join(raiz, nombre)
+            archivos_encontrados.append((ruta_completa, nombre, raiz))
 
-    for carpeta in carpetas:
-        archivos = [f for f in os.listdir(carpeta)
-                    if os.path.isfile(os.path.join(carpeta, f))]
+    print(f"Archivos encontrados: {len(archivos_encontrados)}")
+    print()
 
-        if not archivos:
+    for ruta_completa, nombre, carpeta_origen in archivos_encontrados:
+        extension = obtener_extension(nombre)
+        carpeta_destino = os.path.join(CARPETA_RAIZ, extension)
+
+        # Si ya esta en la carpeta correcta de la raiz, saltar
+        if carpeta_origen == carpeta_destino:
             continue
 
-        carpetas_procesadas += 1
-        ruta_relativa = os.path.relpath(carpeta, CARPETA_RAIZ)
-        if ruta_relativa == ".":
-            ruta_relativa = "RAIZ"
-        log.append(f"\n[{ruta_relativa}] - {len(archivos)} archivos")
+        try:
+            if not os.path.exists(carpeta_destino):
+                os.makedirs(carpeta_destino)
 
-        movidos, errores = organizar_carpeta(carpeta, log)
-        total_movidos += movidos
-        total_errores += errores
+            destino = os.path.join(carpeta_destino, nombre)
 
-        print(f"  {ruta_relativa}: {movidos} movidos, {errores} errores")
+            # Si ya existe un archivo con el mismo nombre, renombrar
+            if os.path.exists(destino):
+                base, ext = os.path.splitext(nombre)
+                contador = 1
+                while os.path.exists(destino):
+                    nuevo_nombre = f"{base} ({contador}){ext}"
+                    destino = os.path.join(carpeta_destino, nuevo_nombre)
+                    contador += 1
+
+            ruta_relativa = os.path.relpath(carpeta_origen, CARPETA_RAIZ)
+            if ruta_relativa == ".":
+                ruta_relativa = "RAIZ"
+
+            shutil.move(ruta_completa, destino)
+            total_movidos += 1
+            log.append(f"  OK: [{ruta_relativa}] {nombre} -> {extension}/")
+            print(f"  {nombre} -> {extension}/")
+
+        except Exception as e:
+            total_errores += 1
+            log.append(f"  ERROR: {nombre} - {str(e)}")
+            print(f"  ERROR: {nombre} - {str(e)}")
+
+    # Eliminar carpetas vacias que quedaron
+    carpetas_eliminadas = 0
+    for raiz, dirs, archivos in os.walk(CARPETA_RAIZ, topdown=False):
+        if raiz == CARPETA_RAIZ:
+            continue
+        try:
+            if not os.listdir(raiz):
+                os.rmdir(raiz)
+                carpetas_eliminadas += 1
+        except Exception:
+            pass
 
     # Resumen
     print()
     print("=" * 50)
     print(f"TOTAL: {total_movidos} archivos organizados")
     print(f"ERRORES: {total_errores}")
-    print(f"CARPETAS PROCESADAS: {carpetas_procesadas}")
+    print(f"CARPETAS VACIAS ELIMINADAS: {carpetas_eliminadas}")
     print("=" * 50)
 
     # Guardar log
@@ -123,11 +115,12 @@ def main():
     nombre_log = f"log_organizacion_{fecha}.txt"
     ruta_log = os.path.join(CARPETA_RAIZ, nombre_log)
 
-    contenido_log = f"AGENTE ORGANIZADOR POR EXTENSION\n"
+    contenido_log = "AGENTE ORGANIZADOR POR EXTENSION\n"
     contenido_log += f"Fecha: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}\n"
     contenido_log += f"Carpeta: {CARPETA_RAIZ}\n"
     contenido_log += f"Total movidos: {total_movidos}\n"
     contenido_log += f"Total errores: {total_errores}\n"
+    contenido_log += f"Carpetas vacias eliminadas: {carpetas_eliminadas}\n"
     contenido_log += "=" * 50
     contenido_log += "\n".join(log)
 
