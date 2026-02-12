@@ -1,22 +1,18 @@
-"""
-Agente organizador de archivos por extension.
-
-Recorre todas las carpetas dentro de:
-  C:\Users\Sebastian\Downloads\DIRVE GUARDA TEMPORAL
-
-Y organiza los archivos en subcarpetas con el nombre de su extension.
-
-Ejemplo:
-  archivo.pdf  -> /PDF/archivo.pdf
-  foto.jpg     -> /JPG/foto.jpg
-  datos.xlsx   -> /XLSX/datos.xlsx
-
-Instrucciones:
-  1. Instalar Python 3 si no lo tenes
-  2. Abrir CMD o PowerShell
-  3. Ejecutar: python organizar_por_extension.py
-  4. Revisar el archivo LOG generado en la misma carpeta
-"""
+# Agente organizador de archivos por extension.
+#
+# Recorre todas las carpetas dentro de DIRVE GUARDA TEMPORAL
+# y organiza los archivos en subcarpetas con el nombre de su extension.
+#
+# Ejemplo:
+#   archivo.pdf  -> PDF/archivo.pdf
+#   foto.jpg     -> JPG/foto.jpg
+#   datos.xlsx   -> XLSX/datos.xlsx
+#
+# Instrucciones:
+#   1. Instalar Python 3 si no lo tenes
+#   2. Abrir CMD o PowerShell
+#   3. Ejecutar: python organizar_por_extension.py
+#   4. Revisar el archivo LOG generado en la misma carpeta
 
 import os
 import shutil
